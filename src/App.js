@@ -1,10 +1,12 @@
 import Login from "./components/login/Login";
+import SchedulerWrapper from "./components/Scheduler/Scheduler";
 import app from "./service/firebase";
 
 function App() {
     return (
         <div className="App">
-            <Login></Login>
+            <SchedulerWrapper></SchedulerWrapper>
+            {/* <Login></Login> */}
         </div>
     );
 }
