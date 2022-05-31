@@ -1,0 +1,8 @@
+.main-container:first-child {
+  height: 10vh;
+}
+
+.main-container .page-container {
+  height: 90vh;
+}
+/*# sourceMappingURL=Routes.css.map */
