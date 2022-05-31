@@ -7,11 +7,13 @@ import Schedule from "../schedule/Schedule";
 import Playlists from "../playlists/Playlists";
 import Statistics from "../statistics/Statistics";
 import "./Routes.css";
+import Example from "../../components/lottie/Lottie";
 
 const Routes = () => {
     return (
         <div className="main-container">
             <Navbar></Navbar>
+            <Example></Example>
             <div className="page-container">
                 <Switch>
                     <Route exact path="/" component={Home}></Route>
