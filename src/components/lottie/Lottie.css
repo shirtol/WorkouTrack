@@ -1,0 +1,9 @@
+.lottie-bg {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  left: 0;
+  height: 80vh;
+  overflow-y: hidden;
+}
+/*# sourceMappingURL=Lottie.css.map */
