@@ -1,7 +1,8 @@
 import React from "react";
+import Calender from "../../components/Scheduler/Scheduler";
 
 const Schedule = () => {
-    return <div>Schedule</div>;
+    return <Calender></Calender>;
 };
 
 export default Schedule;

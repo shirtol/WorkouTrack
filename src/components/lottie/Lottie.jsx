@@ -4,7 +4,8 @@ import "./Lottie.css";
 import background from "../../assets/animations/bg2.json";
 
 const Example = () => {
-    return <Lottie className="lottie-bg" animationData={background} loop />;
+    return <div></div>;
+    // return <Lottie className="lottie-bg" animationData={background} loop />;
 };
 
 export default Example;
