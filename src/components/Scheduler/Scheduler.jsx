@@ -3,6 +3,7 @@ import {
     EditingState,
     IntegratedEditing,
 } from "@devexpress/dx-react-scheduler";
+
 import {
     Scheduler,
     WeekView,
@@ -23,37 +24,33 @@ import { useState } from "react";
 
 import { v4 as uuid } from "uuid";
 
+import Months from "../../utils/months";
+
+import ExerciseForm from "./exerciseForm/ExerciseForm";
+
+import workoutEnvironments from "../../utils/workoutEnvironments";
+
 import "./scheduler.css";
 
 const schedulerData = [
     {
-        title: "Prepare 2015 Marketing Plan",
-        startDate: new Date(2022, 5, 1, 13, 0),
-        endDate: new Date(2022, 5, 1, 14, 0),
+        title: "zumba",
+        startDate: new Date(2022, Months.JUNE, 1, 13, 0),
+        endDate: new Date(2022, Months.JUNE, 1, 14, 0),
+        environment: workoutEnvironments.Indoor,
         id: uuid(),
     },
     {
-        title: "Brochure Design Review",
-        startDate: new Date(2022, 5, 2, 10, 0),
-        endDate: new Date(2022, 5, 2, 11, 0),
+        title: "ballet",
+        startDate: new Date(2022, Months.JUNE, 2, 10, 0),
+        endDate: new Date(2022, Months.JUNE, 2, 11, 0),
+        environment: workoutEnvironments.Gym,
         id: uuid(),
     },
 ];
 
 const Calender = () => {
     const [exercises, setExercises] = useState(schedulerData);
-
-    const [currViewName, setCurrViewName] = useState("week");
-
-    // const saveExercise = (exercise) => {
-    // const newExercisesArr = [...exercises];
-    // newExercisesArr.push(exercise.added);
-    // setExercises(newExercisesArr);
-    // };
-
-    const currentViewNameChange = (currentViewName) => {
-        setCurrViewName(currViewName);
-    };
 
     const commitChanges = ({ added, changed, deleted }) => {
         let data = exercises;
@@ -79,17 +76,14 @@ const Calender = () => {
         <div>
             <Paper className="calender">
                 <Scheduler data={exercises} height={750}>
-                    <ViewState
-                        onCurrentViewNameChange={currentViewNameChange}
-                        defaultCurrentDate="2022-06-01"
-                    ></ViewState>
+                    <ViewState defaultCurrentDate="2022-06-01"></ViewState>
                     <EditingState
                         onCommitChanges={commitChanges}
                     ></EditingState>
                     <IntegratedEditing></IntegratedEditing>
-                    <WeekView startDayHour={5} endDayHour={23}></WeekView>
-                    <MonthView startDayHour={5} endDayHour={23} />
-                    <DayView startDayHour={5} endDayHour={23} />
+                    <WeekView></WeekView>
+                    <MonthView />
+                    <DayView />
                     <Toolbar />
                     <DateNavigator></DateNavigator>
                     <ViewSwitcher />
@@ -101,7 +95,9 @@ const Calender = () => {
                         showDeleteButton
                     ></AppointmentTooltip>
 
-                    <AppointmentForm dateEditorComponent></AppointmentForm>
+                    <AppointmentForm
+                        basicLayoutComponent={ExerciseForm}
+                    ></AppointmentForm>
                 </Scheduler>
             </Paper>
         </div>
