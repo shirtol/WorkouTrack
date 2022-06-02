@@ -1,5 +1,10 @@
 import React, { useContext, useState } from "react";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+    getAuth,
+    signInWithPopup,
+    GoogleAuthProvider,
+    getAdditionalUserInfo,
+} from "firebase/auth";
 
 const AuthContext = React.createContext();
 
@@ -7,6 +12,7 @@ export const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState();
+    const [currentUserInfo, setCurrentUserInfo] = useState();
     const [token, setToken] = useState();
 
     const auth = getAuth();
@@ -18,6 +24,8 @@ const AuthProvider = ({ children }) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             setToken(credential.accessToken);
             setCurrentUser(result.user);
+            setCurrentUserInfo(getAdditionalUserInfo(result));
+            console.log(getAdditionalUserInfo(result));
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -26,7 +34,7 @@ const AuthProvider = ({ children }) => {
         }
     };
 
-    const value = { currentUser, signIn, token };
+    const value = { currentUser, currentUserInfo, signIn, token };
 
     return (
         <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
