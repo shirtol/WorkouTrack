@@ -101,7 +101,7 @@ const Calender = () => {
                         showDeleteButton
                     ></AppointmentTooltip>
 
-                    <AppointmentForm></AppointmentForm>
+                    <AppointmentForm dateEditorComponent></AppointmentForm>
                 </Scheduler>
             </Paper>
         </div>
