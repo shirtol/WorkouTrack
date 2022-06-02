@@ -1,23 +1,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+import { StyledNavbar } from "./StyledNavbar";
+import { StyledNavbarItem } from "./StyledNavbarItem";
 
 const Navbar = () => {
     return (
-        <header className="navbar">
-            <li>
+        <StyledNavbar>
+            <StyledNavbarItem>
                 <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
+            </StyledNavbarItem>
+            <StyledNavbarItem>
                 <NavLink to="/schedule">Schedule</NavLink>
-            </li>
-            <li>
+            </StyledNavbarItem>
+            <StyledNavbarItem>
                 <NavLink to="/playlists">Playlists</NavLink>
-            </li>
-            <li>
+            </StyledNavbarItem>
+            <StyledNavbarItem>
                 <NavLink to="/statistics">Statistics</NavLink>
-            </li>
-        </header>
+            </StyledNavbarItem>
+        </StyledNavbar>
     );
 };
 
