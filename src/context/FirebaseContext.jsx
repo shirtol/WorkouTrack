@@ -4,6 +4,7 @@ import {
     signInWithPopup,
     GoogleAuthProvider,
     getAdditionalUserInfo,
+    signInWithRedirect,
 } from "firebase/auth";
 import { getFirestore, setLogLevel } from "firebase/firestore";
 import app from "../service/firebase";
@@ -19,9 +20,12 @@ const FirebaseProvider = ({ children }) => {
     const [db, setDb] = useState();
 
     const auth = getAuth();
-    auth.onAuthStateChanged(() => {
+    auth.onAuthStateChanged((user) => {
         setDb(getFirestore(app));
+        setToken(user.accessToken);
+        setCurrentUser(user);
     });
+
     const provider = new GoogleAuthProvider();
 
     const signIn = async () => {
@@ -31,7 +35,6 @@ const FirebaseProvider = ({ children }) => {
             setToken(credential.accessToken);
             setCurrentUser(result.user);
             setCurrentUserInfo(getAdditionalUserInfo(result));
-            console.log(getAdditionalUserInfo(result));
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;

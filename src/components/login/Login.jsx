@@ -1,9 +1,15 @@
+import { useState } from "react";
 import { useFirebase } from "../../context/FirebaseContext";
 
-const Login = () => {
+const Login = ({ location, history }) => {
     const { signIn, currentUser } = useFirebase();
 
-    console.log(currentUser);
+    if (currentUser) {
+        const currPath = location.pathname;
+        if (currPath === "/" || currPath === "/login") {
+            history.push("/");
+        }
+    }
 
     return (
         <div>
