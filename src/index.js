@@ -4,14 +4,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
-import FirebaseProvider from "./context/AuthContext";
+import FirebaseProvider from "./context/FirebaseContext";
+import ExercisesProvider from "./context/ExercisesContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
         {/* <React.StrictMode> */}
         <FirebaseProvider>
-            <App />
+            <ExercisesProvider>
+                <App />
+            </ExercisesProvider>
         </FirebaseProvider>
 
         {/* </React.StrictMode> */}

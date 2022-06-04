@@ -1,4 +1,4 @@
-import { useFirebase } from "../../context/AuthContext";
+import { useFirebase } from "../../context/FirebaseContext";
 
 const Login = () => {
     const { signIn, currentUser } = useFirebase();

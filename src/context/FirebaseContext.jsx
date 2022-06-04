@@ -20,7 +20,6 @@ const FirebaseProvider = ({ children }) => {
 
     const auth = getAuth();
     auth.onAuthStateChanged(() => {
-        setLogLevel("debug");
         setDb(getFirestore(app));
     });
     const provider = new GoogleAuthProvider();

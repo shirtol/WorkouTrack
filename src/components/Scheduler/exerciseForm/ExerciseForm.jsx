@@ -7,7 +7,7 @@ import equipments, { createEquipmentsObj } from "../../../utils/equipments";
 import workoutTypes, {
     createWorkoutTypesObj,
 } from "../../../utils/workoutTypes";
-import { useFirebase } from "../../../context/AuthContext";
+import { useFirebase } from "../../../context/FirebaseContext";
 
 const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     const { currentUser } = useFirebase();
