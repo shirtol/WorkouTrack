@@ -3,10 +3,10 @@ import { useFirebase } from "../../context/FirebaseContext";
 import { Route } from "react-router-dom/cjs/react-router-dom.min";
 import { Redirect } from "react-router-dom";
 
-const AuthenticatedRoute = ({ children, ...props }) => {
+const AuthenticatedRoute = ({ children, location, ...props }) => {
     const { currentUser } = useFirebase();
 
-    console.log(currentUser);
+    console.log(location.pathname);
 
     return (
         <Route
@@ -15,7 +15,7 @@ const AuthenticatedRoute = ({ children, ...props }) => {
                 return currentUser ? (
                     children
                 ) : (
-                    <Redirect to="/login"></Redirect>
+                    <Redirect to="/login" push={true}></Redirect>
                 );
             }}
         ></Route>

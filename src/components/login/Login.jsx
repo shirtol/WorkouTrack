@@ -5,10 +5,7 @@ const Login = ({ location, history }) => {
     const { signIn, currentUser } = useFirebase();
 
     if (currentUser) {
-        const currPath = location.pathname;
-        if (currPath === "/" || currPath === "/login") {
-            history.push("/");
-        }
+        history.goBack();
     }
 
     return (
