@@ -15,7 +15,13 @@ const ExercisesProvider = ({ children }) => {
         console.log(db);
         if (db !== undefined) {
             const allData = await getAllCollectionData(db, "workout");
-            setAllExercises(allData);
+            const mappedAllData = allData.map((exercise) => ({
+                ...exercise,
+                endDate: new Date(exercise.endDate.seconds * 1000),
+                startDate: new Date(exercise.startDate.seconds * 1000),
+            }));
+            console.log(mappedAllData);
+            setAllExercises(mappedAllData);
         }
     };
 
