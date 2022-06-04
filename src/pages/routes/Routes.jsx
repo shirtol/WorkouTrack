@@ -8,6 +8,10 @@ import Playlists from "../playlists/Playlists";
 import Statistics from "../statistics/Statistics";
 import "./Routes.css";
 import Example from "../../components/lottie/Lottie";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { useFirebase } from "../../context/FirebaseContext";
+import AuthenticatedRoute from "../authenticatedRoute/AuthenticatedRoute";
+import Login from "../../components/login/Login";
 
 const Routes = () => {
     return (
@@ -16,18 +20,19 @@ const Routes = () => {
             <Example></Example>
             <div className="page-container">
                 <Switch>
-                    <Route exact path="/" component={Home}></Route>
-                    <Route exact path="/schedule" component={Schedule}></Route>
-                    <Route
-                        exact
-                        path="/playlists"
-                        component={Playlists}
-                    ></Route>
-                    <Route
-                        exact
-                        path="/statistics"
-                        component={Statistics}
-                    ></Route>
+                    <AuthenticatedRoute exact path="/">
+                        <Home></Home>
+                    </AuthenticatedRoute>
+                    <AuthenticatedRoute exact path="/schedule">
+                        <Schedule></Schedule>
+                    </AuthenticatedRoute>
+                    <AuthenticatedRoute exact path="/playlists">
+                        <Playlists></Playlists>
+                    </AuthenticatedRoute>
+                    <AuthenticatedRoute exact path="/statistics">
+                        <Statistics></Statistics>
+                    </AuthenticatedRoute>
+                    <Route exact path="/login" component={Login}></Route>
                 </Switch>
             </div>
         </div>

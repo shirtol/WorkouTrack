@@ -17,59 +17,63 @@ import {
     ViewSwitcher,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import Paper from "@mui/material/Paper";
-import { useState } from "react";
 import { v4 as uuid } from "uuid";
-import Months from "../../utils/months";
 import ExerciseForm from "./exerciseForm/ExerciseForm";
-import workoutEnvironments from "../../utils/workoutEnvironments";
 import Appointment from "./appointment/Appointment";
 import AppointmentContent from "./appointment/AppointmentContent";
 import "./scheduler.css";
-
-const schedulerData = [
-    {
-        title: "zumba",
-        startDate: new Date(2022, Months.JUNE, 1, 13, 0),
-        endDate: new Date(2022, Months.JUNE, 1, 14, 0),
-        environment: workoutEnvironments.Indoor,
-        id: uuid(),
-    },
-    {
-        title: "ballet",
-        startDate: new Date(2022, Months.JUNE, 2, 10, 0),
-        endDate: new Date(2022, Months.JUNE, 2, 11, 0),
-        environment: workoutEnvironments.Gym,
-        id: uuid(),
-    },
-];
+import { deleteDocument, setDocument } from "../../utils/firebaseUtils";
+import { useFirebase } from "../../context/FirebaseContext";
+import { emptyAppointment } from "./appointment/emptyAppointment";
+import { useExercises } from "../../context/ExercisesContext";
 
 const Calender = () => {
-    const [exercises, setExercises] = useState(schedulerData);
-
+    const { allExercises, setAllExercises } = useExercises();
+    const { db } = useFirebase();
+    const defaultAppointment = emptyAppointment;
     const commitChanges = ({ added, changed, deleted }) => {
-        let data = exercises;
+        let data = allExercises;
         if (added) {
-            data = [...data, { id: uuid(), ...added }];
+            const id = uuid();
+            const newDataObj = { ...defaultAppointment, ...added };
+            data = [...data, { ...newDataObj, id }];
+            setDocument(db, "workout", newDataObj, id);
         }
         if (changed) {
-            data = data.map((exercise) =>
-                changed[exercise.id]
-                    ? { ...exercise, ...changed[exercise.id] }
-                    : exercise
-            );
+            console.log(changed);
+            data = data.map((exercise) => {
+                if (changed[exercise.id]) {
+                    console.log(exercise);
+                    setDocument(
+                        db,
+                        "workout",
+                        { ...exercise, ...changed[exercise.id] },
+                        exercise.id
+                    );
+                    return { ...exercise, ...changed[exercise.id] };
+                } else {
+                    return exercise;
+                }
+            });
         }
-        console.log(deleted);
         if (deleted !== undefined) {
-            data = data.filter((exercise) => exercise.id !== deleted);
+            data = data.filter((exercise) => {
+                if (exercise.id !== deleted) {
+                    return true;
+                } else {
+                    deleteDocument(db, "workout", exercise.id);
+                    return false;
+                }
+            });
         }
-        setExercises(data);
+        setAllExercises(data);
     };
 
-    console.log(exercises);
+    console.log(allExercises);
     return (
         <div>
             <Paper className="calender">
-                <Scheduler data={exercises} height={750}>
+                <Scheduler data={allExercises} height={750}>
                     <ViewState defaultCurrentDate="2022-06-01"></ViewState>
                     <EditingState
                         onCommitChanges={commitChanges}

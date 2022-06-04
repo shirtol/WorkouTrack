@@ -4,18 +4,28 @@ import {
     signInWithPopup,
     GoogleAuthProvider,
     getAdditionalUserInfo,
+    signInWithRedirect,
 } from "firebase/auth";
+import { getFirestore, setLogLevel } from "firebase/firestore";
+import app from "../service/firebase";
 
-const AuthContext = React.createContext();
+const FirebaseContext = React.createContext();
 
-export const useAuth = () => useContext(AuthContext);
+export const useFirebase = () => useContext(FirebaseContext);
 
-const AuthProvider = ({ children }) => {
+const FirebaseProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState();
     const [currentUserInfo, setCurrentUserInfo] = useState();
     const [token, setToken] = useState();
+    const [db, setDb] = useState();
 
     const auth = getAuth();
+    auth.onAuthStateChanged((user) => {
+        setDb(getFirestore(app));
+        setToken(user.accessToken);
+        setCurrentUser(user);
+    });
+
     const provider = new GoogleAuthProvider();
 
     const signIn = async () => {
@@ -25,7 +35,6 @@ const AuthProvider = ({ children }) => {
             setToken(credential.accessToken);
             setCurrentUser(result.user);
             setCurrentUserInfo(getAdditionalUserInfo(result));
-            console.log(getAdditionalUserInfo(result));
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -34,11 +43,13 @@ const AuthProvider = ({ children }) => {
         }
     };
 
-    const value = { currentUser, currentUserInfo, signIn, token };
+    const value = { currentUser, currentUserInfo, signIn, token, db };
 
     return (
-        <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+        <FirebaseContext.Provider value={value}>
+            {children}
+        </FirebaseContext.Provider>
     );
 };
 
-export default AuthProvider;
+export default FirebaseProvider;

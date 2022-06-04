@@ -1,9 +1,12 @@
-import { useAuth } from "../../context/AuthContext";
+import { useState } from "react";
+import { useFirebase } from "../../context/FirebaseContext";
 
-const Login = () => {
-    const { signIn, currentUser } = useAuth();
+const Login = ({ location, history }) => {
+    const { signIn, currentUser } = useFirebase();
 
-    console.log(currentUser);
+    if (currentUser) {
+        history.goBack();
+    }
 
     return (
         <div>
