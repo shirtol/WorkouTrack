@@ -3,7 +3,6 @@ import {
     EditingState,
     IntegratedEditing,
 } from "@devexpress/dx-react-scheduler";
-
 import {
     Scheduler,
     WeekView,
@@ -17,19 +16,14 @@ import {
     ConfirmationDialog,
     ViewSwitcher,
 } from "@devexpress/dx-react-scheduler-material-ui";
-
 import Paper from "@mui/material/Paper";
-
 import { useState } from "react";
-
 import { v4 as uuid } from "uuid";
-
 import Months from "../../utils/months";
-
 import ExerciseForm from "./exerciseForm/ExerciseForm";
-
 import workoutEnvironments from "../../utils/workoutEnvironments";
-
+import Appointment from "./appointment/Appointment";
+import AppointmentContent from "./appointment/AppointmentContent";
 import "./scheduler.css";
 
 const schedulerData = [
@@ -81,14 +75,17 @@ const Calender = () => {
                         onCommitChanges={commitChanges}
                     ></EditingState>
                     <IntegratedEditing></IntegratedEditing>
-                    <WeekView></WeekView>
+                    {/* <WeekView></WeekView> */}
                     <MonthView />
-                    <DayView />
+                    {/* <DayView /> */}
                     <Toolbar />
                     <DateNavigator></DateNavigator>
-                    <ViewSwitcher />
-                    <Appointments></Appointments>
+                    {/* <ViewSwitcher /> */}
                     <ConfirmationDialog ignoreCancel />
+                    <Appointments
+                        appointmentComponent={Appointment}
+                        appointmentContentComponent={AppointmentContent}
+                    />
 
                     <AppointmentTooltip
                         showOpenButton

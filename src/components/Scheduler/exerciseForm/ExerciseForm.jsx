@@ -4,6 +4,9 @@ import workoutEnvironments from "../../../utils/workoutEnvironments";
 import playlists from "../../../utils/playlists";
 import difficulties from "../../../utils/difficulties";
 import equipments, { createEquipmentsObj } from "../../../utils/equipments";
+import workoutTypes, {
+    createWorkoutTypesObj,
+} from "../../../utils/workoutTypes";
 
 const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     const [environment, setEnvironment] = useState(
@@ -18,6 +21,9 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     const [selectedEquipments, setSelectedEquipments] = useState(
         appointmentData.equipments ?? createEquipmentsObj()
     );
+    const [selectedWorkoutTypes, setSelectedWorkoutTypes] = useState(
+        appointmentData.workoutTypes ?? createWorkoutTypesObj()
+    );
 
     const onEnvironmentChange = (nextValue) => {
         onFieldChange({ environment: nextValue });
@@ -29,6 +35,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
         appointmentData.playlist = playlist;
         appointmentData.environment = environment;
         appointmentData.equipments = selectedEquipments;
+        appointmentData.workoutTypes = selectedWorkoutTypes;
     });
 
     console.log(appointmentData);
@@ -94,6 +101,38 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
         });
     };
 
+    const onWorkoutTypeChange = (isSelected, key) => {
+        onFieldChange({
+            workoutTypes: { ...selectedWorkoutTypes, [key]: isSelected },
+        });
+        setSelectedWorkoutTypes((prevSelectedWorkoutTypes) => ({
+            ...prevSelectedWorkoutTypes,
+            [key]: isSelected,
+        }));
+    };
+
+    const displayWorkoutTypes = () => {
+        const workoutTypesArr = Object.keys(workoutTypes).map((workoutType) => {
+            return {
+                label: workoutType,
+                value: selectedWorkoutTypes[workoutType],
+                onValueChange: onWorkoutTypeChange,
+            };
+        });
+        return workoutTypesArr.map(({ label, value, onValueChange }) => {
+            return (
+                <AppointmentForm.BooleanEditor
+                    key={label}
+                    label={label}
+                    value={value}
+                    onValueChange={(isSelected) =>
+                        onValueChange(isSelected, label)
+                    }
+                ></AppointmentForm.BooleanEditor>
+            );
+        });
+    };
+
     return (
         <AppointmentForm.BasicLayout
             appointmentData={appointmentData}
@@ -122,12 +161,10 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
             ></AppointmentForm.Select>
 
             <AppointmentForm.Label text="Equipments" type="title" />
-            {/* <AppointmentForm.BooleanEditor
-                label="equipments"
-                value={equipment}
-                onValueChange={onEquipmentChange}
-            ></AppointmentForm.BooleanEditor> */}
             <>{displayEquipments()}</>
+
+            <AppointmentForm.Label text="Workout Type" type="title" />
+            <>{displayWorkoutTypes()}</>
         </AppointmentForm.BasicLayout>
     );
 };
