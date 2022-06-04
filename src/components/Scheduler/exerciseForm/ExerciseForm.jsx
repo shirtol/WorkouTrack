@@ -7,8 +7,10 @@ import equipments, { createEquipmentsObj } from "../../../utils/equipments";
 import workoutTypes, {
     createWorkoutTypesObj,
 } from "../../../utils/workoutTypes";
+import { useFirebase } from "../../../context/AuthContext";
 
 const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
+    const { currentUser } = useFirebase();
     const [environment, setEnvironment] = useState(
         appointmentData.environment ?? workoutEnvironments.Indoor
     );
@@ -25,20 +27,21 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
         appointmentData.workoutTypes ?? createWorkoutTypesObj()
     );
 
-    const onEnvironmentChange = (nextValue) => {
-        onFieldChange({ environment: nextValue });
-        setEnvironment(nextValue);
-    };
-
     useEffect(() => {
         appointmentData.difficulty = difficulty;
         appointmentData.playlist = playlist;
         appointmentData.environment = environment;
         appointmentData.equipments = selectedEquipments;
         appointmentData.workoutTypes = selectedWorkoutTypes;
+        appointmentData.owner = currentUser.uid;
     });
 
     console.log(appointmentData);
+
+    const onEnvironmentChange = (nextValue) => {
+        onFieldChange({ environment: nextValue });
+        setEnvironment(nextValue);
+    };
 
     const createEnvironmentsArr = () => {
         return Object.keys(workoutEnvironments).map((environment, idx) => {

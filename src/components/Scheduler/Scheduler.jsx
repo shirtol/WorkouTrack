@@ -25,6 +25,9 @@ import workoutEnvironments from "../../utils/workoutEnvironments";
 import Appointment from "./appointment/Appointment";
 import AppointmentContent from "./appointment/AppointmentContent";
 import "./scheduler.css";
+import { addNewDoc } from "../../utils/addNewDoc";
+import { setDoc, doc, getFirestore } from "firebase/firestore";
+import { useFirebase } from "../../context/AuthContext";
 
 const schedulerData = [
     {
@@ -45,11 +48,18 @@ const schedulerData = [
 
 const Calender = () => {
     const [exercises, setExercises] = useState(schedulerData);
+    const { db } = useFirebase();
 
     const commitChanges = ({ added, changed, deleted }) => {
         let data = exercises;
         if (added) {
-            data = [...data, { id: uuid(), ...added }];
+            const id = uuid();
+            const newDataObj = { ...added, id: uuid() };
+            data = [...data, newDataObj];
+            addNewDoc(db, newDataObj);
+            // setDoc(doc(db, "workout", id), newDataObj)
+            //     .then(() => console.log("hiii"))
+            //     .catch((err) => console.error(err));
         }
         if (changed) {
             data = data.map((exercise) =>
@@ -58,7 +68,6 @@ const Calender = () => {
                     : exercise
             );
         }
-        console.log(deleted);
         if (deleted !== undefined) {
             data = data.filter((exercise) => exercise.id !== deleted);
         }
