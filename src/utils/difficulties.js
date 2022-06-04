@@ -3,7 +3,6 @@ const difficulties = {
     Intermediate: 1,
     Advanced: 2,
     Expert: 3,
-    Master: 4,
 };
 
 export default difficulties;
