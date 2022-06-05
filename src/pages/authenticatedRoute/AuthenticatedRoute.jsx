@@ -6,8 +6,6 @@ import { Redirect } from "react-router-dom";
 const AuthenticatedRoute = ({ children, location, ...props }) => {
     const { currentUser } = useFirebase();
 
-    console.log(location.pathname);
-
     return (
         <Route
             {...props}
