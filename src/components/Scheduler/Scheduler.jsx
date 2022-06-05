@@ -73,7 +73,7 @@ const Calender = () => {
     return (
         <div>
             <Paper className="calender">
-                <Scheduler data={allExercises} height={750}>
+                <Scheduler data={allExercises}>
                     <ViewState defaultCurrentDate="2022-06-01"></ViewState>
                     <EditingState
                         onCommitChanges={commitChanges}

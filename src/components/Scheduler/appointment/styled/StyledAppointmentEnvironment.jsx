@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import device from "../../../../utils/mediaQuerySizes";
 
-export const StyledAppointmentTitle = styled.h3`
-    font-size: 1.5rem;
+export const StyledAppointmentEnvironment = styled.h5`
     @media ${device.tablet} {
         display: none;
     }
