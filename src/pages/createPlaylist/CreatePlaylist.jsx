@@ -1755,6 +1755,7 @@ const CreatePlaylist = () => {
     const [term, setTerm] = useState("");
 
     const onInputChange = ({ target: { value } }) => setTerm(value);
+    console.log(videos);
 
     const onBtnClick = async () => {
         const response = await youtubeApi.get("/search", {

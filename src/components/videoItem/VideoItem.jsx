@@ -9,7 +9,7 @@ const VideoItem = ({ video }) => {
     return (
         <StyledVideoCard>
             <StyledVideoLink
-                href="https://www.youtube.com/watch?v=tmpV2u1HD0I&ab_channel=ZumbaClass"
+                href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                 target="_blank"
             >
                 <StyledVideoImage
