@@ -30,7 +30,7 @@ const FirebaseProvider = ({ children }) => {
 
     const signIn = async () => {
         try {
-            const result = await signInWithPopup(auth, provider);
+            const result = await signInWithRedirect(auth, provider);
             const credential = GoogleAuthProvider.credentialFromResult(result);
             setToken(credential.accessToken);
             setCurrentUser(result.user);
