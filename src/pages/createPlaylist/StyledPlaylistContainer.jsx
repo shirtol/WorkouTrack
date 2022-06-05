@@ -11,7 +11,6 @@ export const StyledPlaylistContainer = styled.div`
     border-radius: 4px;
     width: 20%;
     height: 70%;
-    /* background: orange; */
     position: fixed;
     top: 20%;
     left: 2rem;

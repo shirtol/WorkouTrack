@@ -1787,7 +1787,7 @@ const CreatePlaylist = () => {
             <StyledPlaylistContainer>
                 {displayPlaylistVideos()}
             </StyledPlaylistContainer>
-            <StyledFlexWrapper flexDirection="column" width="75%">
+            <StyledFlexWrapper flexDirection="column" width="75%" height="80vh">
                 <StyledFlexWrapper>
                     <StyledInput
                         color={Colors.greyInput}

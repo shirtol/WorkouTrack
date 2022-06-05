@@ -12,6 +12,7 @@ import { useFirebase } from "../../context/FirebaseContext";
 import AuthenticatedRoute from "../authenticatedRoute/AuthenticatedRoute";
 import Login from "../../components/login/Login";
 import CreatePlaylist from "../createPlaylist/CreatePlaylist";
+import PlaylistCreationNavbar from "../../components/playlistCreationNavbar/PlaylistCreationNavbar";
 
 const Routes = () => {
     return (
@@ -19,6 +20,7 @@ const Routes = () => {
             <div className="page-container">
                 <Switch>
                     <AuthenticatedRoute exact path="/create-playlist">
+                        <PlaylistCreationNavbar></PlaylistCreationNavbar>
                         <CreatePlaylist></CreatePlaylist>
                     </AuthenticatedRoute>
                     <Route component={DefaultContainer}></Route>
