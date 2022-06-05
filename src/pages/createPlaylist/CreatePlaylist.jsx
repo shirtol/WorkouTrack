@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import youtubeApi from "../../apis/youtubeApi";
-import AddPlaylistModal from "../../components/addPlaylistModal/AddPlaylistModal";
+import { StyledButton } from "../../components/button/StyledButton";
+import { StyledInput } from "../../components/input/StyledInput";
 import VideoGrid from "../../components/videoGrid/VideoGrid";
-import { buttonsImages } from "../../utils/images";
+import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
+import { Colors } from "../../utils/colors";
+import { StyledPlaylistContainer } from "./StyledPlaylistContainer";
 
 const CreatePlaylist = () => {
     const [videos, setVideos] = useState([
@@ -1750,7 +1753,6 @@ const CreatePlaylist = () => {
     ]);
     const [nextPageToken, setNextPageToken] = useState("");
     const [term, setTerm] = useState("");
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const onInputChange = ({ target: { value } }) => setTerm(value);
 
@@ -1765,26 +1767,22 @@ const CreatePlaylist = () => {
         setNextPageToken(response.data.nextPageToken);
     };
 
-    const onAddBtnClicked = () => {
-        setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
-    };
-
-    const onCreatePlaylistClicked = () => {};
-
     return (
-        <>
-            <div>
-                <input
-                    placeholder="search videos..."
-                    onChange={onInputChange}
-                    value={term}
-                ></input>
-                <button onClick={onBtnClick}>Search</button>
-                <div>
-                    <VideoGrid videos={videos}></VideoGrid>
-                </div>
-            </div>
-        </>
+        <StyledFlexWrapper flexDirection="row" justifyContent="flex-end">
+            <StyledPlaylistContainer></StyledPlaylistContainer>
+            <StyledFlexWrapper flexDirection="column" width="75%">
+                <StyledFlexWrapper>
+                    <StyledInput
+                        color={Colors.greyInput}
+                        placeholder="search videos..."
+                        onChange={onInputChange}
+                        value={term}
+                    ></StyledInput>
+                    <StyledButton onClick={onBtnClick}>Search</StyledButton>
+                </StyledFlexWrapper>
+                <VideoGrid videos={videos}></VideoGrid>
+            </StyledFlexWrapper>
+        </StyledFlexWrapper>
     );
 };
 

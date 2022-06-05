@@ -10,4 +10,5 @@ export const StyledInput = styled.input`
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 2px 0px,
         rgba(14, 30, 37, 0.32) 0px 2px 10px 0px;
     user-select: all;
+    background: ${(props) => props.color ?? "#fff"};
 `;

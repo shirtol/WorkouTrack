@@ -10,6 +10,8 @@ export const StyledButton = styled.div`
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
         rgba(0, 0, 0, 0.22) 0px 5px 7px;
     color: #fff;
+    width: max-content;
+    height: max-content;
     cursor: pointer;
     &:active {
         transition: box-shadow 100ms ease-in-out;
