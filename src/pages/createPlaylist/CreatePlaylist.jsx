@@ -3,6 +3,7 @@ import youtubeApi from "../../apis/youtubeApi";
 import { StyledButton } from "../../components/button/StyledButton";
 import { StyledInput } from "../../components/input/StyledInput";
 import VideoGrid from "../../components/videoGrid/VideoGrid";
+import VideoItem from "../../components/videoItem/VideoItem";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
 import { Colors } from "../../utils/colors";
 import { StyledPlaylistContainer } from "./StyledPlaylistContainer";
@@ -1753,9 +1754,10 @@ const CreatePlaylist = () => {
     ]);
     const [nextPageToken, setNextPageToken] = useState("");
     const [term, setTerm] = useState("");
+    const [playlistVideos, setPlaylistVideos] = useState([]);
 
     const onInputChange = ({ target: { value } }) => setTerm(value);
-    console.log(videos);
+    console.log(playlistVideos);
 
     const onBtnClick = async () => {
         const response = await youtubeApi.get("/search", {
@@ -1768,9 +1770,23 @@ const CreatePlaylist = () => {
         setNextPageToken(response.data.nextPageToken);
     };
 
+    const onAddItemToPlaylist = (item) =>
+        setPlaylistVideos((prevPlaylistVideos) => [
+            ...prevPlaylistVideos,
+            item,
+        ]);
+
+    const displayPlaylistVideos = () => {
+        return playlistVideos.map((video) => {
+            return <VideoItem key={video.id.videoId} video={video}></VideoItem>;
+        });
+    };
+
     return (
         <StyledFlexWrapper flexDirection="row" justifyContent="flex-end">
-            <StyledPlaylistContainer></StyledPlaylistContainer>
+            <StyledPlaylistContainer>
+                {displayPlaylistVideos()}
+            </StyledPlaylistContainer>
             <StyledFlexWrapper flexDirection="column" width="75%">
                 <StyledFlexWrapper>
                     <StyledInput
@@ -1781,7 +1797,10 @@ const CreatePlaylist = () => {
                     ></StyledInput>
                     <StyledButton onClick={onBtnClick}>Search</StyledButton>
                 </StyledFlexWrapper>
-                <VideoGrid videos={videos}></VideoGrid>
+                <VideoGrid
+                    videos={videos}
+                    onAddItemToPlaylist={onAddItemToPlaylist}
+                ></VideoGrid>
             </StyledFlexWrapper>
         </StyledFlexWrapper>
     );

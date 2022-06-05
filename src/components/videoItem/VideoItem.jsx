@@ -1,11 +1,11 @@
 import React from "react";
-import { StyledLink } from "../link/StyledLink";
+import { StyledAddVideoBtn } from "../addVideoBtn/StyledAddvideoBtn";
 import { StyledVideoCard } from "../videoCard/StyledVideoCard";
 import { StyledVideoImage } from "../videoCard/StyledVideoImage";
 import { StyledVideoTitle } from "../videoCard/StyledVideoTitle";
 import { StyledVideoLink } from "./StyledVideoLink";
 
-const VideoItem = ({ video }) => {
+const VideoItem = ({ video, onAddItemToPlaylist }) => {
     return (
         <StyledVideoCard>
             <StyledVideoLink
@@ -18,6 +18,10 @@ const VideoItem = ({ video }) => {
                 />
             </StyledVideoLink>
             <StyledVideoTitle>{video.snippet.title}</StyledVideoTitle>
+            <StyledAddVideoBtn
+                className="fa-solid fa-circle-plus fa-2x"
+                onClick={() => onAddItemToPlaylist(video)}
+            ></StyledAddVideoBtn>
         </StyledVideoCard>
     );
 };
