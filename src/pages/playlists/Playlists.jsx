@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import youtubeApi from "../../apis/youtubeApi";
 import AddPlaylistModal from "../../components/addPlaylistModal/AddPlaylistModal";
-import VideoGrid from "../../components/videoGrid/VideoGrid";
-import { buttonsImages } from "../../utils/images";
 import { StyledAddBtn } from "./StyledAddBtn";
 
 const Playlists = () => {
@@ -1779,15 +1777,6 @@ const Playlists = () => {
                 onCreatePlaylistClicked={onCreatePlaylistClicked}
             ></AddPlaylistModal>
             <div>
-                <input
-                    placeholder="search videos..."
-                    onChange={onInputChange}
-                    value={term}
-                ></input>
-                <button onClick={onBtnClick}>Search</button>
-                <div>
-                    <VideoGrid videos={videos}></VideoGrid>
-                </div>
                 <StyledAddBtn
                     className="fa-solid fa-circle-plus fa-3x"
                     onClick={onAddBtnClicked}
