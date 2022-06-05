@@ -22,11 +22,12 @@ const Routes = () => {
                     <AuthenticatedRoute
                         exact
                         path="/create-playlist"
-                        renderChild={(location, ...props) => {
+                        renderChild={(location, history, ...props) => {
                             console.log(location);
                             return (
                                 <CreatePlaylist
                                     location={location}
+                                    history={history}
                                     {...props}
                                 ></CreatePlaylist>
                             );

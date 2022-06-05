@@ -7,6 +7,6 @@ export const StyledGridWrapper = styled.div`
     justify-items: center;
     padding: 2rem;
     grid-auto-rows: 1fr;
-    height: 100%;
+    height: max-content;
     overflow-y: scroll;
 `;
