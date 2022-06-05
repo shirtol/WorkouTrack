@@ -29,13 +29,16 @@ import { useExercises } from "../../context/ExercisesContext";
 
 const Calender = () => {
     const { allExercises, setAllExercises } = useExercises();
-    const { db } = useFirebase();
-    const defaultAppointment = emptyAppointment;
+    const { db, currentUser } = useFirebase();
     const commitChanges = ({ added, changed, deleted }) => {
         let data = allExercises;
         if (added) {
             const id = uuid();
-            const newDataObj = { ...defaultAppointment, ...added };
+            const newDataObj = {
+                ...emptyAppointment,
+                ...added,
+                owner: currentUser.uid,
+            };
             data = [...data, { ...newDataObj, id }];
             setDocument(db, "workout", newDataObj, id);
         }

@@ -3,7 +3,9 @@ import {
     deleteDoc,
     doc,
     getDocs,
+    query,
     setDoc,
+    where,
 } from "firebase/firestore";
 
 export const setDocument = async (db, collectionName, newDocObj, id) => {
@@ -22,8 +24,12 @@ export const deleteDocument = async (db, collectionName, id) => {
     }
 };
 
-export const getAllCollectionData = async (db, collectionName) => {
-    const querySnapshot = await getDocs(collection(db, collectionName));
+export const getAllCollectionData = async (db, collectionName, user) => {
+    const q = query(
+        collection(db, collectionName),
+        where("owner", "==", user.uid)
+    );
+    const querySnapshot = await getDocs(q);
     const data = [];
     querySnapshot.forEach((doc) => {
         data.push({ ...doc.data(), id: doc.id });

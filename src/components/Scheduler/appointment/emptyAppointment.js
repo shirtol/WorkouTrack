@@ -11,4 +11,5 @@ export const emptyAppointment = {
     startDate: new Date(),
     title: "",
     workoutTypes: createWorkoutTypesObj(),
+    owner: "",
 };
