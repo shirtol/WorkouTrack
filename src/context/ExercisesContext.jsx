@@ -7,14 +7,18 @@ const ExercisesContext = React.createContext();
 export const useExercises = () => useContext(ExercisesContext);
 
 const ExercisesProvider = ({ children }) => {
-    const { db } = useFirebase();
+    const { db, currentUser } = useFirebase();
 
     const [allExercises, setAllExercises] = useState([]);
 
     const getAllExercisesWrapper = async () => {
         console.log(db);
         if (db !== undefined) {
-            const allData = await getAllCollectionData(db, "workout");
+            const allData = await getAllCollectionData(
+                db,
+                "workout",
+                currentUser
+            );
             const mappedAllData = allData.map((exercise) => ({
                 ...exercise,
                 endDate: new Date(exercise.endDate.seconds * 1000),
