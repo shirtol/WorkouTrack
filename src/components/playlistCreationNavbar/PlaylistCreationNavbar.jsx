@@ -3,7 +3,7 @@ import { StyledButton } from "../button/StyledButton";
 import { StyledFlexWrapper } from "../wrappers/flexWrapper/StyledFlexWrapper";
 import { StyledPlaylistCreationStep } from "./StyledPlaylistCreationStep";
 
-const PlaylistCreationNavbar = () => {
+const PlaylistCreationNavbar = ({ onSavePlaylistClick }) => {
     return (
         <StyledFlexWrapper flexDirection="row" justifyContent="space-between">
             <div>
@@ -12,7 +12,7 @@ const PlaylistCreationNavbar = () => {
                 <StyledPlaylistCreationStep className="fa-duotone fa-2 fa-2x"></StyledPlaylistCreationStep>
             </div>
             <div>
-                <StyledButton>Save</StyledButton>
+                <StyledButton onClick={onSavePlaylistClick}>Save</StyledButton>
             </div>
         </StyledFlexWrapper>
     );

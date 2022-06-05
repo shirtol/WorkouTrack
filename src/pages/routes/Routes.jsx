@@ -19,10 +19,19 @@ const Routes = () => {
         <div className="main-container">
             <div className="page-container">
                 <Switch>
-                    <AuthenticatedRoute exact path="/create-playlist">
-                        <PlaylistCreationNavbar></PlaylistCreationNavbar>
-                        <CreatePlaylist></CreatePlaylist>
-                    </AuthenticatedRoute>
+                    <AuthenticatedRoute
+                        exact
+                        path="/create-playlist"
+                        renderChild={(location, ...props) => {
+                            console.log(location);
+                            return (
+                                <CreatePlaylist
+                                    location={location}
+                                    {...props}
+                                ></CreatePlaylist>
+                            );
+                        }}
+                    />
                     <Route component={DefaultContainer}></Route>
                 </Switch>
             </div>
@@ -46,9 +55,6 @@ const DefaultContainer = () => (
         </AuthenticatedRoute>
         <AuthenticatedRoute exact path="/statistics">
             <Statistics></Statistics>
-        </AuthenticatedRoute>
-        <AuthenticatedRoute exact path="/create-playlist">
-            <CreatePlaylist></CreatePlaylist>
         </AuthenticatedRoute>
         <Route exact path="/login" component={Login}></Route>
     </>
