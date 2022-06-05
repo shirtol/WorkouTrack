@@ -12,6 +12,7 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useFirebase } from "../../context/FirebaseContext";
 import AuthenticatedRoute from "../authenticatedRoute/AuthenticatedRoute";
 import Login from "../../components/login/Login";
+import CreatePlaylist from "../createPlaylist/CreatePlaylist";
 
 const Routes = () => {
     return (
@@ -31,6 +32,9 @@ const Routes = () => {
                     </AuthenticatedRoute>
                     <AuthenticatedRoute exact path="/statistics">
                         <Statistics></Statistics>
+                    </AuthenticatedRoute>
+                    <AuthenticatedRoute exact path="/create-playlist">
+                        <CreatePlaylist></CreatePlaylist>
                     </AuthenticatedRoute>
                     <Route exact path="/login" component={Login}></Route>
                 </Switch>
