@@ -12,7 +12,6 @@ const ExercisesProvider = ({ children }) => {
     const [allExercises, setAllExercises] = useState([]);
 
     const getAllExercisesWrapper = async () => {
-        console.log(db);
         if (db !== undefined) {
             const allData = await getAllCollectionData(
                 db,
@@ -24,7 +23,6 @@ const ExercisesProvider = ({ children }) => {
                 endDate: new Date(exercise.endDate.seconds * 1000),
                 startDate: new Date(exercise.startDate.seconds * 1000),
             }));
-            console.log(mappedAllData);
             setAllExercises(mappedAllData);
         }
     };

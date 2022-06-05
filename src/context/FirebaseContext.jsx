@@ -3,7 +3,7 @@ import {
     getAuth,
     GoogleAuthProvider,
     getAdditionalUserInfo,
-    signInWithRedirect,
+    signInWithPopup,
 } from "firebase/auth";
 import { getFirestore, setLogLevel } from "firebase/firestore";
 import app from "../service/firebase";
@@ -29,7 +29,7 @@ const FirebaseProvider = ({ children }) => {
 
     const signIn = async () => {
         try {
-            const result = await signInWithRedirect(auth, provider);
+            const result = await signInWithPopup(auth, provider);
             const credential = GoogleAuthProvider.credentialFromResult(result);
             setToken(credential.accessToken);
             setCurrentUser(result.user);

@@ -36,8 +36,6 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
         appointmentData.owner = currentUser.uid;
     });
 
-    console.log(appointmentData);
-
     const onEnvironmentChange = (nextValue) => {
         onFieldChange({ environment: nextValue });
         setEnvironment(nextValue);

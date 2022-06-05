@@ -43,10 +43,8 @@ const Calender = () => {
             setDocument(db, "workout", newDataObj, id);
         }
         if (changed) {
-            console.log(changed);
             data = data.map((exercise) => {
                 if (changed[exercise.id]) {
-                    console.log(exercise);
                     setDocument(
                         db,
                         "workout",
@@ -72,7 +70,6 @@ const Calender = () => {
         setAllExercises(data);
     };
 
-    console.log(allExercises);
     return (
         <div>
             <Paper className="calender">
