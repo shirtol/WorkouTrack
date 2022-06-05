@@ -3,6 +3,7 @@ import workoutEnvironments from "../../../utils/workoutEnvironments";
 import { imagesObj } from "../../../utils/workoutTypes";
 import { StyledAppointmentContent } from "./styled/StyledAppointmentContent";
 import { StyledAppointmentDetails } from "./styled/StyledAppointmentDetails";
+import { StyledAppointmentEnvironment } from "./styled/StyledAppointmentEnvironment";
 import { StyledAppointmentImage } from "./styled/StyledAppointmentImage";
 import { StyledAppointmentTitle } from "./styled/StyledAppointmentTitle";
 
@@ -19,12 +20,12 @@ const AppointmentContent = ({ children, style, ...restProps }) => {
                 <StyledAppointmentTitle>
                     {restProps.data.title}
                 </StyledAppointmentTitle>
-                <h5>
+                <StyledAppointmentEnvironment>
                     {getKeyByValue(
                         workoutEnvironments,
                         restProps.data.environment
                     )}
-                </h5>
+                </StyledAppointmentEnvironment>
             </StyledAppointmentDetails>
             <StyledAppointmentImage
                 src={imagesObj[getWorkoutType()]}
