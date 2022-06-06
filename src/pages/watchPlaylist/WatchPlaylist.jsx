@@ -55,6 +55,7 @@ const WatchPlaylist = ({ location }) => {
                     <YouTube
                         videoId={currVideoPlaying.id}
                         onEnd={onCurrVideoEnd}
+                        opts={{ playerVars: { autoplay: 1 } }}
                     ></YouTube>
                 </div>
             </StyledFlexWrapper>
