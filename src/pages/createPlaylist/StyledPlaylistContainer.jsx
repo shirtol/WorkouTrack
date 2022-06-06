@@ -11,7 +11,7 @@ export const StyledPlaylistContainer = styled.div`
     border-radius: 4px;
     width: 20%;
     height: 70%;
-    position: fixed;
+    position: ${(props) => props.position ?? "fixed"};
     top: 20%;
     left: 2rem;
     overflow-y: scroll;

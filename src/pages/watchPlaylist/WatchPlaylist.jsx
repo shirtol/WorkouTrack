@@ -2,6 +2,9 @@ import YouTube from "react-youtube";
 import React from "react";
 import { StyledPlaylistContainer } from "../createPlaylist/StyledPlaylistContainer";
 import VideoItem from "../../components/videoItem/VideoItem";
+import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
+import { StyledYoutube } from "../../components/styledYoutube/StyledYoutube";
+import "./watchPlaylist.css";
 
 const WatchPlaylist = ({ location }) => {
     const playlistItem = location.item;
@@ -22,12 +25,24 @@ const WatchPlaylist = ({ location }) => {
     };
 
     return (
-        <div>
-            <StyledPlaylistContainer>
-                {displayPlaylistVideos()}
-            </StyledPlaylistContainer>
-            <YouTube videoId={playlistItem.videos[0].id}></YouTube>
-        </div>
+        <StyledFlexWrapper>
+            <StyledFlexWrapper
+                justifyContent="space-between"
+                width="90%"
+                height="100vh"
+            >
+                <StyledPlaylistContainer position="static">
+                    {displayPlaylistVideos()}
+                </StyledPlaylistContainer>
+                {/* <StyledYoutube videoId={playlistItem.videos[0].id}></StyledYoutube> */}
+                <div className="youtube-wrapper">
+                    <YouTube
+                        videoId={playlistItem.videos[0].id}
+                        // opts={{ width: "960", height: "585" }}
+                    ></YouTube>
+                </div>
+            </StyledFlexWrapper>
+        </StyledFlexWrapper>
     );
 };
 
