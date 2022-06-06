@@ -1,10 +1,11 @@
 import React from "react";
+import { StyledDeleteIcon } from "../deleteIcon/StyledDeleteIcon";
 import { StyledLink } from "../link/StyledLink";
 import { StyledVideoCard } from "../videoCard/StyledVideoCard";
 import { StyledVideoImage } from "../videoCard/StyledVideoImage";
 import { StyledVideoTitle } from "../videoCard/StyledVideoTitle";
 
-const PlaylistItem = ({ playlist }) => {
+const PlaylistItem = ({ playlist, onDeletePlaylistClicked }) => {
     return (
         <StyledVideoCard>
             <StyledLink
@@ -18,6 +19,10 @@ const PlaylistItem = ({ playlist }) => {
                 ></StyledVideoImage>
                 <StyledVideoTitle>{playlist.title}</StyledVideoTitle>
             </StyledLink>
+            <StyledDeleteIcon
+                className="fa-solid fa-trash-can fa-2x"
+                onClick={() => onDeletePlaylistClicked(playlist)}
+            ></StyledDeleteIcon>
         </StyledVideoCard>
     );
 };
