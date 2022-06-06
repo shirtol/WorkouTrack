@@ -7,10 +7,11 @@ import { StyledVideoLink } from "./StyledVideoLink";
 
 const VideoItem = ({
     video,
-    onAddItemToPlaylist,
     videoImage,
     videoTitle,
     isClickableImage,
+    clickableIconClass,
+    onIconClicked,
 }) => {
     const getDesiredValue = (path) => {
         const splittedPath = path.split(".");
@@ -19,7 +20,7 @@ const VideoItem = ({
         }, video);
     };
 
-    console.log(video);
+    console.log(clickableIconClass);
 
     return (
         <StyledVideoCard>
@@ -47,8 +48,8 @@ const VideoItem = ({
             )}
             <StyledVideoTitle>{getDesiredValue(videoTitle)}</StyledVideoTitle>
             <StyledAddVideoBtn
-                className="fa-solid fa-circle-plus fa-2x"
-                onClick={() => onAddItemToPlaylist(video)}
+                className={clickableIconClass}
+                onClick={() => onIconClicked(video)}
             ></StyledAddVideoBtn>
         </StyledVideoCard>
     );

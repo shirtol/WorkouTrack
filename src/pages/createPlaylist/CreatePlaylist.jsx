@@ -1791,6 +1791,7 @@ const CreatePlaylist = ({ location, history }) => {
                     videoImage="snippet.thumbnails.medium.url"
                     videoTitle="snippet.title"
                     isClickableImage={true}
+                    clickableIconClass="fa-solid fa-circle-plus fa-2x"
                 ></VideoItem>
             );
         });
