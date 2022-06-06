@@ -12,7 +12,7 @@ import { Colors } from "../../utils/colors";
 import { addDocument } from "../../utils/firebaseUtils";
 import { StyledPlaylistContainer } from "./StyledPlaylistContainer";
 
-const CreatePlaylist = ({ location }) => {
+const CreatePlaylist = ({ location, history }) => {
     const [videos, setVideos] = useState([]);
     const [nextPageToken, setNextPageToken] = useState("");
     const [term, setTerm] = useState("");
@@ -45,7 +45,7 @@ const CreatePlaylist = ({ location }) => {
         });
     };
 
-    const onSavePlaylistClick = () =>
+    const onSavePlaylistClick = () => {
         addDocument(db, "playlist", {
             owner: currentUser.uid,
             title: playlistName,
@@ -55,6 +55,8 @@ const CreatePlaylist = ({ location }) => {
                 title: video.snippet.title,
             })),
         });
+        history.goBack();
+    };
 
     return (
         <>

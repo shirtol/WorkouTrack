@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import FirebaseProvider from "./context/FirebaseContext";
 import ExercisesProvider from "./context/ExercisesContext";
+import PlaylistsProvider from "./context/PlaylistsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +14,9 @@ root.render(
         {/* <React.StrictMode> */}
         <FirebaseProvider>
             <ExercisesProvider>
-                <App />
+                <PlaylistsProvider>
+                    <App />
+                </PlaylistsProvider>
             </ExercisesProvider>
         </FirebaseProvider>
 

@@ -6,7 +6,7 @@ import { StyledLink } from "../link/StyledLink";
 import { StyledAddPlaylistModal } from "./StyledAddPlaylistModal";
 import { StyledAddPlaylistWrapper } from "./StyledAddPlaylistWrapper";
 
-const AddPlaylistModal = ({ isShown, onCreatePlaylistClicked }) => {
+const AddPlaylistModal = ({ isShown }) => {
     const [playlistName, setPlaylistName] = useState("");
 
     const onInputChange = ({ target: { value } }) => {
@@ -27,9 +27,7 @@ const AddPlaylistModal = ({ isShown, onCreatePlaylistClicked }) => {
                             item: playlistName,
                         }}
                     >
-                        <StyledButton onClick={onCreatePlaylistClicked}>
-                            Create!
-                        </StyledButton>
+                        <StyledButton>Create!</StyledButton>
                     </StyledLink>
                 </StyledAddPlaylistModal>
             </StyledAddPlaylistWrapper>
