@@ -8,7 +8,11 @@ const VideoGrid = ({ videos, onAddItemToPlaylist }) => {
             <VideoItem
                 key={video.etag}
                 video={video}
-                onAddItemToPlaylist={onAddItemToPlaylist}
+                onIconClicked={onAddItemToPlaylist}
+                isClickableImage={true}
+                videoImage="snippet.thumbnails.medium.url"
+                videoTitle="snippet.title"
+                clickableIconClass="fa-solid fa-circle-plus fa-2x"
             ></VideoItem>
         );
     });

@@ -29,7 +29,7 @@ const ExercisesProvider = ({ children }) => {
 
     useEffect(() => {
         getAllExercisesWrapper();
-    }, [db]);
+    }, [db, currentUser]);
 
     const value = { allExercises, setAllExercises };
     return (

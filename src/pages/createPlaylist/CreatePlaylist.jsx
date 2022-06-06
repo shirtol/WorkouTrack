@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
 import youtubeApi from "../../apis/youtubeApi";
 import { StyledButton } from "../../components/button/StyledButton";
 import { StyledInput } from "../../components/input/StyledInput";
@@ -18,7 +17,7 @@ const CreatePlaylist = ({ location, history }) => {
     const [term, setTerm] = useState("");
     const [playlistVideos, setPlaylistVideos] = useState([]);
     const { db, currentUser } = useFirebase();
-    const playlistName = location.item;
+    const [playlistName, setPlaylistName] = useState(location.item);
 
     const onInputChange = ({ target: { value } }) => setTerm(value);
 
@@ -28,7 +27,6 @@ const CreatePlaylist = ({ location, history }) => {
                 q: term,
             },
         });
-        console.log(response);
         setVideos(response.data.items);
         setNextPageToken(response.data.nextPageToken);
     };
@@ -41,7 +39,16 @@ const CreatePlaylist = ({ location, history }) => {
 
     const displayPlaylistVideos = () => {
         return playlistVideos.map((video) => {
-            return <VideoItem key={video.id.videoId} video={video}></VideoItem>;
+            return (
+                <VideoItem
+                    key={video.id.videoId}
+                    video={video}
+                    videoImage="snippet.thumbnails.medium.url"
+                    videoTitle="snippet.title"
+                    isClickableImage={true}
+                    clickableIconClass="fa-solid fa-circle-plus fa-2x"
+                ></VideoItem>
+            );
         });
     };
 
@@ -58,11 +65,26 @@ const CreatePlaylist = ({ location, history }) => {
         history.goBack();
     };
 
+    const onPlaylistNameChange = ({ target: { value } }) => {
+        setPlaylistName(value);
+    };
+
     return (
         <>
             <PlaylistCreationNavbar
                 onSavePlaylistClick={onSavePlaylistClick}
+                onPlaylistNameChange={onPlaylistNameChange}
+                playlistName={playlistName}
             ></PlaylistCreationNavbar>
+            <StyledFlexWrapper>
+                <StyledInput
+                    color={Colors.greyInput}
+                    placeholder="search videos..."
+                    onChange={onInputChange}
+                    value={term}
+                ></StyledInput>
+                <StyledButton onClick={onBtnClick}>Search</StyledButton>
+            </StyledFlexWrapper>
 
             <StyledFlexWrapper flexDirection="row" justifyContent="flex-end">
                 <StyledPlaylistContainer>
@@ -73,15 +95,6 @@ const CreatePlaylist = ({ location, history }) => {
                     width="75%"
                     height="80vh"
                 >
-                    <StyledFlexWrapper>
-                        <StyledInput
-                            color={Colors.greyInput}
-                            placeholder="search videos..."
-                            onChange={onInputChange}
-                            value={term}
-                        ></StyledInput>
-                        <StyledButton onClick={onBtnClick}>Search</StyledButton>
-                    </StyledFlexWrapper>
                     <VideoGrid
                         videos={videos}
                         onAddItemToPlaylist={onAddItemToPlaylist}

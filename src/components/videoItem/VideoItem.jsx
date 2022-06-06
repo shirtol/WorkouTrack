@@ -5,22 +5,49 @@ import { StyledVideoImage } from "../videoCard/StyledVideoImage";
 import { StyledVideoTitle } from "../videoCard/StyledVideoTitle";
 import { StyledVideoLink } from "./StyledVideoLink";
 
-const VideoItem = ({ video, onAddItemToPlaylist }) => {
+const VideoItem = ({
+    video,
+    videoImage,
+    videoTitle,
+    isClickableImage,
+    clickableIconClass,
+    onIconClicked,
+}) => {
+    const getDesiredValue = (path) => {
+        const splittedPath = path.split(".");
+        return splittedPath.reduce((acc, curr) => {
+            return acc[curr];
+        }, video);
+    };
+
     return (
         <StyledVideoCard>
-            <StyledVideoLink
-                href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
-                target="_blank"
-            >
+            {isClickableImage ? (
+                <StyledVideoLink
+                    href={`https://www.youtube.com/watch?v=${getDesiredValue(
+                        "id.videoId"
+                    )}`}
+                    target="_blank"
+                >
+                    <StyledVideoImage
+                        src={getDesiredValue(videoImage)}
+                        // src={video.snippet.thumbnails.medium.url}
+                        alt={getDesiredValue(videoTitle)}
+                        // alt={video.snippet.title}
+                    />
+                </StyledVideoLink>
+            ) : (
                 <StyledVideoImage
-                    src={video.snippet.thumbnails.medium.url}
-                    alt={video.snippet.title}
+                    src={getDesiredValue(videoImage)}
+                    // src={video.snippet.thumbnails.medium.url}
+                    alt={getDesiredValue(videoTitle)}
+                    // alt={video.snippet.title}
                 />
-            </StyledVideoLink>
-            <StyledVideoTitle>{video.snippet.title}</StyledVideoTitle>
+            )}
+            <StyledVideoTitle>{getDesiredValue(videoTitle)}</StyledVideoTitle>
             <StyledAddVideoBtn
-                className="fa-solid fa-circle-plus fa-2x"
-                onClick={() => onAddItemToPlaylist(video)}
+                className={clickableIconClass}
+                onClick={() => onIconClicked(video)}
             ></StyledAddVideoBtn>
         </StyledVideoCard>
     );

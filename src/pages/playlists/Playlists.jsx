@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import youtubeApi from "../../apis/youtubeApi";
 import AddPlaylistModal from "../../components/addPlaylistModal/AddPlaylistModal";
 import PlaylistItem from "../../components/playlistItem/PlaylistItem";
-import VideoItem from "../../components/videoItem/VideoItem";
 import { StyledGridWrapper } from "../../components/wrappers/gridWrapper/StyledGridWrapper";
 import { usePlaylists } from "../../context/PlaylistsContext";
 import { StyledAddBtn } from "./StyledAddBtn";

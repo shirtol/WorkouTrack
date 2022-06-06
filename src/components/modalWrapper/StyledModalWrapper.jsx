@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledAddPlaylistWrapper = styled.div`
+export const StyledModalWrapper = styled.div`
     width: 100%;
     height: 100vh;
     position: fixed;

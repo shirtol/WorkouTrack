@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./index.css";
 import FirebaseProvider from "./context/FirebaseContext";
 import ExercisesProvider from "./context/ExercisesContext";
 import PlaylistsProvider from "./context/PlaylistsContext";
@@ -11,7 +10,6 @@ import PlaylistsProvider from "./context/PlaylistsContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
-        {/* <React.StrictMode> */}
         <FirebaseProvider>
             <ExercisesProvider>
                 <PlaylistsProvider>
@@ -19,8 +17,6 @@ root.render(
                 </PlaylistsProvider>
             </ExercisesProvider>
         </FirebaseProvider>
-
-        {/* </React.StrictMode> */}
     </BrowserRouter>
 );
 

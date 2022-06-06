@@ -15,7 +15,7 @@ const AuthenticatedRoute = ({
     return (
         <Route
             {...props}
-            render={() => {
+            render={({ location }) => {
                 return currentUser ? (
                     children || renderChild(location, history, props)
                 ) : (

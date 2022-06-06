@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledAddPlaylistModal = styled.div`
+export const StyledModal = styled.div`
     width: 40%;
     height: 65%;
     background-color: #f6f6f6;
@@ -14,7 +14,7 @@ export const StyledAddPlaylistModal = styled.div`
     align-items: center;
     justify-content: space-around;
     position: sticky;
-    font-family: "FuturaPT";
+    font-family: "Poppins", sans-serif;
     font-size: 1.5rem;
     text-align: center;
     letter-spacing: 2px;
@@ -28,8 +28,8 @@ export const StyledAddPlaylistModal = styled.div`
         border-radius: 4px;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: #eec0c6;
-        background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
+        background-color: #ff4e00;
+        background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
         border-radius: 4px;
     }
 `;

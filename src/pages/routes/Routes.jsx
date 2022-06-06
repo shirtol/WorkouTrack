@@ -13,6 +13,7 @@ import AuthenticatedRoute from "../authenticatedRoute/AuthenticatedRoute";
 import Login from "../../components/login/Login";
 import CreatePlaylist from "../createPlaylist/CreatePlaylist";
 import PlaylistCreationNavbar from "../../components/playlistCreationNavbar/PlaylistCreationNavbar";
+import WatchPlaylist from "../watchPlaylist/WatchPlaylist";
 
 const Routes = () => {
     return (
@@ -23,7 +24,6 @@ const Routes = () => {
                         exact
                         path="/create-playlist"
                         renderChild={(location, history, ...props) => {
-                            console.log(location);
                             return (
                                 <CreatePlaylist
                                     location={location}
@@ -57,6 +57,19 @@ const DefaultContainer = () => (
         <AuthenticatedRoute exact path="/statistics">
             <Statistics></Statistics>
         </AuthenticatedRoute>
+        <AuthenticatedRoute
+            exact
+            path="/playlists/:id"
+            renderChild={(location, history, ...props) => {
+                return (
+                    <WatchPlaylist
+                        location={location}
+                        history={history}
+                        {...props}
+                    ></WatchPlaylist>
+                );
+            }}
+        ></AuthenticatedRoute>
         <Route exact path="/login" component={Login}></Route>
     </>
 );

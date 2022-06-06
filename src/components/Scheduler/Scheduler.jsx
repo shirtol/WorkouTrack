@@ -5,16 +5,13 @@ import {
 } from "@devexpress/dx-react-scheduler";
 import {
     Scheduler,
-    WeekView,
     MonthView,
-    DayView,
     Toolbar,
     Appointments,
     AppointmentForm,
     DateNavigator,
     AppointmentTooltip,
     ConfirmationDialog,
-    ViewSwitcher,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import Paper from "@mui/material/Paper";
 import { v4 as uuid } from "uuid";
@@ -26,6 +23,7 @@ import { deleteDocument, setDocument } from "../../utils/firebaseUtils";
 import { useFirebase } from "../../context/FirebaseContext";
 import { emptyAppointment } from "./appointment/emptyAppointment";
 import { useExercises } from "../../context/ExercisesContext";
+import SchedulerTooltipContent from "./schedulerTooltip/SchedulerTooltipContent";
 
 const Calender = () => {
     const { allExercises, setAllExercises } = useExercises();
@@ -79,12 +77,9 @@ const Calender = () => {
                         onCommitChanges={commitChanges}
                     ></EditingState>
                     <IntegratedEditing></IntegratedEditing>
-                    {/* <WeekView></WeekView> */}
                     <MonthView />
-                    {/* <DayView /> */}
                     <Toolbar />
                     <DateNavigator></DateNavigator>
-                    {/* <ViewSwitcher /> */}
                     <ConfirmationDialog ignoreCancel />
                     <Appointments
                         appointmentComponent={Appointment}
@@ -94,6 +89,7 @@ const Calender = () => {
                     <AppointmentTooltip
                         showOpenButton
                         showDeleteButton
+                        contentComponent={SchedulerTooltipContent}
                     ></AppointmentTooltip>
 
                     <AppointmentForm
