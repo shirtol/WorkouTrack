@@ -12,6 +12,7 @@ const VideoItem = ({
     isClickableImage,
     clickableIconClass,
     onIconClicked,
+    isSelected,
 }) => {
     const getDesiredValue = (path) => {
         const splittedPath = path.split(".");
@@ -21,7 +22,7 @@ const VideoItem = ({
     };
 
     return (
-        <StyledVideoCard>
+        <StyledVideoCard isSelected={isSelected}>
             {isClickableImage ? (
                 <StyledVideoLink
                     href={`https://www.youtube.com/watch?v=${getDesiredValue(
@@ -31,17 +32,13 @@ const VideoItem = ({
                 >
                     <StyledVideoImage
                         src={getDesiredValue(videoImage)}
-                        // src={video.snippet.thumbnails.medium.url}
                         alt={getDesiredValue(videoTitle)}
-                        // alt={video.snippet.title}
                     />
                 </StyledVideoLink>
             ) : (
                 <StyledVideoImage
                     src={getDesiredValue(videoImage)}
-                    // src={video.snippet.thumbnails.medium.url}
                     alt={getDesiredValue(videoTitle)}
-                    // alt={video.snippet.title}
                 />
             )}
             <StyledVideoTitle>{getDesiredValue(videoTitle)}</StyledVideoTitle>
