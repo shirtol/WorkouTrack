@@ -1790,6 +1790,7 @@ const CreatePlaylist = ({ location, history }) => {
                     video={video}
                     videoImage="snippet.thumbnails.medium.url"
                     videoTitle="snippet.title"
+                    isClickableImage={true}
                 ></VideoItem>
             );
         });

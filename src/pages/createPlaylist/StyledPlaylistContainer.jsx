@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../utils/colors";
 
 export const StyledPlaylistContainer = styled.div`
     display: flex;
@@ -15,4 +16,5 @@ export const StyledPlaylistContainer = styled.div`
     top: 20%;
     left: 2rem;
     overflow-y: scroll;
+    border: 1.5px solid ${Colors.orange};
 `;

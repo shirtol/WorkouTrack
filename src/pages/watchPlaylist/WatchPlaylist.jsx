@@ -19,6 +19,7 @@ const WatchPlaylist = ({ location }) => {
                     video={video}
                     videoImage="imageUrl"
                     videoTitle="title"
+                    isClickableImage={false}
                 ></VideoItem>
             );
         });

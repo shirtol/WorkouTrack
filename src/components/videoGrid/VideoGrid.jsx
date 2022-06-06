@@ -9,6 +9,9 @@ const VideoGrid = ({ videos, onAddItemToPlaylist }) => {
                 key={video.etag}
                 video={video}
                 onAddItemToPlaylist={onAddItemToPlaylist}
+                isClickableImage={true}
+                videoImage="snippet.thumbnails.medium.url"
+                videoTitle="snippet.title"
             ></VideoItem>
         );
     });

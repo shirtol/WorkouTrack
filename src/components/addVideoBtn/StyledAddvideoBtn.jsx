@@ -7,4 +7,5 @@ export const StyledAddVideoBtn = styled.i`
     position: absolute;
     right: 7px;
     bottom: 3px;
+    cursor: pointer;
 `;
