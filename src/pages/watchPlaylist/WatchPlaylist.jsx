@@ -16,7 +16,6 @@ const WatchPlaylist = ({ location }) => {
 
     const displayPlaylistVideos = () => {
         return playlistItem.videos.map((video) => {
-            console.log(video);
             return (
                 <VideoItem
                     key={video.id}
@@ -37,7 +36,6 @@ const WatchPlaylist = ({ location }) => {
 
     const onCurrVideoEnd = () => {
         const idxOfVideo = playlistItem.videos.indexOf(currVideoPlaying);
-        console.log(idxOfVideo);
         if (idxOfVideo < playlistItem.videos.length - 1) {
             setCurrVideoPlaying(playlistItem.videos[idxOfVideo + 1]);
         }

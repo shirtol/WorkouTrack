@@ -9,7 +9,6 @@ const SchedulerTooltipContent = ({
     appointmentData,
     ...restProps
 }) => {
-    console.log(appointmentData);
     return (
         <AppointmentTooltip.Content
             {...restProps}

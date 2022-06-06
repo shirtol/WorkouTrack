@@ -11,13 +11,11 @@ const AuthenticatedRoute = ({
     ...props
 }) => {
     const { currentUser } = useFirebase();
-    console.log(location);
 
     return (
         <Route
             {...props}
             render={({ location }) => {
-                console.log(location);
                 return currentUser ? (
                     children || renderChild(location, history, props)
                 ) : (

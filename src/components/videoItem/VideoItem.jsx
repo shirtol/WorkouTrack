@@ -20,8 +20,6 @@ const VideoItem = ({
         }, video);
     };
 
-    console.log(clickableIconClass);
-
     return (
         <StyledVideoCard>
             {isClickableImage ? (
