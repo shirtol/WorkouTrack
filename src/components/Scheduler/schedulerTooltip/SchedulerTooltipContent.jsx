@@ -2,6 +2,7 @@ import { AppointmentTooltip } from "@devexpress/dx-react-scheduler-material-ui";
 import React from "react";
 import { Link } from "react-router-dom";
 import { tooltipImages } from "../../../utils/images";
+import { StyledLink } from "../../link/StyledLink";
 
 const SchedulerTooltipContent = ({
     children,
@@ -24,13 +25,14 @@ const SchedulerTooltipContent = ({
                 alt=""
                 style={{ width: "100px" }}
             />
-            <Link
+            <StyledLink
                 to={{
                     pathname: `playlists/${appointmentData.playlist.id}`,
+                    item: appointmentData.playlist,
                 }}
             >
                 Start Workout!
-            </Link>
+            </StyledLink>
         </AppointmentTooltip.Content>
     );
 };

@@ -60,8 +60,14 @@ const DefaultContainer = () => (
         <AuthenticatedRoute
             exact
             path="/playlists/:id"
-            renderChild={(...props) => {
-                return <WatchPlaylist {...props}></WatchPlaylist>;
+            renderChild={(location, history, ...props) => {
+                return (
+                    <WatchPlaylist
+                        location={location}
+                        history={history}
+                        {...props}
+                    ></WatchPlaylist>
+                );
             }}
         ></AuthenticatedRoute>
         <Route exact path="/login" component={Login}></Route>
