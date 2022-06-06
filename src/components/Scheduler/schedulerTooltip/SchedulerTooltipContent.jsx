@@ -1,11 +1,11 @@
 import { AppointmentTooltip } from "@devexpress/dx-react-scheduler-material-ui";
 import React from "react";
+import { Link } from "react-router-dom";
 import { tooltipImages } from "../../../utils/images";
 
 const SchedulerTooltipContent = ({
     children,
     appointmentData,
-
     ...restProps
 }) => {
     console.log(appointmentData);
@@ -15,16 +15,23 @@ const SchedulerTooltipContent = ({
             appointmentData={appointmentData}
         >
             <img
-                src={tooltipImages.running}
+                src={
+                    appointmentData.playlist.videos !== undefined
+                        ? appointmentData.playlist.videos[0].imageUrl
+                        : tooltipImages.running
+                }
+                // src={tooltipImages.running}
                 alt=""
                 style={{ width: "100px" }}
             />
-            <a
-                href="https://www.youtube.com/watch?v=p-3OKmrRk3A&ab_channel=ZumbaSulu"
+            <Link
+                to={{
+                    pathname: `schedule/${appointmentData.playlist.id}`,
+                }}
                 target="_blank"
             >
-                Click!
-            </a>
+                Start Workout!
+            </Link>
         </AppointmentTooltip.Content>
     );
 };

@@ -13,6 +13,7 @@ import AuthenticatedRoute from "../authenticatedRoute/AuthenticatedRoute";
 import Login from "../../components/login/Login";
 import CreatePlaylist from "../createPlaylist/CreatePlaylist";
 import PlaylistCreationNavbar from "../../components/playlistCreationNavbar/PlaylistCreationNavbar";
+import WatchPlaylist from "../watchPlaylist/WatchPlaylist";
 
 const Routes = () => {
     return (
@@ -56,6 +57,13 @@ const DefaultContainer = () => (
         <AuthenticatedRoute exact path="/statistics">
             <Statistics></Statistics>
         </AuthenticatedRoute>
+        <AuthenticatedRoute
+            exact
+            path="/scheduler/:id"
+            renderChild={(props) => {
+                return <WatchPlaylist {...props}></WatchPlaylist>;
+            }}
+        ></AuthenticatedRoute>
         <Route exact path="/login" component={Login}></Route>
     </>
 );
