@@ -31,7 +31,9 @@ const PlaylistCreationNavbar = ({
                     ></PlaylistNameInput>
                 </div>
 
-                <StyledButton onClick={onSavePlaylistClick}>Save</StyledButton>
+                <StyledButton onClick={onSavePlaylistClick}>
+                    <i class="fa-solid fa-floppy-disk"></i>
+                </StyledButton>
             </StyledFlexWrapper>
         </StyledFlexWrapper>
     );

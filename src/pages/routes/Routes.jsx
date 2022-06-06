@@ -14,6 +14,7 @@ import Login from "../../components/login/Login";
 import CreatePlaylist from "../createPlaylist/CreatePlaylist";
 import PlaylistCreationNavbar from "../../components/playlistCreationNavbar/PlaylistCreationNavbar";
 import WatchPlaylist from "../watchPlaylist/WatchPlaylist";
+import HamburgerMenu from "../../components/hamburgerMenu/HamburgerMenu";
 
 const Routes = () => {
     return (
@@ -44,6 +45,7 @@ export default Routes;
 
 const DefaultContainer = () => (
     <>
+        <HamburgerMenu></HamburgerMenu>
         <Navbar></Navbar>
         <AuthenticatedRoute exact path="/">
             <Home></Home>

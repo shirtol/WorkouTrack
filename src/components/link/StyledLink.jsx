@@ -7,4 +7,5 @@ export const StyledLink = styled(Link)`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
 `;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../utils/colors";
 
 export const StyledButton = styled.div`
     padding: 0.8rem 2.8rem;
@@ -6,10 +7,10 @@ export const StyledButton = styled.div`
     font-family: "Poppins", sans-serif;
     letter-spacing: 2px;
     border-radius: 8px;
-    background-color: #e66e39;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-        rgba(0, 0, 0, 0.22) 0px 5px 7px;
-    color: #fff;
+    background-color: ${(props) =>
+        props.disabled ? Colors.greyIcon : Colors.whiteSmoke};
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 10px, rgba(0, 0, 0, 0.22) 0px 2px 3px;
+    color: ${(props) => (props.disabled ? Colors.whiteSmoke : Colors.orange)};
     width: max-content;
     height: max-content;
     cursor: pointer;
@@ -17,11 +18,9 @@ export const StyledButton = styled.div`
         transition: box-shadow 100ms ease-in-out;
         transform: scale(0.95);
         transition: transform 100ms ease-in-out;
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 27px,
-            rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 5px,
+            rgba(0, 0, 0, 0.22) 0px 1px 2px;
     }
-    &:disabled {
-        pointer-events: none;
-        opacity: 0.7;
-    }
+    pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
+    opacity: ${(props) => (props.disabled ? 0.7 : 1)};
 `;
