@@ -26,9 +26,8 @@ const SchedulerTooltipContent = ({
             />
             <Link
                 to={{
-                    pathname: `schedule/${appointmentData.playlist.id}`,
+                    pathname: `playlists/${appointmentData.playlist.id}`,
                 }}
-                target="_blank"
             >
                 Start Workout!
             </Link>

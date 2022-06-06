@@ -59,8 +59,8 @@ const DefaultContainer = () => (
         </AuthenticatedRoute>
         <AuthenticatedRoute
             exact
-            path="/scheduler/:id"
-            renderChild={(props) => {
+            path="/playlists/:id"
+            renderChild={(...props) => {
                 return <WatchPlaylist {...props}></WatchPlaylist>;
             }}
         ></AuthenticatedRoute>
