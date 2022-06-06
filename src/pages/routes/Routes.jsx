@@ -23,7 +23,6 @@ const Routes = () => {
                         exact
                         path="/create-playlist"
                         renderChild={(location, history, ...props) => {
-                            console.log(location);
                             return (
                                 <CreatePlaylist
                                     location={location}

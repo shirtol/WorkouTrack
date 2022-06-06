@@ -1773,7 +1773,6 @@ const CreatePlaylist = ({ location, history }) => {
                 q: term,
             },
         });
-        console.log(response.data.items);
         setVideos(response.data.items);
         setNextPageToken(response.data.nextPageToken);
     };
@@ -1806,10 +1805,6 @@ const CreatePlaylist = ({ location, history }) => {
     const onPlaylistNameChange = ({ target: { value } }) => {
         setPlaylistName(value);
     };
-
-    useEffect(() => {
-        console.log(playlistName);
-    }, [playlistName]);
 
     return (
         <>

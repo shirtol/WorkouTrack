@@ -8,15 +8,21 @@ import workoutTypes, {
     createWorkoutTypesObj,
 } from "../../../utils/workoutTypes";
 import { useFirebase } from "../../../context/FirebaseContext";
+import { usePlaylists } from "../../../context/PlaylistsContext";
 
 const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     const { currentUser } = useFirebase();
     const [environment, setEnvironment] = useState(
         appointmentData.environment ?? workoutEnvironments.Indoor
     );
-    const [playlist, setPlaylist] = useState(
-        appointmentData.playlist ?? playlists.HIIT
-    );
+    const { allPlaylists } = usePlaylists();
+
+    const allPlaylistsTitles = allPlaylists.reduce((acc, curr, idx) => {
+        return { ...acc, [curr.title]: idx };
+    }, {});
+
+    const [playlist, setPlaylist] = useState(appointmentData.playlist ?? 0);
+
     const [difficulty, setDifficulty] = useState(
         appointmentData.difficulty ?? difficulties.Beginner
     );
@@ -26,6 +32,8 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     const [selectedWorkoutTypes, setSelectedWorkoutTypes] = useState(
         appointmentData.workoutTypes ?? createWorkoutTypesObj()
     );
+
+    console.log(allPlaylists);
 
     useEffect(() => {
         appointmentData.difficulty = difficulty;
@@ -53,7 +61,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     };
 
     const createPlaylistsArr = () => {
-        return Object.keys(playlists).map((playlist, idx) => {
+        return Object.keys(allPlaylistsTitles).map((playlist, idx) => {
             return { text: playlist, id: idx };
         });
     };

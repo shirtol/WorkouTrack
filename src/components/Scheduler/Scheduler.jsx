@@ -5,16 +5,13 @@ import {
 } from "@devexpress/dx-react-scheduler";
 import {
     Scheduler,
-    WeekView,
     MonthView,
-    DayView,
     Toolbar,
     Appointments,
     AppointmentForm,
     DateNavigator,
     AppointmentTooltip,
     ConfirmationDialog,
-    ViewSwitcher,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import Paper from "@mui/material/Paper";
 import { v4 as uuid } from "uuid";
@@ -79,12 +76,9 @@ const Calender = () => {
                         onCommitChanges={commitChanges}
                     ></EditingState>
                     <IntegratedEditing></IntegratedEditing>
-                    {/* <WeekView></WeekView> */}
                     <MonthView />
-                    {/* <DayView /> */}
                     <Toolbar />
                     <DateNavigator></DateNavigator>
-                    {/* <ViewSwitcher /> */}
                     <ConfirmationDialog ignoreCancel />
                     <Appointments
                         appointmentComponent={Appointment}

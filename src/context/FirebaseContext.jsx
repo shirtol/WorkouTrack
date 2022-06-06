@@ -45,10 +45,6 @@ const FirebaseProvider = ({ children }) => {
 
     const value = { currentUser, currentUserInfo, signIn, token, db };
 
-    console.log(currentUser);
-
-    console.log(db);
-
     return (
         <FirebaseContext.Provider value={value}>
             {children}
