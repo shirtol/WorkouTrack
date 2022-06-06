@@ -1784,7 +1784,14 @@ const CreatePlaylist = ({ location, history }) => {
 
     const displayPlaylistVideos = () => {
         return playlistVideos.map((video) => {
-            return <VideoItem key={video.id.videoId} video={video}></VideoItem>;
+            return (
+                <VideoItem
+                    key={video.id.videoId}
+                    video={video}
+                    videoImage="snippet.thumbnails.medium.url"
+                    videoTitle="snippet.title"
+                ></VideoItem>
+            );
         });
     };
 

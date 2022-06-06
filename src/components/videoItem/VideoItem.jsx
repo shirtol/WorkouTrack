@@ -5,19 +5,32 @@ import { StyledVideoImage } from "../videoCard/StyledVideoImage";
 import { StyledVideoTitle } from "../videoCard/StyledVideoTitle";
 import { StyledVideoLink } from "./StyledVideoLink";
 
-const VideoItem = ({ video, onAddItemToPlaylist }) => {
+const VideoItem = ({ video, onAddItemToPlaylist, videoImage, videoTitle }) => {
+    const getDesiredValue = (path) => {
+        const splittedPath = path.split(".");
+        return splittedPath.reduce((acc, curr) => {
+            return acc[curr];
+        }, video);
+    };
+
+    console.log(video);
+
     return (
         <StyledVideoCard>
             <StyledVideoLink
-                href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+                href={`https://www.youtube.com/watch?v=${getDesiredValue(
+                    "id.videoId"
+                )}`}
                 target="_blank"
             >
                 <StyledVideoImage
-                    src={video.snippet.thumbnails.medium.url}
-                    alt={video.snippet.title}
+                    src={getDesiredValue(videoImage)}
+                    // src={video.snippet.thumbnails.medium.url}
+                    alt={getDesiredValue(videoTitle)}
+                    // alt={video.snippet.title}
                 />
             </StyledVideoLink>
-            <StyledVideoTitle>{video.snippet.title}</StyledVideoTitle>
+            <StyledVideoTitle>{getDesiredValue(videoTitle)}</StyledVideoTitle>
             <StyledAddVideoBtn
                 className="fa-solid fa-circle-plus fa-2x"
                 onClick={() => onAddItemToPlaylist(video)}
