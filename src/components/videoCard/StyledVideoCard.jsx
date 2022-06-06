@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../utils/colors";
 
 export const StyledVideoCard = styled.div`
     display: flex;
@@ -11,4 +12,6 @@ export const StyledVideoCard = styled.div`
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     border-radius: 4px;
     position: relative;
+    border: ${(props) =>
+        props.isSelected ? `1px solid ${Colors.selectedBlue}` : "none"};
 `;
