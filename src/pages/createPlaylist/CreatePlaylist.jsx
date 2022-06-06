@@ -7,17 +7,20 @@ import VideoGrid from "../../components/videoGrid/VideoGrid";
 import VideoItem from "../../components/videoItem/VideoItem";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
 import { useFirebase } from "../../context/FirebaseContext";
+import { usePlaylists } from "../../context/PlaylistsContext";
 import { Colors } from "../../utils/colors";
 import { addDocument } from "../../utils/firebaseUtils";
 import { StyledPlaylistContainer } from "./StyledPlaylistContainer";
 
 const CreatePlaylist = ({ location, history }) => {
     const [videos, setVideos] = useState([]);
+
     const [nextPageToken, setNextPageToken] = useState("");
     const [term, setTerm] = useState("");
     const [playlistVideos, setPlaylistVideos] = useState([]);
     const { db, currentUser } = useFirebase();
     const [playlistName, setPlaylistName] = useState(location.item);
+    const { allPlaylists, setAllPlaylists } = usePlaylists();
 
     const onInputChange = ({ target: { value } }) => setTerm(value);
 
@@ -30,6 +33,8 @@ const CreatePlaylist = ({ location, history }) => {
         setVideos(response.data.items);
         setNextPageToken(response.data.nextPageToken);
     };
+
+    console.log(history);
 
     const onAddItemToPlaylist = (item) =>
         setPlaylistVideos((prevPlaylistVideos) => [
@@ -53,7 +58,7 @@ const CreatePlaylist = ({ location, history }) => {
     };
 
     const onSavePlaylistClick = () => {
-        addDocument(db, "playlist", {
+        const newPlaylistObj = {
             owner: currentUser.uid,
             title: playlistName,
             videos: playlistVideos.map((video) => ({
@@ -61,7 +66,13 @@ const CreatePlaylist = ({ location, history }) => {
                 imageUrl: video.snippet.thumbnails.medium.url,
                 title: video.snippet.title,
             })),
-        });
+        };
+        addDocument(db, "playlist", newPlaylistObj);
+        setAllPlaylists((prevAllPlaylists) => [
+            ...prevAllPlaylists,
+            newPlaylistObj,
+        ]);
+
         history.goBack();
     };
 
@@ -75,6 +86,7 @@ const CreatePlaylist = ({ location, history }) => {
                 onSavePlaylistClick={onSavePlaylistClick}
                 onPlaylistNameChange={onPlaylistNameChange}
                 playlistName={playlistName}
+                history={history}
             ></PlaylistCreationNavbar>
             <StyledFlexWrapper>
                 <StyledInput
