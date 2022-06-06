@@ -1,0 +1,78 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { StyledNavbarItem } from "../navbar/StyledNavbarItem";
+import { slide as Menu } from "react-burger-menu";
+import { StyledBurger } from "./StyledBurger";
+import "./hamburgerMenu.css";
+import { Colors } from "../../utils/colors";
+
+const HamburgerMenu = () => {
+    const showSettings = (event) => {
+        event.preventDefault();
+    };
+
+    return (
+        <>
+            {/* <button onClick={onBurgerMenuOpen}>Hamburger</button> */}
+            <StyledBurger styles={styles}>
+                <StyledNavbarItem>
+                    <NavLink to="/">Home</NavLink>
+                </StyledNavbarItem>
+                <StyledNavbarItem>
+                    <NavLink to="/schedule">Schedule</NavLink>
+                </StyledNavbarItem>
+                <StyledNavbarItem>
+                    <NavLink to="/playlists">Playlists</NavLink>
+                </StyledNavbarItem>
+                <StyledNavbarItem>
+                    <NavLink to="/statistics">Statistics</NavLink>
+                </StyledNavbarItem>
+            </StyledBurger>
+        </>
+    );
+};
+
+export default HamburgerMenu;
+
+const styles = {
+    bmBurgerBars: {
+        background: "#373a47",
+    },
+    bmBurgerBarsHover: {
+        background: "#a90000",
+    },
+    bmCrossButton: {
+        height: "24px",
+        width: "24px",
+    },
+    bmCross: {
+        background: "#bdc3c7",
+    },
+    bmMenuWrap: {
+        position: "fixed",
+        height: "100%",
+        width: "23rem",
+    },
+    bmMenu: {
+        backgroundImage: "linear-gradient(315deg, #d5d5d5 0%, #e9e9e9 74%)",
+        background: Colors.whiteSmoke,
+        padding: "2.5em 1.5em 0",
+        fontSize: "1.15em",
+    },
+    bmMorphShape: {
+        fill: "#373a47",
+    },
+    bmItemList: {
+        color: "#b8b7ad",
+        padding: "0.8em",
+        gap: "1rem",
+        display: "flex",
+        flexDirection: "column",
+    },
+    bmItem: {
+        display: "inline-block",
+    },
+    bmOverlay: {
+        background: "rgba(0, 0, 0, 0.3)",
+    },
+};

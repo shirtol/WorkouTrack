@@ -103,7 +103,9 @@ const CreatePlaylist = ({ location, history }) => {
                     onChange={onInputChange}
                     value={term}
                 ></StyledInput>
-                <StyledButton onClick={onBtnClick}>Search</StyledButton>
+                <StyledButton onClick={onBtnClick}>
+                    <i class="fas fa-search"></i>
+                </StyledButton>
             </StyledFlexWrapper>
 
             <StyledFlexWrapper flexDirection="row" justifyContent="flex-end">

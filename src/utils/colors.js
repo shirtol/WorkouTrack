@@ -4,4 +4,5 @@ export const Colors = {
     blackText: "#333",
     selectedBlue: "#6495ED",
     greyIcon: "#888888",
+    whiteSmoke: "#f6f6f6",
 };

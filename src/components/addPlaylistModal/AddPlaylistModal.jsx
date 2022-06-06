@@ -21,12 +21,15 @@ const AddPlaylistModal = ({ isShown }) => {
                         value={playlistName}
                     ></StyledInput>
                     <StyledLink
+                        disabled={!playlistName.length}
                         to={{
                             pathname: "/create-playlist",
                             item: playlistName,
                         }}
                     >
-                        <StyledButton>Create!</StyledButton>
+                        <StyledButton disabled={!playlistName.length}>
+                            Create!
+                        </StyledButton>
                     </StyledLink>
                 </StyledModal>
             </StyledModalWrapper>
