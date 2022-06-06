@@ -1,7 +1,6 @@
 import { AppointmentForm } from "@devexpress/dx-react-scheduler-material-ui";
 import { useEffect, useState } from "react";
 import workoutEnvironments from "../../../utils/workoutEnvironments";
-import playlists from "../../../utils/playlists";
 import difficulties from "../../../utils/difficulties";
 import equipments, { createEquipmentsObj } from "../../../utils/equipments";
 import workoutTypes, {
@@ -33,8 +32,6 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
         appointmentData.workoutTypes ?? createWorkoutTypesObj()
     );
 
-    console.log(allPlaylists);
-
     useEffect(() => {
         appointmentData.difficulty = difficulty;
         appointmentData.playlist = playlist;
@@ -56,7 +53,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     };
 
     const onPlaylistChange = (nextValue) => {
-        onFieldChange({ playlist: nextValue });
+        onFieldChange({ playlist: allPlaylists[nextValue] });
         setPlaylist(nextValue);
     };
 

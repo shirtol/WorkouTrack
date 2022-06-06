@@ -23,6 +23,7 @@ import { deleteDocument, setDocument } from "../../utils/firebaseUtils";
 import { useFirebase } from "../../context/FirebaseContext";
 import { emptyAppointment } from "./appointment/emptyAppointment";
 import { useExercises } from "../../context/ExercisesContext";
+import SchedulerTooltipContent from "./schedulerTooltip/SchedulerTooltipContent";
 
 const Calender = () => {
     const { allExercises, setAllExercises } = useExercises();
@@ -88,6 +89,7 @@ const Calender = () => {
                     <AppointmentTooltip
                         showOpenButton
                         showDeleteButton
+                        contentComponent={SchedulerTooltipContent}
                     ></AppointmentTooltip>
 
                     <AppointmentForm
