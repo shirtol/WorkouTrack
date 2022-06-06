@@ -3,14 +3,13 @@ import React, { useState } from "react";
 import { StyledPlaylistContainer } from "../createPlaylist/StyledPlaylistContainer";
 import VideoItem from "../../components/videoItem/VideoItem";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
-import { StyledYoutube } from "../../components/styledYoutube/StyledYoutube";
 import "./watchPlaylist.css";
 
 const WatchPlaylist = ({ location }) => {
     const playlistItem = location.item;
 
     const [currVideoPlaying, setCurrVideoPlaying] = useState(
-        playlistItem.videos[0].id
+        playlistItem.videos[0]
     );
 
     const videoSrc = `https://www.youtube.com/embed/${playlistItem.videos[0].id}`;
@@ -33,7 +32,15 @@ const WatchPlaylist = ({ location }) => {
     };
 
     const onPlayVideo = (video) => {
-        setCurrVideoPlaying(video.id);
+        setCurrVideoPlaying(video);
+    };
+
+    const onCurrVideoEnd = () => {
+        const idxOfVideo = playlistItem.videos.indexOf(currVideoPlaying);
+        console.log(idxOfVideo);
+        if (idxOfVideo < playlistItem.videos.length - 1) {
+            setCurrVideoPlaying(playlistItem.videos[idxOfVideo + 1]);
+        }
     };
 
     return (
@@ -46,11 +53,10 @@ const WatchPlaylist = ({ location }) => {
                 <StyledPlaylistContainer position="static">
                     {displayPlaylistVideos()}
                 </StyledPlaylistContainer>
-                {/* <StyledYoutube videoId={playlistItem.videos[0].id}></StyledYoutube> */}
                 <div className="youtube-wrapper">
                     <YouTube
-                        videoId={currVideoPlaying}
-                        // opts={{ width: "960", height: "585" }}
+                        videoId={currVideoPlaying.id}
+                        onEnd={onCurrVideoEnd}
                     ></YouTube>
                 </div>
             </StyledFlexWrapper>
@@ -59,5 +65,3 @@ const WatchPlaylist = ({ location }) => {
 };
 
 export default WatchPlaylist;
-
-//  videoImage="snippet.thumbnails.medium.url" videoTitle="snippet.title"
