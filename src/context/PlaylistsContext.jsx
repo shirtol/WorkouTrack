@@ -22,6 +22,8 @@ const PlaylistsProvider = ({ children }) => {
         }
     };
 
+    //!TODO: Make all deletions and insertions in the context, and not send the set functions
+
     useEffect(() => {
         getAllPlaylistsWrapper();
     }, [db, currentUser]);

@@ -7,7 +7,7 @@ import { StyledFlexWrapper } from "../wrappers/flexWrapper/StyledFlexWrapper";
 import { StyledGoogleIcon } from "./icon/StyledGoogleIcon";
 import { StyledLoginButton } from "./StyledLoginButton";
 import { StyledLoginSubTitle } from "./StyledLoginSubtitle";
-import { StyledLoginTitle } from "./StyledLoginTitle";
+import { StyledTitle } from "../title/StyledTitle";
 
 const Login = ({ location, history }) => {
     const { signIn, currentUser } = useFirebase();
@@ -21,9 +21,9 @@ const Login = ({ location, history }) => {
     return (
         <StyledModalWrapper>
             <StyledFlexWrapper flexDirection="column">
-                <StyledLoginTitle>
+                <StyledTitle>
                     UH OH! <br /> Looks like you're not signed in yet
-                </StyledLoginTitle>
+                </StyledTitle>
                 <StyledLoginSubTitle>No more excuses!</StyledLoginSubTitle>
                 <StyledLoginButton>
                     <StyledButton onClick={signIn}>

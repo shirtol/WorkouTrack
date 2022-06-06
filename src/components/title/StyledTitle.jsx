@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledLoginTitle = styled.div`
+export const StyledTitle = styled.div`
     font-size: 3rem;
     text-align: center;
 `;
