@@ -28,7 +28,7 @@ export const deleteDocument = async (db, collectionName, id) => {
 export const getAllCollectionData = async (db, collectionName, user) => {
     const q = query(
         collection(db, collectionName),
-        where("owner", "==", user.uid)
+        where("owner", "==", user?.uid)
     );
     const querySnapshot = await getDocs(q);
     const data = [];

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { StyledButton } from "../button/StyledButton";
 import { StyledInput } from "../input/StyledInput";
 import { StyledLink } from "../link/StyledLink";
-import { StyledAddPlaylistModal } from "./StyledAddPlaylistModal";
-import { StyledAddPlaylistWrapper } from "./StyledAddPlaylistWrapper";
+import { StyledModal } from "../modal/StyledModal";
+import { StyledModalWrapper } from "../modalWrapper/StyledModalWrapper";
 
 const AddPlaylistModal = ({ isShown }) => {
     const [playlistName, setPlaylistName] = useState("");
@@ -14,8 +13,8 @@ const AddPlaylistModal = ({ isShown }) => {
     };
     return (
         isShown && (
-            <StyledAddPlaylistWrapper>
-                <StyledAddPlaylistModal>
+            <StyledModalWrapper>
+                <StyledModal>
                     <StyledInput
                         placeholder="Playlist name..."
                         onChange={onInputChange}
@@ -29,8 +28,8 @@ const AddPlaylistModal = ({ isShown }) => {
                     >
                         <StyledButton>Create!</StyledButton>
                     </StyledLink>
-                </StyledAddPlaylistModal>
-            </StyledAddPlaylistWrapper>
+                </StyledModal>
+            </StyledModalWrapper>
         )
     );
 };

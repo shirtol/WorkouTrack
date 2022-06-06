@@ -7,4 +7,5 @@ export const StyledPlaylistCreationStep = styled.i`
     color: ${Colors.blackText};
     padding: 2rem;
     align-self: center;
+    cursor: pointer;
 `;

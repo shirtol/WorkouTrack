@@ -17,7 +17,6 @@ const PlaylistsProvider = ({ children }) => {
                 "playlist",
                 currentUser
             );
-            console.log(allData);
 
             setAllPlaylists(allData);
         }
@@ -25,7 +24,7 @@ const PlaylistsProvider = ({ children }) => {
 
     useEffect(() => {
         getAllPlaylistsWrapper();
-    }, [db]);
+    }, [db, currentUser]);
 
     const value = { allPlaylists, setAllPlaylists };
 
