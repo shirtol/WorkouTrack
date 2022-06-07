@@ -54,7 +54,10 @@ const Playlists = () => {
                 onApproveBtnClicked={onDeletePlaylistClicked}
             ></RemovePlaylistModal>
             <AddPlaylistModal isShown={isModalOpen}></AddPlaylistModal>
-            <StyledGridWrapper gridTemplateColsTablet="repeat(2, 1fr)">
+            <StyledGridWrapper
+                gridTemplateColsTablet="repeat(2, 1fr)"
+                gridTemplateColsMobileL="repeat(1, 1fr)"
+            >
                 {displayUserPlaylists()}
             </StyledGridWrapper>
             <div>
