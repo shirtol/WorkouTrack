@@ -13,6 +13,7 @@ const VideoItem = ({
     clickableIconClass,
     onIconClicked,
     isSelected,
+    textWidth,
 }) => {
     const getDesiredValue = (path) => {
         const splittedPath = path.split(".");
@@ -41,7 +42,9 @@ const VideoItem = ({
                     alt={getDesiredValue(videoTitle)}
                 />
             )}
-            <StyledVideoTitle>{getDesiredValue(videoTitle)}</StyledVideoTitle>
+            <StyledVideoTitle width={textWidth}>
+                {getDesiredValue(videoTitle)}
+            </StyledVideoTitle>
             <StyledAddVideoBtn
                 className={clickableIconClass}
                 onClick={() => onIconClicked(video)}
