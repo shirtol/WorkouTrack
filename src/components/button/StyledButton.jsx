@@ -7,7 +7,7 @@ export const StyledButton = styled.div`
     font-size: 2rem;
     font-family: "Poppins", sans-serif;
     letter-spacing: 2px;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: ${(props) =>
         props.disabled ? Colors.greyIcon : Colors.whiteSmoke};
     box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 10px, rgba(0, 0, 0, 0.22) 0px 2px 3px;

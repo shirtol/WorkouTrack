@@ -19,6 +19,7 @@ const PlaylistCreationNavbar = ({
                 flexDirection="row"
                 justifyContent="space-between"
                 width="95%"
+                justifyContentTablet="space-between"
             >
                 <div>
                     <StyledPlaylistCreationStep
