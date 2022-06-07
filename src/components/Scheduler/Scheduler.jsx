@@ -24,10 +24,14 @@ import { useFirebase } from "../../context/FirebaseContext";
 import { emptyAppointment } from "./appointment/emptyAppointment";
 import { useExercises } from "../../context/ExercisesContext";
 import SchedulerTooltipContent from "./schedulerTooltip/SchedulerTooltipContent";
+import Spinner from "../spinner/Spinner";
+import { useState } from "react";
 
 const Calender = () => {
     const { allExercises, setAllExercises } = useExercises();
     const { db, currentUser } = useFirebase();
+    const [isLoading, setIsLoading] = useState(false);
+
     const commitChanges = ({ added, changed, deleted }) => {
         let data = allExercises;
         if (added) {
@@ -38,17 +42,21 @@ const Calender = () => {
                 owner: currentUser.uid,
             };
             data = [...data, { ...newDataObj, id }];
+            setIsLoading(true);
             setDocument(db, "workout", newDataObj, id);
+            setIsLoading(false);
         }
         if (changed) {
             data = data.map((exercise) => {
                 if (changed[exercise.id]) {
+                    setIsLoading(true);
                     setDocument(
                         db,
                         "workout",
                         { ...exercise, ...changed[exercise.id] },
                         exercise.id
                     );
+                    setIsLoading(false);
                     return { ...exercise, ...changed[exercise.id] };
                 } else {
                     return exercise;
@@ -60,7 +68,10 @@ const Calender = () => {
                 if (exercise.id !== deleted) {
                     return true;
                 } else {
+                    setIsLoading(true);
                     deleteDocument(db, "workout", exercise.id);
+                    setIsLoading(false);
+
                     return false;
                 }
             });
@@ -70,6 +81,7 @@ const Calender = () => {
 
     return (
         <div>
+            <Spinner isShown={isLoading}></Spinner>
             <Paper className="calender">
                 <Scheduler data={allExercises}>
                     <ViewState defaultCurrentDate="2022-06-01"></ViewState>

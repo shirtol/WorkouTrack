@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AddPlaylistModal from "../../components/addPlaylistModal/AddPlaylistModal";
 import PlaylistItem from "../../components/playlistItem/PlaylistItem";
 import RemovePlaylistModal from "../../components/removePlaylistModal/RemovePlaylistModal";
+import Spinner from "../../components/spinner/Spinner";
 import { StyledGridWrapper } from "../../components/wrappers/gridWrapper/StyledGridWrapper";
 import { useFirebase } from "../../context/FirebaseContext";
 import { usePlaylists } from "../../context/PlaylistsContext";
@@ -14,6 +15,7 @@ const Playlists = () => {
     const { allPlaylists, setAllPlaylists } = usePlaylists();
     const [playlistToRemove, setPlaylistToRemove] = useState();
     const { db } = useFirebase();
+    const [isLoading, setIsLoading] = useState(false);
 
     const onAddBtnClicked = () => {
         setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
@@ -25,15 +27,23 @@ const Playlists = () => {
         allPlaylistsCopy.splice(idxOfRemovedPlaylist, 1);
         setAllPlaylists(allPlaylistsCopy);
         setIsDeleteModalOpen(false);
+        setIsLoading(true);
         deleteDocument(db, "playlist", playlistToRemove.id);
+        setIsLoading(false);
     };
 
     const onDeleteIconClicked = (playlist) => {
         setPlaylistToRemove(playlist);
+        setIsLoading(true);
         setIsDeleteModalOpen(true);
+        setIsLoading(false);
     };
 
-    const onCancelDelete = () => setIsDeleteModalOpen(false);
+    const onCancelDelete = () => {
+        setIsLoading(true);
+        setIsDeleteModalOpen(false);
+        setIsLoading(false);
+    };
 
     const displayUserPlaylists = () => {
         return allPlaylists.map((playlist) => {
@@ -48,6 +58,7 @@ const Playlists = () => {
 
     return (
         <>
+            <Spinner isShown={isLoading}></Spinner>
             <RemovePlaylistModal
                 isShown={isDeleteModalOpen}
                 onCancelBtnClicked={onCancelDelete}
