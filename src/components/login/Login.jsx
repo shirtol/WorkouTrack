@@ -25,7 +25,7 @@ const Login = ({ location, history }) => {
             setIsLoading(false);
         }, 2000);
 
-        return clearTimeout(timeOutId);
+        return () => clearTimeout(timeOutId);
     }, []);
 
     return (
