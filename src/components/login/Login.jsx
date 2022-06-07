@@ -20,7 +20,10 @@ const Login = ({ location, history }) => {
 
     return (
         <StyledModalWrapper>
-            <StyledFlexWrapper flexDirection="column">
+            <StyledFlexWrapper
+                flexDirection="column"
+                flexDirectionTablet="column"
+            >
                 <StyledTitle>
                     UH OH! <br /> Looks like you're not signed in yet
                 </StyledTitle>
