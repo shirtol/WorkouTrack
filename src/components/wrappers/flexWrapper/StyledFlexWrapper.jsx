@@ -12,5 +12,6 @@ export const StyledFlexWrapper = styled.div`
     @media ${device.tablet} {
         flex-direction: ${(props) => props.flexDirectionTablet ?? "row"};
         justify-content: ${(props) => props.justifyContentTablet ?? "center"};
+        height: ${(props) => props.heightTablet ?? props.height ?? "auto"};
     }
 `;

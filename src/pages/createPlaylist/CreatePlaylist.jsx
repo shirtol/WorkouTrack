@@ -1857,7 +1857,9 @@ const CreatePlaylist = ({ location, history }) => {
             <StyledFlexWrapper
                 flexDirection="row"
                 justifyContent="flex-end"
-                // flexDirectionTablet="column"
+                heightTablet="50vh"
+                // justifyContentTablet="flex-start"
+                flexDirectionTablet="column"
             >
                 <StyledPlaylistContainer>
                     {displayPlaylistVideos()}
