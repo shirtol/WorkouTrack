@@ -5,8 +5,8 @@ import Months from "../../utils/months";
 import { useWorkoutsPerMonth } from "../../context/WorkoutsPerMonthContext";
 
 const Statistics = () => {
-    // const currDate = new Date();
-    // const currYear = currDate.getFullYear()
+    const currDate = new Date();
+    const currYear = currDate.getFullYear();
     const { allWorkoutsPerMonth } = useWorkoutsPerMonth();
 
     console.log(allWorkoutsPerMonth);
@@ -39,7 +39,7 @@ const Statistics = () => {
         labels: Object.keys(Months),
         datasets: [
             {
-                label: 2022,
+                label: currYear,
                 data: chartData,
                 backgroundColor: [
                     "rgba(247, 184, 38, 0.6)",
@@ -51,7 +51,7 @@ const Statistics = () => {
         ],
     };
 
-    return <Line data={data} />;
+    return <Line data={data} options={options} />;
 };
 
 export const options = {
@@ -64,7 +64,6 @@ export const options = {
     plugins: {
         title: {
             display: true,
-            text: "Chart.js Line Chart - Multi Axis",
         },
     },
     scales: {
