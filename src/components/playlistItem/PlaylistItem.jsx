@@ -6,11 +6,13 @@ import { StyledVideoImage } from "../videoCard/StyledVideoImage";
 import { StyledVideoTitle } from "../videoCard/StyledVideoTitle";
 
 const PlaylistItem = ({ playlist, onDeletePlaylistClicked }) => {
+    console.log(playlist);
     return (
         <StyledVideoCard>
             <StyledLink
                 to={{
-                    pathname: "/watch-playlist",
+                    pathname: `playlists/${playlist.id}`,
+                    item: playlist,
                 }}
             >
                 <StyledVideoImage

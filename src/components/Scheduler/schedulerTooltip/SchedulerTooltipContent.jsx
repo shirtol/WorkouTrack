@@ -20,7 +20,6 @@ const SchedulerTooltipContent = ({
                         ? appointmentData.playlist.videos[0].imageUrl
                         : tooltipImages.running
                 }
-                // src={tooltipImages.running}
                 alt=""
                 style={{ width: "100px" }}
             />
