@@ -6,15 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 import FirebaseProvider from "./context/FirebaseContext";
 import ExercisesProvider from "./context/ExercisesContext";
 import PlaylistsProvider from "./context/PlaylistsContext";
+import WorkoutsPerMonthProvider from "./context/WorkoutsPerMonthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
         <FirebaseProvider>
             <ExercisesProvider>
-                <PlaylistsProvider>
-                    <App />
-                </PlaylistsProvider>
+                <WorkoutsPerMonthProvider>
+                    <PlaylistsProvider>
+                        <App />
+                    </PlaylistsProvider>
+                </WorkoutsPerMonthProvider>
             </ExercisesProvider>
         </FirebaseProvider>
     </BrowserRouter>

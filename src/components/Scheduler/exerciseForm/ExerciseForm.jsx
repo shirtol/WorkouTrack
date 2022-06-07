@@ -20,7 +20,11 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
         return { ...acc, [curr.title]: idx };
     }, {});
 
-    const [playlist, setPlaylist] = useState(appointmentData.playlist ?? 0);
+    const currPlaylistIdx = allPlaylists.indexOf(appointmentData.playlist);
+
+    const [playlistIdx, setPlaylistIdx] = useState(
+        currPlaylistIdx === -1 ? 0 : currPlaylistIdx
+    );
 
     const [difficulty, setDifficulty] = useState(
         appointmentData.difficulty ?? difficulties.Beginner
@@ -34,7 +38,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
 
     useEffect(() => {
         appointmentData.difficulty = difficulty;
-        appointmentData.playlist = playlist;
+        appointmentData.playlist = allPlaylists[playlistIdx];
         appointmentData.environment = environment;
         appointmentData.equipments = selectedEquipments;
         appointmentData.workoutTypes = selectedWorkoutTypes;
@@ -56,8 +60,8 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
         console.log(nextValue);
         console.log(typeof nextValue);
 
-        onFieldChange({ playlist: allPlaylists[nextValue] });
-        setPlaylist(nextValue);
+        onFieldChange({ playlist: allPlaylists[nextValue] }); //!onFieldChange change the appointment data
+        setPlaylistIdx(nextValue);
     };
 
     const createPlaylistsArr = () => {
@@ -157,7 +161,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
 
             <AppointmentForm.Label text="Playlist" type="title" />
             <AppointmentForm.Select
-                value={playlist}
+                value={playlistIdx}
                 onValueChange={onPlaylistChange}
                 availableOptions={createPlaylistsArr()}
             ></AppointmentForm.Select>
