@@ -6,6 +6,7 @@ const PlaylistNameInput = ({ onPlaylistNameChange, value }) => {
         <StyledPlaylistNameInput
             onChange={onPlaylistNameChange}
             value={value}
+            maxLength="10"
         ></StyledPlaylistNameInput>
     );
 };

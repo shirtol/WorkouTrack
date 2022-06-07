@@ -16,9 +16,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     );
     const { allPlaylists } = usePlaylists();
 
-    const allPlaylistsTitles = allPlaylists.reduce((acc, curr, idx) => {
-        return { ...acc, [curr.title]: idx };
-    }, {});
+    const allPlaylistsTitles = allPlaylists.map((playlist) => playlist.title);
 
     const currPlaylistIdx = allPlaylists.indexOf(appointmentData.playlist);
 
@@ -65,7 +63,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     };
 
     const createPlaylistsArr = () => {
-        return Object.keys(allPlaylistsTitles).map((playlist, idx) => {
+        return allPlaylistsTitles.map((playlist, idx) => {
             return { text: playlist, id: idx };
         });
     };

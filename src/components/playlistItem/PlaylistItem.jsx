@@ -5,7 +5,11 @@ import { StyledVideoCard } from "../videoCard/StyledVideoCard";
 import { StyledVideoImage } from "../videoCard/StyledVideoImage";
 import { StyledVideoTitle } from "../videoCard/StyledVideoTitle";
 
-const PlaylistItem = ({ playlist, onDeletePlaylistClicked }) => {
+const PlaylistItem = ({
+    playlist,
+    onDeletePlaylistClicked,
+    hasDeleteIcon = true,
+}) => {
     return (
         <StyledVideoCard>
             <StyledLink
@@ -20,10 +24,12 @@ const PlaylistItem = ({ playlist, onDeletePlaylistClicked }) => {
                 ></StyledVideoImage>
                 <StyledVideoTitle>{playlist.title}</StyledVideoTitle>
             </StyledLink>
-            <StyledDeleteIcon
-                className="fa-solid fa-trash-can fa-2x"
-                onClick={() => onDeletePlaylistClicked(playlist)}
-            ></StyledDeleteIcon>
+            {hasDeleteIcon && (
+                <StyledDeleteIcon
+                    className="fa-solid fa-trash-can fa-2x"
+                    onClick={() => onDeletePlaylistClicked(playlist)}
+                ></StyledDeleteIcon>
+            )}
         </StyledVideoCard>
     );
 };
