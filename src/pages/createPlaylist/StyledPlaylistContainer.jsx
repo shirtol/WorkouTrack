@@ -22,11 +22,13 @@ export const StyledPlaylistContainer = styled.div`
         flex-direction: row;
         padding-left: 3rem;
         height: inherit;
-        top: 83%;
+        top: 78%;
         overflow-x: scroll;
-        overflow-y: hidden;
-        width: 90%;
+        /* overflow-y: hidden; */
+        width: 70%;
         align-self: center;
         height: 15%;
+        transform: translateX(-50%, -50%);
+        padding: 2rem;
     }
 `;
