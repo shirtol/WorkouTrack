@@ -53,6 +53,9 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     };
 
     const onPlaylistChange = (nextValue) => {
+        console.log(nextValue);
+        console.log(typeof nextValue);
+
         onFieldChange({ playlist: allPlaylists[nextValue] });
         setPlaylist(nextValue);
     };
