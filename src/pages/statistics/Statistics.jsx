@@ -3,13 +3,44 @@ import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import Months from "../../utils/months";
 import { useWorkoutsPerMonth } from "../../context/WorkoutsPerMonthContext";
+import { StyledStatisticsTitle } from "./StyledStatisticsTitle";
+import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
+import { Colors } from "../../utils/colors";
+
+export const options = {
+    responsive: true,
+    interaction: {
+        mode: "index",
+        intersect: false,
+    },
+    stacked: false,
+    plugins: {
+        title: {
+            display: true,
+            text: "Number Of Workouts Per Month",
+        },
+    },
+    scales: {
+        y: {
+            type: "linear",
+            display: true,
+            position: "left",
+            grid: {
+                display: false,
+            },
+        },
+        x: {
+            grid: {
+                display: false,
+            },
+        },
+    },
+};
 
 const Statistics = () => {
     const currDate = new Date();
     const currYear = currDate.getFullYear();
     const { allWorkoutsPerMonth } = useWorkoutsPerMonth();
-
-    console.log(allWorkoutsPerMonth);
 
     const getAllActiveMonths = () =>
         allWorkoutsPerMonth.map((workout) => ({
@@ -41,46 +72,20 @@ const Statistics = () => {
             {
                 label: currYear,
                 data: chartData,
-                backgroundColor: [
-                    "rgba(247, 184, 38, 0.6)",
-                    // "rgba(255, 255, 255, 0.6)",
-                    // "rgba(255, 255, 255, 0.6)",
-                ],
+                backgroundColor: Colors.orange,
                 borderWidth: 2,
             },
         ],
     };
 
-    return <Line data={data} options={options} />;
-};
-
-export const options = {
-    responsive: true,
-    interaction: {
-        mode: "index",
-        intersect: false,
-    },
-    stacked: false,
-    plugins: {
-        title: {
-            display: true,
-        },
-    },
-    scales: {
-        y: {
-            type: "linear",
-            display: true,
-            position: "left",
-        },
-        y1: {
-            type: "linear",
-            display: true,
-            position: "right",
-            grid: {
-                drawOnChartArea: false,
-            },
-        },
-    },
+    return (
+        <StyledFlexWrapper flexDirection="column">
+            <StyledStatisticsTitle>
+                Hard Work Pays Off, Keep Going!
+            </StyledStatisticsTitle>
+            <Line data={data} options={options} />
+        </StyledFlexWrapper>
+    );
 };
 
 export default Statistics;

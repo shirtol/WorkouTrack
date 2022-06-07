@@ -1,4 +1,6 @@
+import { height } from "@mui/system";
 import React from "react";
+import BgHomePage from "../../components/bgHomeAnimation/BgHomeAnimation";
 import NextWorkoutBox from "../../components/homePageBox/nextWorkoutBox/NextWorkoutBox";
 import NoWorkoutTodayBox from "../../components/homePageBox/noWorkoutTodayBox/NoWorkoutTodayBox";
 import { StyledHomePageBox } from "../../components/homePageBox/StyledHomePageBox";
@@ -18,7 +20,6 @@ const Home = () => {
             (exercise) =>
                 exercise.startDate.toDateString() === currDate.toDateString()
         );
-        console.log(todayWorkout);
         return todayWorkout;
     };
 
@@ -32,7 +33,6 @@ const Home = () => {
                     return todayWorkout.equipments[equipment] === true;
                 }
             );
-            console.log(equipmentsArr);
         }
         return equipmentsArr;
         // return (
@@ -51,34 +51,34 @@ const Home = () => {
                     return todayWorkout.workoutTypes[workoutType] === true;
                 }
             );
-            console.log(typesArr);
         }
         return typesArr;
     };
 
     return (
-        <StyledFlexWrapper>
-            <StyledFlexWrapper flexDirectionTablet="column">
-                <StyledFlexWrapper
-                    flexDirection="column"
-                    width="30%"
-                    tabletWidth="80%"
-                >
-                    <StyledHomePageBox width="100%" height="35vh">
-                        {todayWorkout === undefined ? (
-                            <NoWorkoutTodayBox></NoWorkoutTodayBox>
-                        ) : (
-                            <NextWorkoutBox
-                                environment={getKeyByValue(
-                                    workoutEnvironments,
-                                    todayWorkout.environment
-                                )}
-                                equipments={getAllEquipments().join(", ")}
-                                type={getWorkoutTypes().join(", ")}
-                            ></NextWorkoutBox>
-                        )}
-                    </StyledHomePageBox>
-                    <StyledHomePageBox width="100%" height="35vh">
+        <>
+            {/* <BgHomePage></BgHomePage> */}
+            <StyledFlexWrapper>
+                <StyledFlexWrapper flexDirectionTablet="column">
+                    <StyledFlexWrapper
+                        flexDirection="column"
+                        width="30%"
+                        tabletWidth="80%"
+                    >
+                        <StyledHomePageBox width="100%" height="35vh">
+                            {todayWorkout === undefined ? (
+                                <NoWorkoutTodayBox></NoWorkoutTodayBox>
+                            ) : (
+                                <NextWorkoutBox
+                                    environment={getKeyByValue(
+                                        workoutEnvironments,
+                                        todayWorkout.environment
+                                    )}
+                                    equipments={getAllEquipments().join(", ")}
+                                    type={getWorkoutTypes().join(", ")}
+                                ></NextWorkoutBox>
+                            )}
+                        </StyledHomePageBox>
                         {todayWorkout === undefined ? (
                             <NoWorkoutTodayBox></NoWorkoutTodayBox>
                         ) : (
@@ -87,13 +87,13 @@ const Home = () => {
                                 hasDeleteIcon={false}
                             ></PlaylistItem>
                         )}
+                    </StyledFlexWrapper>
+                    <StyledHomePageBox width="60%" height="80vh">
+                        <Statistics></Statistics>
                     </StyledHomePageBox>
                 </StyledFlexWrapper>
-                <StyledHomePageBox width="60%" height="80vh">
-                    <Statistics></Statistics>
-                </StyledHomePageBox>
             </StyledFlexWrapper>
-        </StyledFlexWrapper>
+        </>
     );
 };
 

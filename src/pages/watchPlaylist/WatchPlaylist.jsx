@@ -54,7 +54,6 @@ const WatchPlaylist = ({ location }) => {
                 workoutEl?.month === stringyMonth &&
                 workoutEl?.year === currYear
         );
-        console.log(workoutObj);
         if (workoutObj !== undefined) {
             workoutObj.numOfWorkouts += 1;
             const newArrayOfWorkoutsCounts = allWorkoutsPerMonth.map(

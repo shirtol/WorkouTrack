@@ -1,5 +1,6 @@
 import React from "react";
 import { StyledFlexWrapper } from "../../wrappers/flexWrapper/StyledFlexWrapper";
+import { StyledSpan } from "../StyledSpan";
 import { StyledTodayWorkoutSubTitle } from "../StyledtodayworkoutSubTitle";
 import { StyledTodayWorkoutTitle } from "../StyledTodayWorkoutTitle";
 
@@ -14,13 +15,13 @@ const NextWorkoutBox = ({ environment, equipments, type }) => {
                 Start your next workout now!
             </StyledTodayWorkoutTitle>
             <StyledTodayWorkoutSubTitle>
-                place: <br /> {environment}
+                <StyledSpan>place:</StyledSpan> <br /> {environment}
             </StyledTodayWorkoutSubTitle>
             <StyledTodayWorkoutSubTitle>
-                Equipments: <br /> {equipments}
+                <StyledSpan>Equipments:</StyledSpan> <br /> {equipments}
             </StyledTodayWorkoutSubTitle>
             <StyledTodayWorkoutSubTitle>
-                Type: <br /> {type}
+                <StyledSpan>Type:</StyledSpan> <br /> {type}
             </StyledTodayWorkoutSubTitle>
         </StyledFlexWrapper>
     );
