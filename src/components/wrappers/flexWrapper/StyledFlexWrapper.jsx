@@ -10,7 +10,7 @@ export const StyledFlexWrapper = styled.div`
     justify-content: ${(props) => props.justifyContent ?? "center"};
     height: ${(props) => props.height ?? "auto"};
     @media ${device.tablet} {
-        /* flex-direction: ${(props) => props.flexDirectionTablet ?? "row"}; */
+        flex-direction: ${(props) => props.flexDirectionTablet ?? "row"};
         justify-content: ${(props) => props.justifyContentTablet ?? "center"};
     }
 `;
