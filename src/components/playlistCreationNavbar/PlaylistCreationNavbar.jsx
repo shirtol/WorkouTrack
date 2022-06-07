@@ -9,6 +9,7 @@ const PlaylistCreationNavbar = ({
     onPlaylistNameChange,
     playlistName,
     history,
+    disableSave,
 }) => {
     const onGoBackClicked = () => {
         history.goBack();
@@ -32,8 +33,11 @@ const PlaylistCreationNavbar = ({
                     ></PlaylistNameInput>
                 </div>
 
-                <StyledButton onClick={onSavePlaylistClick}>
-                    <i class="fa-solid fa-floppy-disk"></i>
+                <StyledButton
+                    onClick={onSavePlaylistClick}
+                    disabled={disableSave}
+                >
+                    <i className="fa-solid fa-floppy-disk"></i>
                 </StyledButton>
             </StyledFlexWrapper>
         </StyledFlexWrapper>

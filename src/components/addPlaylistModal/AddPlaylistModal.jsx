@@ -19,7 +19,7 @@ const AddPlaylistModal = ({ isShown }) => {
                         placeholder="Playlist name..."
                         onChange={onInputChange}
                         value={playlistName}
-                        maxLength="10"
+                        maxLength="12"
                     ></StyledInput>
                     <StyledLink
                         disabled={!playlistName.length}

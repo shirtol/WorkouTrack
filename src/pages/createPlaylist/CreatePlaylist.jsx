@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import youtubeApi from "../../apis/youtubeApi";
 import { StyledButton } from "../../components/button/StyledButton";
 import { StyledInput } from "../../components/input/StyledInput";
@@ -100,6 +100,7 @@ const CreatePlaylist = ({ location, history }) => {
                 onPlaylistNameChange={onPlaylistNameChange}
                 playlistName={playlistName}
                 history={history}
+                disableSave={playlistVideos.length === 0}
             ></PlaylistCreationNavbar>
             <StyledFlexWrapper>
                 <StyledInput
@@ -109,7 +110,7 @@ const CreatePlaylist = ({ location, history }) => {
                     value={term}
                 ></StyledInput>
                 <StyledButton onClick={onBtnClick}>
-                    <i class="fas fa-search"></i>
+                    <i className="fas fa-search"></i>
                 </StyledButton>
             </StyledFlexWrapper>
 

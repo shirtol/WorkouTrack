@@ -51,6 +51,7 @@ const Playlists = () => {
                 <PlaylistItem
                     playlist={playlist}
                     onDeletePlaylistClicked={onDeleteIconClicked}
+                    key={playlist.id}
                 ></PlaylistItem>
             );
         });
