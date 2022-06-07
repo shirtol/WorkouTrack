@@ -25,6 +25,7 @@ const WatchPlaylist = ({ location }) => {
                     isClickableImage={false}
                     clickableIconClass="fa-solid fa-circle-play fa-2x"
                     onIconClicked={onPlayVideo}
+                    textWidth="12rem"
                 ></VideoItem>
             );
         });

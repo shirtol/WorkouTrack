@@ -8,8 +8,12 @@ export const StyledAddVideoBtn = styled.i`
     position: absolute;
     right: 7px;
     bottom: 3px;
+    margin: 0;
+    padding: 0;
     cursor: pointer;
     @media ${device.laptop} {
         position: static;
+        padding: 0;
+        padding-top: 6px;
     }
 `;
