@@ -14,4 +14,8 @@ export const StyledGridWrapper = styled.div`
         grid-template-columns: ${(props) =>
             props.gridTemplateColsTablet ?? "repeat(3, 1fr)"};
     }
+    @media ${device.mobileL} {
+        grid-template-columns: ${(props) =>
+            props.gridTemplateColsMobileL ?? "repeat(2, 1fr)"};
+    }
 `;

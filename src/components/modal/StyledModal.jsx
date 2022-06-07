@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../utils/mediaQuerySizes";
 
 export const StyledModal = styled.div`
     width: 40%;
@@ -31,5 +32,9 @@ export const StyledModal = styled.div`
         background-color: #ff4e00;
         background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
         border-radius: 4px;
+    }
+    @media ${device.tablet} {
+        width: 60%;
+        height: 45%;
     }
 `;

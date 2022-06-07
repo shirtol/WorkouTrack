@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../utils/mediaQuerySizes";
 
 export const StyledInput = styled.input`
     font-family: "Poppins", sans-serif;
@@ -11,4 +12,10 @@ export const StyledInput = styled.input`
         rgba(14, 30, 37, 0.32) 0px 2px 10px 0px;
     user-select: all;
     background: ${(props) => props.color ?? "#fff"};
+    @media ${device.tablet} {
+        width: 20rem;
+    }
+    @media ${device.mobileM} {
+        width: 15rem;
+    }
 `;

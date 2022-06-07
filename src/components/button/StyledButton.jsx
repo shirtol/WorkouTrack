@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../../utils/colors";
+import device from "../../utils/mediaQuerySizes";
 
 export const StyledButton = styled.div`
     padding: 0.8rem 2.8rem;
@@ -23,4 +24,12 @@ export const StyledButton = styled.div`
     }
     pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
     opacity: ${(props) => (props.disabled ? 0.7 : 1)};
+    @media ${device.tablet} {
+        padding: 0.6rem 2.4rem;
+        font-size: 1.5rem;
+    }
+    @media ${device.mobileM} {
+        padding: 0.4rem 2rem;
+        font-size: 1.2rem;
+    }
 `;
