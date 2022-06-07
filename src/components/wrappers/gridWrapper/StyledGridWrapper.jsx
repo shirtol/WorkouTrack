@@ -10,9 +10,11 @@ export const StyledGridWrapper = styled.div`
     grid-auto-rows: 1fr;
     height: max-content;
     overflow-y: scroll;
+    align-self: ${(props) => props.alignSelf ?? "center"};
     @media ${device.tablet} {
         grid-template-columns: ${(props) =>
             props.gridTemplateColsTablet ?? "repeat(3, 1fr)"};
+        height: ${(props) => props.heightTablet ?? "max-content"};
     }
     @media ${device.mobileL} {
         grid-template-columns: ${(props) =>

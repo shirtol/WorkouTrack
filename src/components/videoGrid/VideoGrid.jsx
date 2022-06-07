@@ -33,7 +33,16 @@ const VideoGrid = ({
             ></VideoItem>
         );
     });
-    return <StyledGridWrapper>{renderedGrid}</StyledGridWrapper>;
+    return (
+        <StyledGridWrapper
+            heightTablet="70%"
+            alignSelf="end"
+            gridTemplateColsTablet="repeat(2, 1fr)"
+            gridTemplateColsMobileL="repeat(1, 1fr)"
+        >
+            {renderedGrid}
+        </StyledGridWrapper>
+    );
 };
 
 export default VideoGrid;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../../utils/colors";
+import device from "../../utils/mediaQuerySizes";
 
 export const StyledPlaylistContainer = styled.div`
     display: flex;
@@ -17,4 +18,17 @@ export const StyledPlaylistContainer = styled.div`
     left: 2rem;
     overflow-y: scroll;
     border: 1.5px solid ${Colors.orange};
+    @media ${device.tablet} {
+        flex-direction: row;
+        padding-left: 3rem;
+        height: inherit;
+        top: 78%;
+        overflow-x: scroll;
+        /* overflow-y: hidden; */
+        width: 70%;
+        align-self: center;
+        height: 15%;
+        transform: translateX(-50%, -50%);
+        padding: 2rem;
+    }
 `;

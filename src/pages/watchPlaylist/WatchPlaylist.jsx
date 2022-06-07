@@ -47,6 +47,7 @@ const WatchPlaylist = ({ location }) => {
                 justifyContent="space-between"
                 width="90%"
                 height="100vh"
+                flexDirectionTablet="column-reverse"
             >
                 <StyledPlaylistContainer position="static">
                     {displayPlaylistVideos()}
