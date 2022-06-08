@@ -41,7 +41,6 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
         appointmentData.equipments = selectedEquipments;
         appointmentData.workoutTypes = selectedWorkoutTypes;
         appointmentData.owner = currentUser.uid;
-        console.log(appointmentData);
         onFieldChange({ environment: environment });
         onFieldChange({ playlist: allPlaylists[playlistIdx] });
         onFieldChange({ difficulty: difficulty });
@@ -70,9 +69,11 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     };
 
     const createPlaylistsArr = () => {
-        return allPlaylistsTitles.map((playlist, idx) => {
+        const noPlaylistObj = { text: "none", id: allPlaylistsTitles.length };
+        const playlistsArr = allPlaylistsTitles.map((playlist, idx) => {
             return { text: playlist, id: idx };
         });
+        return [...playlistsArr, noPlaylistObj];
     };
 
     const onDifficultyChange = (nextValue) => {

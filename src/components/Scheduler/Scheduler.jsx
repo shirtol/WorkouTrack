@@ -32,15 +32,39 @@ const Calender = () => {
     const { db, currentUser } = useFirebase();
     const [isLoading, setIsLoading] = useState(false);
 
+    // const handleSetDocument = () => {
+
+    // }
+
+    //!TODO: Separate to smaller functions!!
     const commitChanges = ({ added, changed, deleted }) => {
         let data = allExercises;
+
+        const isPlaylistNone = data.find(
+            (exercise) => exercise.playlist === undefined
+        );
+
         if (added) {
             const id = uuid();
-            const newDataObj = {
-                ...emptyAppointment,
-                ...added,
-                owner: currentUser.uid,
-            };
+            let newDataObj = {};
+            if (isPlaylistNone !== undefined) {
+                newDataObj = {
+                    ...emptyAppointment,
+                    ...added,
+                    owner: currentUser.uid,
+                };
+            } else {
+                newDataObj = {
+                    ...emptyAppointment,
+                    ...added,
+                    owner: currentUser.uid,
+                    playlist: {
+                        owner: currentUser.uid,
+                        title: "none",
+                        videos: [],
+                    },
+                };
+            }
             data = [...data, { ...newDataObj, id }];
             setIsLoading(true);
             setDocument(db, "workout", newDataObj, id);
