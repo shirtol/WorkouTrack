@@ -15,6 +15,7 @@ import CreatePlaylist from "../createPlaylist/CreatePlaylist";
 import PlaylistCreationNavbar from "../../components/playlistCreationNavbar/PlaylistCreationNavbar";
 import WatchPlaylist from "../watchPlaylist/WatchPlaylist";
 import HamburgerMenu from "../../components/hamburgerMenu/HamburgerMenu";
+import ErrorPage from "../error/ErrorPage/ErrorPage";
 
 const Routes = () => {
     return (
@@ -47,31 +48,34 @@ const DefaultContainer = () => (
     <>
         <HamburgerMenu></HamburgerMenu>
         <Navbar></Navbar>
-        <AuthenticatedRoute exact path="/">
-            <Home></Home>
-        </AuthenticatedRoute>
-        <AuthenticatedRoute exact path="/schedule">
-            <Schedule></Schedule>
-        </AuthenticatedRoute>
-        <AuthenticatedRoute exact path="/playlists">
-            <Playlists></Playlists>
-        </AuthenticatedRoute>
-        {/* <AuthenticatedRoute exact path="/statistics">
+        <Switch>
+            <AuthenticatedRoute exact path="/">
+                <Home></Home>
+            </AuthenticatedRoute>
+            <AuthenticatedRoute exact path="/schedule">
+                <Schedule></Schedule>
+            </AuthenticatedRoute>
+            <AuthenticatedRoute exact path="/playlists">
+                <Playlists></Playlists>
+            </AuthenticatedRoute>
+            {/* <AuthenticatedRoute exact path="/statistics">
             <Statistics></Statistics>
         </AuthenticatedRoute> */}
-        <AuthenticatedRoute
-            exact
-            path="/playlists/:id"
-            renderChild={(location, history, ...props) => {
-                return (
-                    <WatchPlaylist
-                        location={location}
-                        history={history}
-                        {...props}
-                    ></WatchPlaylist>
-                );
-            }}
-        ></AuthenticatedRoute>
-        <Route exact path="/login" component={Login}></Route>
+            <AuthenticatedRoute
+                exact
+                path="/playlists/:id"
+                renderChild={(location, history, ...props) => {
+                    return (
+                        <WatchPlaylist
+                            location={location}
+                            history={history}
+                            {...props}
+                        ></WatchPlaylist>
+                    );
+                }}
+            ></AuthenticatedRoute>
+            <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/*" component={ErrorPage}></Route>
+        </Switch>
     </>
 );
