@@ -7,7 +7,7 @@ export const emptyAppointment = {
     endDate: new Date(),
     environment: 0,
     equipments: createEquipmentsObj(),
-    playlist: 0,
+    playlist: undefined,
     startDate: new Date(),
     title: "",
     workoutTypes: createWorkoutTypesObj(),
