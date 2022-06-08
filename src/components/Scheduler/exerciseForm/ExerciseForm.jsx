@@ -21,7 +21,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     const currPlaylistIdx = allPlaylists.indexOf(appointmentData.playlist);
 
     const [playlistIdx, setPlaylistIdx] = useState(
-        currPlaylistIdx === -1 ? 0 : currPlaylistIdx
+        currPlaylistIdx === -1 ? allPlaylists.length : currPlaylistIdx
     );
 
     const [difficulty, setDifficulty] = useState(

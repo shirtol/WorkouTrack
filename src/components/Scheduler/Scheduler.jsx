@@ -41,10 +41,11 @@ const Calender = () => {
         let data = allExercises;
 
         const isPlaylistNone = data.find(
-            (exercise) => exercise.playlist === undefined
+            (exercise) => exercise.playlist.title === "none"
         );
 
         if (added) {
+            console.log(added);
             const id = uuid();
             let newDataObj = {};
             if (isPlaylistNone !== undefined) {
