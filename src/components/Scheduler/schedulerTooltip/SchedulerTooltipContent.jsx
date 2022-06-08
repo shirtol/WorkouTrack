@@ -3,6 +3,7 @@ import React from "react";
 import { tooltipImages } from "../../../utils/images";
 import { StyledLink } from "../../link/StyledLink";
 import { StyledTooltipWrapper } from "../appointment/styled/StyledTooltipWrapper";
+import { StyledTooltipImage } from "./StyledTooltipImage";
 import { StyledTooltipLink, StyledTooltipText } from "./StyledTooltipLink";
 
 const SchedulerTooltipContent = ({
@@ -16,15 +17,14 @@ const SchedulerTooltipContent = ({
             appointmentData={appointmentData}
         >
             <StyledTooltipWrapper>
-                <img
+                <StyledTooltipImage
                     src={
                         appointmentData.playlist.title !== "none"
                             ? appointmentData.playlist.videos[0].imageUrl
                             : tooltipImages.running
                     }
-                    alt=""
-                    style={{ width: "100px" }}
-                />
+                    alt="workout-preview"
+                ></StyledTooltipImage>
                 {appointmentData.playlist.title !== "none" && (
                     <StyledLink
                         to={{
