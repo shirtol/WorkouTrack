@@ -56,9 +56,9 @@ const DefaultContainer = () => (
         <AuthenticatedRoute exact path="/playlists">
             <Playlists></Playlists>
         </AuthenticatedRoute>
-        <AuthenticatedRoute exact path="/statistics">
+        {/* <AuthenticatedRoute exact path="/statistics">
             <Statistics></Statistics>
-        </AuthenticatedRoute>
+        </AuthenticatedRoute> */}
         <AuthenticatedRoute
             exact
             path="/playlists/:id"

@@ -15,9 +15,9 @@ const Navbar = () => {
             <StyledNavbarItem>
                 <NavLink to="/playlists">Playlists</NavLink>
             </StyledNavbarItem>
-            <StyledNavbarItem>
+            {/* <StyledNavbarItem>
                 <NavLink to="/statistics">Statistics</NavLink>
-            </StyledNavbarItem>
+            </StyledNavbarItem> */}
         </StyledNavbar>
     );
 };
