@@ -32,61 +32,59 @@ const Calender = () => {
     const { db, currentUser } = useFirebase();
     const [isLoading, setIsLoading] = useState(false);
 
-    // const handleSetDocument = () => {
+    let data = allExercises;
 
-    // }
+    const handleAddDocument = (added) => {
+        const id = uuid();
+        let newDataObj = {
+            ...added,
+            owner: currentUser.uid,
+        };
+        if (added.playlist === undefined) {
+            newDataObj.playlist = {
+                owner: currentUser.uid,
+                title: "none",
+                videos: [],
+            };
+        }
+        data = [...data, { ...newDataObj, id }];
+        setIsLoading(true);
+        setDocument(db, "workout", newDataObj, id);
+        setIsLoading(false);
+    };
 
-    //!TODO: Separate to smaller functions!!
-    const commitChanges = ({ added, changed, deleted }) => {
-        let data = allExercises;
-
-        const isPlaylistNone = data.find(
-            (exercise) => exercise.playlist.title === "none"
-        );
-
-        if (added) {
-            console.log(added);
-            const id = uuid();
-            let newDataObj = {};
-            if (isPlaylistNone !== undefined) {
-                newDataObj = {
-                    ...emptyAppointment,
-                    ...added,
-                    owner: currentUser.uid,
-                };
-            } else {
-                newDataObj = {
-                    ...emptyAppointment,
-                    ...added,
-                    owner: currentUser.uid,
-                    playlist: {
+    const handleChangeDocument = (changed) => {
+        console.log(changed);
+        data = data.map((exercise) => {
+            if (changed[exercise.id]) {
+                setIsLoading(true);
+                if (changed[exercise.id].playlist === undefined) {
+                    changed[exercise.id].playlist = {
                         owner: currentUser.uid,
                         title: "none",
                         videos: [],
-                    },
-                };
+                    };
+                }
+                setDocument(
+                    db,
+                    "workout",
+                    { ...exercise, ...changed[exercise.id] },
+                    exercise.id
+                );
+                setIsLoading(false);
+                return { ...exercise, ...changed[exercise.id] };
+            } else {
+                return exercise;
             }
-            data = [...data, { ...newDataObj, id }];
-            setIsLoading(true);
-            setDocument(db, "workout", newDataObj, id);
-            setIsLoading(false);
+        });
+    };
+
+    const commitChanges = ({ added, changed, deleted }) => {
+        if (added) {
+            handleAddDocument(added);
         }
         if (changed) {
-            data = data.map((exercise) => {
-                if (changed[exercise.id]) {
-                    setIsLoading(true);
-                    setDocument(
-                        db,
-                        "workout",
-                        { ...exercise, ...changed[exercise.id] },
-                        exercise.id
-                    );
-                    setIsLoading(false);
-                    return { ...exercise, ...changed[exercise.id] };
-                } else {
-                    return exercise;
-                }
-            });
+            handleChangeDocument(changed);
         }
         if (deleted !== undefined) {
             data = data.filter((exercise) => {
