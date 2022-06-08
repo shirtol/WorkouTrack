@@ -2,6 +2,8 @@ import { AppointmentTooltip } from "@devexpress/dx-react-scheduler-material-ui";
 import React from "react";
 import { tooltipImages } from "../../../utils/images";
 import { StyledLink } from "../../link/StyledLink";
+import { StyledTooltipWrapper } from "../appointment/styled/StyledTooltipWrapper";
+import { StyledTooltipLink, StyledTooltipText } from "./StyledTooltipLink";
 
 const SchedulerTooltipContent = ({
     children,
@@ -13,25 +15,27 @@ const SchedulerTooltipContent = ({
             {...restProps}
             appointmentData={appointmentData}
         >
-            <img
-                src={
-                    appointmentData.playlist.title !== "none"
-                        ? appointmentData.playlist.videos[0].imageUrl
-                        : tooltipImages.running
-                }
-                alt=""
-                style={{ width: "100px" }}
-            />
-            {appointmentData.playlist.title !== "none" && (
-                <StyledLink
-                    to={{
-                        pathname: `playlists/${appointmentData.playlist.id}`,
-                        item: appointmentData.playlist,
-                    }}
-                >
-                    Start Workout!
-                </StyledLink>
-            )}
+            <StyledTooltipWrapper>
+                <img
+                    src={
+                        appointmentData.playlist.title !== "none"
+                            ? appointmentData.playlist.videos[0].imageUrl
+                            : tooltipImages.running
+                    }
+                    alt=""
+                    style={{ width: "100px" }}
+                />
+                {appointmentData.playlist.title !== "none" && (
+                    <StyledLink
+                        to={{
+                            pathname: `playlists/${appointmentData.playlist.id}`,
+                            item: appointmentData.playlist,
+                        }}
+                    >
+                        <StyledTooltipLink>Start Workout!</StyledTooltipLink>
+                    </StyledLink>
+                )}
+            </StyledTooltipWrapper>
         </AppointmentTooltip.Content>
     );
 };

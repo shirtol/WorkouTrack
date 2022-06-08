@@ -22,3 +22,7 @@ html *::-webkit-scrollbar-thumb {
     background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
     border-radius: 4px;
 }
+
+.css-11ngvp6 .Content-lens {
+    color: #e66d39a3 !important;
+}
