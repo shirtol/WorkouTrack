@@ -44,7 +44,7 @@ const WatchPlaylist = ({ location }) => {
         setCurrVideoPlaying(video);
     };
 
-    const onEndWorkoutClicked = () => {
+    const onEndWorkout = () => {
         const currDate = new Date();
         const monthNum = currDate.getMonth();
         const stringyMonth = getKeyByValue(Months, monthNum);
@@ -80,12 +80,13 @@ const WatchPlaylist = ({ location }) => {
         const idxOfVideo = playlistItem.videos.indexOf(currVideoPlaying);
         if (idxOfVideo < playlistItem.videos.length - 1) {
             setCurrVideoPlaying(playlistItem.videos[idxOfVideo + 1]);
+        } else {
+            onEndWorkout();
         }
     };
 
     return (
         <>
-            <Button onClick={onEndWorkoutClicked}>End Workout</Button>
             <StyledFlexWrapper>
                 <StyledFlexWrapper
                     justifyContent="space-between"
