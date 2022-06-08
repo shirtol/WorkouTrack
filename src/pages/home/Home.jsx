@@ -66,6 +66,7 @@ const Home = () => {
                 heightMobileL="100vh"
                 mobileLgap="7rem"
                 overflowY="scroll"
+                marginTopTablet="6rem"
             >
                 <StyledFlexWrapper
                     flexDirection="column"

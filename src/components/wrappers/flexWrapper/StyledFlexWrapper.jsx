@@ -16,6 +16,7 @@ export const StyledFlexWrapper = styled.div`
         height: ${(props) => props.heightTablet ?? props.height ?? "auto"};
         width: ${(props) => props.tabletWidth ?? props.width};
         gap: ${(props) => props.tabletGap ?? props.gap ?? "2rem"};
+        margin-top: ${(props) => props.marginTopTablet ?? 0};
     }
     @media ${device.mobileL} {
         flex-direction: ${(props) =>
