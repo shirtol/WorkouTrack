@@ -34,13 +34,33 @@ const Calender = () => {
 
     const commitChanges = ({ added, changed, deleted }) => {
         let data = allExercises;
+
+        const isPlaylistNone = data.find(
+            (exercise) => exercise.playlist === undefined
+        );
+
+        console.log(data);
         if (added) {
             const id = uuid();
-            const newDataObj = {
-                ...emptyAppointment,
-                ...added,
-                owner: currentUser.uid,
-            };
+            let newDataObj = {};
+            if (isPlaylistNone !== undefined) {
+                newDataObj = {
+                    ...emptyAppointment,
+                    ...added,
+                    owner: currentUser.uid,
+                };
+            } else {
+                newDataObj = {
+                    ...emptyAppointment,
+                    ...added,
+                    owner: currentUser.uid,
+                    playlist: {
+                        owner: currentUser.uid,
+                        title: "none",
+                        videos: [],
+                    },
+                };
+            }
             data = [...data, { ...newDataObj, id }];
             setIsLoading(true);
             setDocument(db, "workout", newDataObj, id);
