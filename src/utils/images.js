@@ -7,3 +7,7 @@ export const buttonsImages = {
 export const tooltipImages = {
     running: appImages("./tooltip/running.png"),
 };
+
+export const logo = {
+    logo: appImages("./logo/logo.png"),
+};
