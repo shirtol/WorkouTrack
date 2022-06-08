@@ -57,42 +57,63 @@ const Home = () => {
 
     return (
         <>
-            {/* <BgHomePage></BgHomePage> */}
-            <StyledFlexWrapper>
-                <StyledFlexWrapper flexDirectionTablet="column">
-                    <StyledFlexWrapper
-                        flexDirection="column"
-                        width="30%"
-                        tabletWidth="80%"
-                    >
-                        <StyledHomePageBox width="100%" height="35vh">
-                            {todayWorkout === undefined ? (
-                                <NoWorkoutTodayBox></NoWorkoutTodayBox>
-                            ) : (
-                                <NextWorkoutBox
-                                    environment={getKeyByValue(
-                                        workoutEnvironments,
-                                        todayWorkout.environment
-                                    )}
-                                    equipments={getAllEquipments().join(", ")}
-                                    type={getWorkoutTypes().join(", ")}
-                                ></NextWorkoutBox>
-                            )}
-                        </StyledHomePageBox>
+            {/* <StyledFlexWrapper> */}
+            <StyledFlexWrapper
+                flexDirectionTablet="column"
+                height="80vh"
+                heightTablet="90vh"
+                flexDirectionMobileL="column"
+                heightMobileL="100vh"
+                mobileLgap="7rem"
+                overflowY="scroll"
+            >
+                <StyledFlexWrapper
+                    flexDirection="column"
+                    width="30%"
+                    tabletWidth="80%"
+                    justifyContent="space-between"
+                    height="100%"
+                    flexDirectionMobileL="column"
+                    heightMobileL="40%"
+                >
+                    <StyledHomePageBox width="100%" height="60%">
                         {todayWorkout === undefined ? (
                             <NoWorkoutTodayBox></NoWorkoutTodayBox>
                         ) : (
+                            <NextWorkoutBox
+                                environment={getKeyByValue(
+                                    workoutEnvironments,
+                                    todayWorkout.environment
+                                )}
+                                equipments={getAllEquipments().join(", ")}
+                                type={getWorkoutTypes().join(", ")}
+                            ></NextWorkoutBox>
+                        )}
+                    </StyledHomePageBox>
+                    {todayWorkout === undefined ? (
+                        <NoWorkoutTodayBox></NoWorkoutTodayBox>
+                    ) : (
+                        <StyledHomePageBox width="100%" height="60%">
                             <PlaylistItem
+                                alignSelf="center"
+                                boxShadow="none"
                                 playlist={todayWorkout.playlist}
                                 hasDeleteIcon={false}
                             ></PlaylistItem>
-                        )}
-                    </StyledFlexWrapper>
-                    <StyledHomePageBox width="60%" height="80vh">
-                        <Statistics></Statistics>
-                    </StyledHomePageBox>
+                        </StyledHomePageBox>
+                    )}
                 </StyledFlexWrapper>
+                <StyledHomePageBox
+                    width="60%"
+                    height="97%"
+                    tabletOrder="0"
+                    tabletWidth="80%"
+                    heightMobileL="30%"
+                >
+                    <Statistics></Statistics>
+                </StyledHomePageBox>
             </StyledFlexWrapper>
+            {/* </StyledFlexWrapper> */}
         </>
     );
 };

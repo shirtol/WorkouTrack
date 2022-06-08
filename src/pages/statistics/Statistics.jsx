@@ -14,6 +14,11 @@ export const options = {
         intersect: false,
     },
     stacked: false,
+    legend: {
+        labels: {
+            fontSize: "10px",
+        },
+    },
     plugins: {
         title: {
             display: true,
@@ -33,6 +38,7 @@ export const options = {
             grid: {
                 display: false,
             },
+            // display: false,
         },
     },
 };
@@ -67,7 +73,7 @@ const Statistics = () => {
     const chartData = getArrayOfWorkoutCounts();
 
     const data = {
-        labels: Object.keys(Months),
+        labels: Object.keys(Months).map((month) => month.slice(0, 3)),
         datasets: [
             {
                 label: currYear,
@@ -79,7 +85,11 @@ const Statistics = () => {
     };
 
     return (
-        <StyledFlexWrapper flexDirection="column">
+        <StyledFlexWrapper
+            flexDirection="column"
+            flexDirectionTablet="column"
+            flexDirectionMobileL="column"
+        >
             <StyledStatisticsTitle>
                 Hard Work Pays Off, Keep Going!
             </StyledStatisticsTitle>

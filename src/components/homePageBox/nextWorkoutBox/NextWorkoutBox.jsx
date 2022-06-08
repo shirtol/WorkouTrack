@@ -8,8 +8,10 @@ const NextWorkoutBox = ({ environment, equipments, type }) => {
     return (
         <StyledFlexWrapper
             flexDirection="column"
-            gap="0"
+            gap="3rem"
             flexDirectionTablet="column"
+            tabletGap="1rem"
+            flexDirectionMobileL="column"
         >
             <StyledTodayWorkoutTitle>
                 Start your next workout now!
