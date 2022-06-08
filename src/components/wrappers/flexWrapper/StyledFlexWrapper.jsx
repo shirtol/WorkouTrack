@@ -18,7 +18,8 @@ export const StyledFlexWrapper = styled.div`
         gap: ${(props) => props.tabletGap ?? props.gap ?? "2rem"};
     }
     @media ${device.mobileL} {
-        flex-direction: ${(props) => props.flexDirectionMobileL ?? "row"};
+        flex-direction: ${(props) =>
+            props.flexDirectionMobileL ?? props.flexDirectionTablet ?? "row"};
         height: ${(props) =>
             props.heightMobileL ??
             props.heightTablet ??
