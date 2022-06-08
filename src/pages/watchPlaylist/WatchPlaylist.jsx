@@ -1,5 +1,5 @@
 import YouTube from "react-youtube";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyledPlaylistContainer } from "../createPlaylist/StyledPlaylistContainer";
 import VideoItem from "../../components/videoItem/VideoItem";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
@@ -11,20 +11,30 @@ import { useWorkoutsPerMonth } from "../../context/WorkoutsPerMonthContext";
 import { useFirebase } from "../../context/FirebaseContext";
 import { setDocument } from "../../utils/firebaseUtils";
 import { v4 as uuid } from "uuid";
+import { usePlaylists } from "../../context/PlaylistsContext";
 
 const WatchPlaylist = ({ location }) => {
-    const playlistItem = location.item;
+    const { allPlaylists } = usePlaylists();
+    const [playlistItem, setPlaylistItem] = useState();
+
     const [currVideoPlaying, setCurrVideoPlaying] = useState(
-        playlistItem.videos[0]
+        playlistItem?.videos[0]
     );
     const { allWorkoutsPerMonth, setAllWorkoutsPerMonth } =
         useWorkoutsPerMonth();
     const { db, currentUser } = useFirebase();
 
-    const videoSrc = `https://www.youtube.com/embed/${playlistItem.videos[0].id}`;
+    useEffect(() => {
+        const item =
+            location.item ??
+            allPlaylists.find(
+                (playlist) => playlist.id === location.pathname.split("/")[2]
+            );
+        setPlaylistItem(item);
+    }, [allPlaylists]);
 
     const displayPlaylistVideos = () => {
-        return playlistItem.videos.map((video) => {
+        return playlistItem?.videos.map((video) => {
             return (
                 <VideoItem
                     key={video.id}
@@ -44,23 +54,35 @@ const WatchPlaylist = ({ location }) => {
         setCurrVideoPlaying(video);
     };
 
-    const onEndWorkout = () => {
+    const getDate = () => {
         const currDate = new Date();
         const monthNum = currDate.getMonth();
         const stringyMonth = getKeyByValue(Months, monthNum);
         const currYear = currDate.getFullYear();
-        const workoutObj = allWorkoutsPerMonth.find(
+        return { stringyMonth, currYear };
+    };
+
+    const getWorkoutObj = (stringyMonth, currYear) =>
+        allWorkoutsPerMonth.find(
             (workoutEl) =>
                 workoutEl?.month === stringyMonth &&
                 workoutEl?.year === currYear
         );
+
+    const createArrOfWorkoutsCount = (workoutObj) => {
+        const newObj = { ...workoutObj };
+        newObj.numOfWorkouts += 1;
+        return allWorkoutsPerMonth.map((workoutEl) =>
+            workoutEl.id === newObj.id ? newObj : workoutEl
+        );
+    };
+
+    const onEndWorkout = () => {
+        const { stringyMonth, currYear } = getDate();
+        const workoutObj = getWorkoutObj(stringyMonth, currYear);
         if (workoutObj !== undefined) {
-            workoutObj.numOfWorkouts += 1;
-            const newArrayOfWorkoutsCounts = allWorkoutsPerMonth.map(
-                (workoutEl) =>
-                    workoutEl === workoutObj ? workoutObj : workoutEl
-            );
-            setAllWorkoutsPerMonth(newArrayOfWorkoutsCounts);
+            const arrOfWorkoutsCount = createArrOfWorkoutsCount(workoutObj);
+            setAllWorkoutsPerMonth(arrOfWorkoutsCount);
             setDocument(db, "workoutsPerMonth", workoutObj, workoutObj.id);
         } else {
             const id = uuid();
@@ -99,7 +121,7 @@ const WatchPlaylist = ({ location }) => {
                     </StyledPlaylistContainer>
                     <div className="youtube-wrapper">
                         <YouTube
-                            videoId={currVideoPlaying.id}
+                            videoId={currVideoPlaying?.id}
                             onEnd={onCurrVideoEnd}
                             opts={{ playerVars: { autoplay: 1 } }}
                         ></YouTube>
