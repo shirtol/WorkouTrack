@@ -4,6 +4,9 @@ import { StyledNavbar } from "./StyledNavbar";
 import { StyledNavbarItem } from "./StyledNavbarItem";
 import { Colors } from "../../utils/colors.js";
 import Logo from "../logo/Logo";
+import { StyledLoginButton } from "../login/StyledLoginButton";
+import { StyledButton } from "../button/StyledButton";
+import LogOut from "../logOut/LogOut";
 
 const Navbar = () => {
     return (
@@ -36,9 +39,7 @@ const Navbar = () => {
                 >
                     <NavLink to="/playlists">Playlists</NavLink>
                 </StyledNavbarItem>
-                {/* <StyledNavbarItem>
-                <NavLink to="/statistics">Statistics</NavLink>
-            </StyledNavbarItem> */}
+                <LogOut></LogOut>
             </StyledNavbar>
             <Logo></Logo>
         </>

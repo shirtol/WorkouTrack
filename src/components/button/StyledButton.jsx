@@ -4,7 +4,7 @@ import device from "../../utils/mediaQuerySizes";
 
 export const StyledButton = styled.div`
     padding: 0.8rem 2.8rem;
-    font-size: 2rem;
+    font-size: ${(props) => props.fontSize ?? "2rem"};
     font-family: "Poppins", sans-serif;
     letter-spacing: 2px;
     border-radius: 4px;

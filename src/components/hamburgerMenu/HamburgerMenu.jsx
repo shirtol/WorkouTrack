@@ -5,6 +5,7 @@ import { slide as Menu } from "react-burger-menu";
 import { StyledBurger } from "./StyledBurger";
 import "./hamburgerMenu.css";
 import { Colors } from "../../utils/colors";
+import LogOut from "../logOut/LogOut";
 
 const HamburgerMenu = () => {
     const showSettings = (event) => {
@@ -42,9 +43,7 @@ const HamburgerMenu = () => {
                 >
                     <NavLink to="/playlists">Playlists</NavLink>
                 </StyledNavbarItem>
-                {/* <StyledNavbarItem>
-                    <NavLink to="/statistics">Statistics</NavLink>
-                </StyledNavbarItem> */}
+                <LogOut></LogOut>
             </StyledBurger>
         </>
     );

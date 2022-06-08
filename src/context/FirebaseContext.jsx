@@ -5,8 +5,9 @@ import {
     getAdditionalUserInfo,
     signInWithPopup,
     onAuthStateChanged,
+    signOut,
 } from "firebase/auth";
-import { getFirestore, setLogLevel } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 import app from "../service/firebase";
 
 const FirebaseContext = React.createContext();
@@ -40,10 +41,22 @@ const FirebaseProvider = ({ children }) => {
             const errorMessage = error.message;
             const email = error.customData.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
+            console.error(
+                `${errorCode} ${errorMessage} ${email} ${credential}`
+            );
         }
     };
 
-    const value = { currentUser, currentUserInfo, signIn, token, db };
+    const signOff = async () => {
+        try {
+            await signOut(auth);
+            setCurrentUser(undefined);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const value = { currentUser, currentUserInfo, signIn, token, db, signOff };
 
     return (
         <FirebaseContext.Provider value={value}>
