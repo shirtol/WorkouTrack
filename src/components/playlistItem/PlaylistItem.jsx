@@ -9,9 +9,11 @@ const PlaylistItem = ({
     playlist,
     onDeletePlaylistClicked,
     hasDeleteIcon = true,
+    boxShadow,
+    alignSelf,
 }) => {
     return (
-        <StyledVideoCard>
+        <StyledVideoCard boxShadow={boxShadow}>
             <StyledLink
                 to={{
                     pathname: `playlists/${playlist.id}`,
@@ -22,7 +24,9 @@ const PlaylistItem = ({
                     src={playlist.videos[0].imageUrl}
                     alt={playlist.title}
                 ></StyledVideoImage>
-                <StyledVideoTitle>{playlist.title}</StyledVideoTitle>
+                <StyledVideoTitle alignSelf={alignSelf}>
+                    {playlist.title}
+                </StyledVideoTitle>
             </StyledLink>
             {hasDeleteIcon && (
                 <StyledDeleteIcon

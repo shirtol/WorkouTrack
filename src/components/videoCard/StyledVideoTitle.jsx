@@ -12,7 +12,7 @@ export const StyledVideoTitle = styled.h3`
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 1rem;
-    align-self: flex-start;
+    align-self: ${(props) => props.alignSelf ?? "flex-start"};
     margin: 6px;
     @media ${device.laptop} {
         align-self: center;

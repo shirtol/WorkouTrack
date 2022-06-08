@@ -14,6 +14,7 @@ const VideoItem = ({
     onIconClicked,
     isSelected,
     textWidth,
+    alignSelf,
 }) => {
     const getDesiredValue = (path) => {
         const splittedPath = path.split(".");
@@ -42,7 +43,7 @@ const VideoItem = ({
                     alt={getDesiredValue(videoTitle)}
                 />
             )}
-            <StyledVideoTitle width={textWidth}>
+            <StyledVideoTitle width={textWidth} alignSelf={alignSelf}>
                 {getDesiredValue(videoTitle)}
             </StyledVideoTitle>
             <StyledAddVideoBtn
