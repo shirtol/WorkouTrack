@@ -15,14 +15,14 @@ const SchedulerTooltipContent = ({
         >
             <img
                 src={
-                    appointmentData.playlist.videos !== undefined
+                    appointmentData.playlist.title !== "none"
                         ? appointmentData.playlist.videos[0].imageUrl
                         : tooltipImages.running
                 }
                 alt=""
                 style={{ width: "100px" }}
             />
-            {appointmentData.playlist !== "none" && (
+            {appointmentData.playlist.title !== "none" && (
                 <StyledLink
                     to={{
                         pathname: `playlists/${appointmentData.playlist.id}`,

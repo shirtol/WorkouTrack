@@ -32,6 +32,11 @@ const Calender = () => {
     const { db, currentUser } = useFirebase();
     const [isLoading, setIsLoading] = useState(false);
 
+    // const handleSetDocument = () => {
+
+    // }
+
+    //!TODO: Separate to smaller functions!!
     const commitChanges = ({ added, changed, deleted }) => {
         let data = allExercises;
 
@@ -39,7 +44,6 @@ const Calender = () => {
             (exercise) => exercise.playlist === undefined
         );
 
-        console.log(data);
         if (added) {
             const id = uuid();
             let newDataObj = {};
