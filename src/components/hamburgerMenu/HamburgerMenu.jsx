@@ -15,13 +15,31 @@ const HamburgerMenu = () => {
         <>
             {/* <button onClick={onBurgerMenuOpen}>Hamburger</button> */}
             <StyledBurger styles={styles}>
-                <StyledNavbarItem>
+                <StyledNavbarItem
+                    color={
+                        window.location.pathname === "/"
+                            ? Colors.orange
+                            : Colors.blackText
+                    }
+                >
                     <NavLink to="/">Home</NavLink>
                 </StyledNavbarItem>
-                <StyledNavbarItem>
+                <StyledNavbarItem
+                    color={
+                        window.location.pathname === "/schedule"
+                            ? Colors.orange
+                            : Colors.blackText
+                    }
+                >
                     <NavLink to="/schedule">Schedule</NavLink>
                 </StyledNavbarItem>
-                <StyledNavbarItem>
+                <StyledNavbarItem
+                    color={
+                        window.location.pathname === "/playlists"
+                            ? Colors.orange
+                            : Colors.blackText
+                    }
+                >
                     <NavLink to="/playlists">Playlists</NavLink>
                 </StyledNavbarItem>
                 {/* <StyledNavbarItem>
