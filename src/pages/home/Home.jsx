@@ -95,7 +95,9 @@ const Home = () => {
                         )}
                     </StyledHomePageBox>
                     {!hasPlaylist() ? (
-                        <NoWorkoutTodayBox></NoWorkoutTodayBox>
+                        <StyledHomePageBox width="100%" height="60%">
+                            <NoWorkoutTodayBox></NoWorkoutTodayBox>
+                        </StyledHomePageBox>
                     ) : (
                         <StyledHomePageBox width="100%" height="60%">
                             <PlaylistItem
