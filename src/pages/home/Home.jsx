@@ -16,10 +16,12 @@ const Home = () => {
     const currDate = new Date();
 
     const getTodayWorkout = () => {
+        console.log(allExercises);
         const todayWorkout = allExercises.find(
             (exercise) =>
                 exercise.startDate.toDateString() === currDate.toDateString()
         );
+        console.log(todayWorkout);
         return todayWorkout;
     };
 
