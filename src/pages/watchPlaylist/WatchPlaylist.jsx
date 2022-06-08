@@ -4,7 +4,6 @@ import { StyledPlaylistContainer } from "../createPlaylist/StyledPlaylistContain
 import VideoItem from "../../components/videoItem/VideoItem";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
 import "./watchPlaylist.css";
-import { Button } from "@mui/material";
 import { getKeyByValue } from "../../utils/utils";
 import Months from "../../utils/months";
 import { useWorkoutsPerMonth } from "../../context/WorkoutsPerMonthContext";
@@ -25,12 +24,13 @@ const WatchPlaylist = ({ location }) => {
     const { db, currentUser } = useFirebase();
 
     useEffect(() => {
-        const item =
+        const playlist =
             location.item ??
             allPlaylists.find(
                 (playlist) => playlist.id === location.pathname.split("/")[2]
             );
-        setPlaylistItem(item);
+        setPlaylistItem(playlist);
+        setCurrVideoPlaying(playlist?.videos[0]);
     }, [allPlaylists]);
 
     const displayPlaylistVideos = () => {
