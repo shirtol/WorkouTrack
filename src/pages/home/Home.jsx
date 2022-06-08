@@ -55,6 +55,9 @@ const Home = () => {
         return typesArr;
     };
 
+    const hasPlaylist = () =>
+        todayWorkout !== undefined && todayWorkout.playlist !== undefined;
+
     return (
         <>
             {/* <StyledFlexWrapper> */}
@@ -91,7 +94,7 @@ const Home = () => {
                             ></NextWorkoutBox>
                         )}
                     </StyledHomePageBox>
-                    {todayWorkout === undefined ? (
+                    {!hasPlaylist() ? (
                         <NoWorkoutTodayBox></NoWorkoutTodayBox>
                     ) : (
                         <StyledHomePageBox width="100%" height="60%">
