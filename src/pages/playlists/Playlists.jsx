@@ -52,6 +52,7 @@ const Playlists = () => {
                     playlist={playlist}
                     onDeletePlaylistClicked={onDeleteIconClicked}
                     key={playlist.id}
+                    alignSelf="center"
                 ></PlaylistItem>
             );
         });
