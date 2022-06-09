@@ -2,12 +2,14 @@ import React from "react";
 import { StyledFlexWrapper } from "../../wrappers/flexWrapper/StyledFlexWrapper";
 import { StyledTodayWorkoutTitle } from "../StyledTodayWorkoutTitle";
 
-const NoWorkoutTodayBox = () => {
+import zen from "../../../assets/animations/noWorkout.json";
+import { StyledZenLottie } from "./StyledZenLottie";
+
+const NoWorkoutTodayBox = ({ title }) => {
     return (
-        <StyledFlexWrapper>
-            <StyledTodayWorkoutTitle>
-                No workout for today
-            </StyledTodayWorkoutTitle>
+        <StyledFlexWrapper flexDirection="column" flexDirectionTablet="column">
+            <StyledTodayWorkoutTitle>{title}</StyledTodayWorkoutTitle>
+            <StyledZenLottie className="lottie-zen" animationData={zen} loop />
         </StyledFlexWrapper>
     );
 };
