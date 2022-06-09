@@ -35,12 +35,6 @@ const Home = () => {
             );
         }
         return equipmentsArr;
-        // return (
-        //     todayWorkout === undefined &&
-        //     Object.keys(todayWorkout.equipments).filter((equipment) => {
-        //         return todayWorkout.equipment[equipment] === true;
-        //     })
-        // );
     };
 
     const getWorkoutTypes = () => {
@@ -60,7 +54,6 @@ const Home = () => {
 
     return (
         <>
-            {/* <StyledFlexWrapper> */}
             <StyledFlexWrapper
                 flexDirectionTablet="column"
                 height="80vh"
@@ -119,7 +112,6 @@ const Home = () => {
                     <Statistics></Statistics>
                 </StyledHomePageBox>
             </StyledFlexWrapper>
-            {/* </StyledFlexWrapper> */}
         </>
     );
 };

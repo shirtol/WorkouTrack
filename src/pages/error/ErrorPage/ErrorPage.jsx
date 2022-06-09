@@ -22,7 +22,6 @@ const ErrorPage = () => {
                     animationData={error}
                     loop
                 ></StyledErrorLottie>
-                {/* <Lottie className="lottie-spinner" animationData={error} loop /> */}
             </StyledFlexWrapper>
         </StyledModalWrapper>
     );

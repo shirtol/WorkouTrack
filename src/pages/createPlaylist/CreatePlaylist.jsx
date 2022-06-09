@@ -118,7 +118,6 @@ const CreatePlaylist = ({ location, history }) => {
                 flexDirection="row"
                 justifyContent="flex-end"
                 heightTablet="50vh"
-                // justifyContentTablet="flex-start"
                 flexDirectionTablet="column"
             >
                 <StyledPlaylistContainer>

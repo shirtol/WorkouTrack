@@ -1,10 +1,7 @@
 const workoutTypes = {
     Legs: 0,
-    // Chest: 1,
     Back: 2,
-    // Shoulders: 3,
     Biceps: 4,
-    // Triceps: 5,
     Abs: 6,
     Cardio: 7,
     Glute: 8,
@@ -17,11 +14,8 @@ const images = require.context("../assets/images/workoutTypes");
 
 export const imagesObj = {
     Legs: images("./Legs.png"),
-    // Chest: 1,
     Back: images("./Back.png"),
-    // Shoulders: 3,
     Biceps: images("./Biceps.png"),
-    // Triceps: 5,
     Abs: images("./Abs.png"),
     Cardio: images("./Cardio.png"),
     Glute: images("./Glute.png"),

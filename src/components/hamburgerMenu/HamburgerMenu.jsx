@@ -1,20 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { StyledNavbarItem } from "../navbar/StyledNavbarItem";
-import { slide as Menu } from "react-burger-menu";
 import { StyledBurger } from "./StyledBurger";
 import "./hamburgerMenu.css";
 import { Colors } from "../../utils/colors";
 import LogOut from "../logOut/LogOut";
 
 const HamburgerMenu = () => {
-    const showSettings = (event) => {
-        event.preventDefault();
-    };
-
     return (
         <>
-            {/* <button onClick={onBurgerMenuOpen}>Hamburger</button> */}
             <StyledBurger styles={styles}>
                 <StyledNavbarItem
                     color={

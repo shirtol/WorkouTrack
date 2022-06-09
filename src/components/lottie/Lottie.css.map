@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,UAAU,CAAC;EACP,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,EAAE;EACX,IAAI,EAAE,CAAC;EACP,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,MAAM;CACrB",
-    "sources": [
-        "Lottie.scss"
-    ],
-    "names": [],
-    "file": "Lottie.css"
-}
