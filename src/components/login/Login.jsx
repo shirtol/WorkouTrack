@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useFirebase } from "../../context/FirebaseContext";
 import { StyledButton } from "../button/StyledButton";
-import { StyledModal } from "../modal/StyledModal";
 import { StyledModalWrapper } from "../modalWrapper/StyledModalWrapper";
 import { StyledFlexWrapper } from "../wrappers/flexWrapper/StyledFlexWrapper";
 import { StyledGoogleIcon } from "./icon/StyledGoogleIcon";
 import { StyledLoginButton } from "./StyledLoginButton";
 import { StyledLoginSubTitle } from "./StyledLoginSubtitle";
 import { StyledTitle } from "../title/StyledTitle";
-import Spinner from "../spinner/Spinner";
 
-const Login = ({ location, history }) => {
+const Login = ({ history }) => {
     const { signIn, currentUser } = useFirebase();
 
     useEffect(() => {

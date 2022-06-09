@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAC;EAEN,MAAM,EAAE,IAAI;EACZ,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,CAAC;CACZ",
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACN,MAAM,EAAE,IAAI;EACZ,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,CAAC;CACZ",
     "sources": [
         "scheduler.scss"
     ],

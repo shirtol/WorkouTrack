@@ -1,3 +1,4 @@
+import { tooltipImages } from "../../../utils/images";
 import { getKeyByValue } from "../../../utils/utils";
 import workoutEnvironments from "../../../utils/workoutEnvironments";
 import { imagesObj } from "../../../utils/workoutTypes";
@@ -28,14 +29,9 @@ const AppointmentContent = ({ children, style, ...restProps }) => {
                 </StyledAppointmentEnvironment>
             </StyledAppointmentDetails>
             <StyledAppointmentImage
-                src={imagesObj[getWorkoutType()]}
+                src={imagesObj[getWorkoutType()] || tooltipImages.running}
                 alt="workout-type"
             ></StyledAppointmentImage>
-            {/* <img
-                src={imagesObj[getWorkoutType()]}
-                alt="workout-type"
-              
-            /> */}
         </StyledAppointmentContent>
     );
 };

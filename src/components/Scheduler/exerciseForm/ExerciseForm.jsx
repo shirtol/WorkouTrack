@@ -64,7 +64,7 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
     };
 
     const onPlaylistChange = (nextValue) => {
-        onFieldChange({ playlist: allPlaylists[nextValue] }); //!onFieldChange change the appointment data
+        onFieldChange({ playlist: allPlaylists[nextValue] }); //!onFieldChange changes the appointment data
         setPlaylistIdx(nextValue);
     };
 

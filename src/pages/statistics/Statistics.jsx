@@ -38,7 +38,6 @@ export const options = {
             grid: {
                 display: false,
             },
-            // display: false,
         },
     },
 };

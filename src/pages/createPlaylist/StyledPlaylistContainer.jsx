@@ -24,7 +24,6 @@ export const StyledPlaylistContainer = styled.div`
         height: inherit;
         top: 78%;
         overflow-x: scroll;
-        /* overflow-y: hidden; */
         width: 70%;
         align-self: center;
         height: 15%;

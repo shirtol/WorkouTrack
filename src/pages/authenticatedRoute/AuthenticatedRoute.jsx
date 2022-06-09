@@ -11,7 +11,7 @@ const AuthenticatedRoute = ({
     renderChild,
     ...props
 }) => {
-    const { signIn, currentUser } = useFirebase();
+    const { currentUser } = useFirebase();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
