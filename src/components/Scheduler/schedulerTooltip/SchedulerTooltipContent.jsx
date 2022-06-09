@@ -4,7 +4,7 @@ import { tooltipImages } from "../../../utils/images";
 import { StyledLink } from "../../link/StyledLink";
 import { StyledTooltipWrapper } from "../appointment/styled/StyledTooltipWrapper";
 import { StyledTooltipImage } from "./StyledTooltipImage";
-import { StyledTooltipLink, StyledTooltipText } from "./StyledTooltipLink";
+import { StyledTooltipLink } from "./StyledTooltipLink";
 
 const SchedulerTooltipContent = ({
     children,
