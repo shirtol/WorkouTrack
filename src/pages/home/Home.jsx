@@ -11,6 +11,9 @@ import { useExercises } from "../../context/ExercisesContext";
 import { getKeyByValue } from "../../utils/utils";
 import workoutEnvironments from "../../utils/workoutEnvironments";
 import Statistics from "../statistics/Statistics";
+import zen from "../../assets/animations/noWorkout.json";
+import freestyle from "../../assets/animations/freestyle.json";
+
 const Home = () => {
     const { allExercises } = useExercises();
     const currDate = new Date();
@@ -49,8 +52,9 @@ const Home = () => {
         return typesArr;
     };
 
-    const hasPlaylist = () =>
-        todayWorkout !== undefined && todayWorkout.playlist !== undefined;
+    const playlistIsEmpty = () => todayWorkout?.playlist.title === "none";
+
+    const hasPlaylist = () => todayWorkout !== undefined && !playlistIsEmpty();
 
     return (
         <>
@@ -75,7 +79,10 @@ const Home = () => {
                 >
                     <StyledHomePageBox width="100%" height="60%">
                         {todayWorkout === undefined ? (
-                            <NoWorkoutTodayBox title="No workout for today"></NoWorkoutTodayBox>
+                            <NoWorkoutTodayBox
+                                title="No workout for today"
+                                animationData={zen}
+                            ></NoWorkoutTodayBox>
                         ) : (
                             <NextWorkoutBox
                                 environment={getKeyByValue(
@@ -89,7 +96,16 @@ const Home = () => {
                     </StyledHomePageBox>
                     {!hasPlaylist() ? (
                         <StyledHomePageBox width="100%" height="60%">
-                            <NoWorkoutTodayBox title="Let your muscles rest and enjoy a day off"></NoWorkoutTodayBox>
+                            <NoWorkoutTodayBox
+                                title={
+                                    playlistIsEmpty()
+                                        ? "No playlists set, freestyle!"
+                                        : "Let your muscles rest and enjoy a day off"
+                                }
+                                animationData={
+                                    playlistIsEmpty() ? freestyle : zen
+                                }
+                            ></NoWorkoutTodayBox>
                         </StyledHomePageBox>
                     ) : (
                         <StyledHomePageBox width="100%" height="60%">
