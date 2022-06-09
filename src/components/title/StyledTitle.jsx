@@ -4,6 +4,7 @@ import device from "../../utils/mediaQuerySizes";
 export const StyledTitle = styled.div`
     font-size: 2.6rem;
     text-align: center;
+    margin-top: ${(props) => props.marginTop ?? "auto"};
     @media ${device.tablet} {
         font-size: 2.2rem;
     }

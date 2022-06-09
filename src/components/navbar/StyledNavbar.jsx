@@ -4,7 +4,7 @@ import device from "../../utils/mediaQuerySizes";
 export const StyledNavbar = styled.header`
     display: flex;
     list-style: none;
-    gap: 5rem;
+    gap: 3.5rem;
     font-size: 2rem;
     padding: 2rem;
     @media ${device.tablet} {

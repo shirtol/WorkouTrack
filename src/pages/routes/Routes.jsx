@@ -12,6 +12,7 @@ import CreatePlaylist from "../createPlaylist/CreatePlaylist";
 import WatchPlaylist from "../watchPlaylist/WatchPlaylist";
 import HamburgerMenu from "../../components/hamburgerMenu/HamburgerMenu";
 import ErrorPage from "../error/ErrorPage/ErrorPage";
+import Contact from "../contact/Contact";
 
 const Routes = () => {
     return (
@@ -67,6 +68,9 @@ const DefaultContainer = () => (
                     );
                 }}
             ></AuthenticatedRoute>
+            <AuthenticatedRoute exact path="/contact">
+                <Contact></Contact>
+            </AuthenticatedRoute>
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/*" component={ErrorPage}></Route>
         </Switch>
