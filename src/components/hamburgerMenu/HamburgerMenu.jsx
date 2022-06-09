@@ -21,15 +21,6 @@ const HamburgerMenu = () => {
                 </StyledNavbarItem>
                 <StyledNavbarItem
                     color={
-                        window.location.pathname === "/schedule"
-                            ? Colors.orange
-                            : Colors.blackText
-                    }
-                >
-                    <NavLink to="/schedule">Schedule</NavLink>
-                </StyledNavbarItem>
-                <StyledNavbarItem
-                    color={
                         window.location.pathname === "/playlists"
                             ? Colors.orange
                             : Colors.blackText
@@ -37,6 +28,16 @@ const HamburgerMenu = () => {
                 >
                     <NavLink to="/playlists">Playlists</NavLink>
                 </StyledNavbarItem>
+                <StyledNavbarItem
+                    color={
+                        window.location.pathname === "/schedule"
+                            ? Colors.orange
+                            : Colors.blackText
+                    }
+                >
+                    <NavLink to="/schedule">Schedule</NavLink>
+                </StyledNavbarItem>
+
                 <LogOut></LogOut>
             </StyledBurger>
         </>

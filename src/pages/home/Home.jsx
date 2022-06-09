@@ -75,7 +75,7 @@ const Home = () => {
                 >
                     <StyledHomePageBox width="100%" height="60%">
                         {todayWorkout === undefined ? (
-                            <NoWorkoutTodayBox></NoWorkoutTodayBox>
+                            <NoWorkoutTodayBox title="No workout for today"></NoWorkoutTodayBox>
                         ) : (
                             <NextWorkoutBox
                                 environment={getKeyByValue(
@@ -89,7 +89,7 @@ const Home = () => {
                     </StyledHomePageBox>
                     {!hasPlaylist() ? (
                         <StyledHomePageBox width="100%" height="60%">
-                            <NoWorkoutTodayBox></NoWorkoutTodayBox>
+                            <NoWorkoutTodayBox title="Let your muscles rest and enjoy a day off"></NoWorkoutTodayBox>
                         </StyledHomePageBox>
                     ) : (
                         <StyledHomePageBox width="100%" height="60%">
