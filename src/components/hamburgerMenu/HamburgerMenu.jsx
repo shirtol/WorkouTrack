@@ -37,6 +37,15 @@ const HamburgerMenu = () => {
                 >
                     <NavLink to="/schedule">Schedule</NavLink>
                 </StyledNavbarItem>
+                <StyledNavbarItem
+                    color={
+                        window.location.pathname === "/contact"
+                            ? Colors.orange
+                            : Colors.blackText
+                    }
+                >
+                    <NavLink to="/contact">Contact</NavLink>
+                </StyledNavbarItem>
 
                 <LogOut></LogOut>
             </StyledBurger>
