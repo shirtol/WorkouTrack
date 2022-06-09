@@ -5,11 +5,15 @@ import { StyledTodayWorkoutTitle } from "../StyledTodayWorkoutTitle";
 import zen from "../../../assets/animations/noWorkout.json";
 import { StyledZenLottie } from "./StyledZenLottie";
 
-const NoWorkoutTodayBox = ({ title }) => {
+const NoWorkoutTodayBox = ({ title, animationData }) => {
     return (
         <StyledFlexWrapper flexDirection="column" flexDirectionTablet="column">
             <StyledTodayWorkoutTitle>{title}</StyledTodayWorkoutTitle>
-            <StyledZenLottie className="lottie-zen" animationData={zen} loop />
+            <StyledZenLottie
+                className="lottie-zen"
+                animationData={animationData}
+                loop
+            />
         </StyledFlexWrapper>
     );
 };
