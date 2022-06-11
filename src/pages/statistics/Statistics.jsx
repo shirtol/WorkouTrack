@@ -4,7 +4,7 @@ import Months from "../../utils/months";
 import { useWorkoutsPerMonth } from "../../context/WorkoutsPerMonthContext";
 import { StyledStatisticsTitle } from "./StyledStatisticsTitle";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
-import { Colors } from "../../utils/colors";
+import { Colors } from "../../utils/stylesConsts";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 

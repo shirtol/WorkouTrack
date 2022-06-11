@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { StyledNavbar } from "./StyledNavbar";
 import { StyledNavbarItem } from "./StyledNavbarItem";
-import { Colors } from "../../utils/colors.js";
+import { Colors } from "../../utils/stylesConsts.js";
 import Logo from "../logo/Logo";
 import LogOut from "../logOut/LogOut";
 

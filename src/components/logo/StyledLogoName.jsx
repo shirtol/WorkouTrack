@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../utils/colors";
+import { Colors } from "../../utils/stylesConsts";
 import device from "../../utils/mediaQuerySizes";
 
 export const StyledLogoName = styled.h3`

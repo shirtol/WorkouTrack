@@ -53,7 +53,6 @@ const Calender = () => {
     };
 
     const handleChangeDocument = (changed) => {
-        console.log(changed);
         data = data.map((exercise) => {
             if (changed[exercise.id]) {
                 setIsLoading(true);
