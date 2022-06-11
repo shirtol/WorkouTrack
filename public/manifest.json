@@ -3,17 +3,17 @@
     "name": "Organize your workout schedule, no more excuses - simply workout.",
     "icons": [
         {
-            "src": "sporterrificicon64.png",
+            "src": "sporterrific_icon64.png",
             "sizes": "64x57",
             "type": "image/png"
         },
         {
-            "src": "sporterrificicon.png",
+            "src": "sporterrific_icon.png",
             "type": "image/png",
             "sizes": "90x80"
         },
         {
-            "src": "sporterrificicon512.png",
+            "src": "sporterrific_icon512.png",
             "type": "image/png",
             "sizes": "512x456"
         }
