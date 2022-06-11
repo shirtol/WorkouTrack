@@ -1,11 +1,12 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
 import Months from "../../utils/months";
 import { useWorkoutsPerMonth } from "../../context/WorkoutsPerMonthContext";
 import { StyledStatisticsTitle } from "./StyledStatisticsTitle";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
 import { Colors } from "../../utils/colors";
+import { Chart, registerables } from "chart.js";
+Chart.register(...registerables);
 
 export const options = {
     responsive: true,

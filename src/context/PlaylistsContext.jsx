@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { getAllCollectionData } from "../utils/firebaseUtils";
 import { useFirebase } from "./FirebaseContext";
 
@@ -10,7 +10,7 @@ const PlaylistsProvider = ({ children }) => {
     const { db, currentUser } = useFirebase();
     const [allPlaylists, setAllPlaylists] = useState([]);
 
-    const getAllPlaylistsWrapper = async () => {
+    const getAllPlaylistsWrapper = useCallback(async () => {
         if (db !== undefined) {
             const allData = await getAllCollectionData(
                 db,
@@ -20,11 +20,11 @@ const PlaylistsProvider = ({ children }) => {
 
             setAllPlaylists(allData);
         }
-    };
+    }, [currentUser, db]);
 
     useEffect(() => {
         getAllPlaylistsWrapper();
-    }, [db, currentUser]);
+    }, [db, currentUser, getAllPlaylistsWrapper]);
 
     const value = { allPlaylists, setAllPlaylists };
 

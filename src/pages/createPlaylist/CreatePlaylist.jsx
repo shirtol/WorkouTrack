@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import youtubeApi from "../../apis/youtubeApi";
 import { StyledButton } from "../../components/button/StyledButton";
 import { StyledInput } from "../../components/input/StyledInput";

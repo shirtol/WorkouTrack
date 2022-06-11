@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import device from "../../utils/mediaQuerySizes";
 
 export const StyledNavbarItem = styled.li`
     & > * {

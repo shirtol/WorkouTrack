@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { getAllCollectionData } from "../utils/firebaseUtils";
 import { useFirebase } from "./FirebaseContext";
 
@@ -10,7 +10,7 @@ const WorkoutsPerMonthProvider = ({ children }) => {
     const { db, currentUser } = useFirebase();
     const [allWorkoutsPerMonth, setAllWorkoutsPerMonth] = useState([]);
 
-    const getAllWorkoutsPerMonthWrapper = async () => {
+    const getAllWorkoutsPerMonthWrapper = useCallback(async () => {
         if (db !== undefined) {
             const allData = await getAllCollectionData(
                 db,
@@ -20,10 +20,11 @@ const WorkoutsPerMonthProvider = ({ children }) => {
 
             setAllWorkoutsPerMonth(allData);
         }
-    };
+    }, [currentUser, db]);
+
     useEffect(() => {
         getAllWorkoutsPerMonthWrapper();
-    }, [db, currentUser]);
+    }, [db, currentUser, getAllWorkoutsPerMonthWrapper]);
 
     const value = { allWorkoutsPerMonth, setAllWorkoutsPerMonth };
 
