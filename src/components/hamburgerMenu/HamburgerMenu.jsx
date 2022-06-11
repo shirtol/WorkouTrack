@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { StyledNavbarItem } from "../navbar/StyledNavbarItem";
 import { StyledBurger } from "./StyledBurger";
 import "./hamburgerMenu.css";
-import { Colors } from "../../utils/colors";
+import { Colors } from "../../utils/stylesConsts";
 import LogOut from "../logOut/LogOut";
 import { styles } from "./stylesHamburgerMenu";
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../utils/colors";
+import { Colors } from "../../utils/stylesConsts";
 
 export const StyledSpan = styled.span`
     color: ${Colors.orange};

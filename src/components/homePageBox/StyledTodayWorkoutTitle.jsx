@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../utils/colors";
+import { Colors } from "../../utils/stylesConsts";
 
 export const StyledTodayWorkoutTitle = styled.h4`
     font-size: 1.4rem;

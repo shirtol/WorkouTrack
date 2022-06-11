@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Appointments } from "@devexpress/dx-react-scheduler-material-ui";
 import difficulties from "../../../../utils/difficulties";
-import { Colors } from "../../../../utils/colors";
+import { Colors } from "../../../../utils/stylesConsts";
 
 export const StyledAppointment = styled(Appointments.Appointment)`
     ${(props) => {

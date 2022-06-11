@@ -9,7 +9,7 @@ import VideoItem from "../../components/videoItem/VideoItem";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
 import { useFirebase } from "../../context/FirebaseContext";
 import { usePlaylists } from "../../context/PlaylistsContext";
-import { Colors } from "../../utils/colors";
+import { Colors } from "../../utils/stylesConsts";
 import { addDocument } from "../../utils/firebaseUtils";
 import { StyledPlaylistContainer } from "./StyledPlaylistContainer";
 

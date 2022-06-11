@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../utils/colors";
+import { Colors } from "../../utils/stylesConsts";
 import { Shadows } from "../../utils/stylesConsts";
 
 export const StyledVideoCard = styled.div`
@@ -8,9 +8,7 @@ export const StyledVideoCard = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: ${(props) =>
-        props.boxShadow ??
-       Shadows.videoCardBoxShadow};
+    box-shadow: ${(props) => props.boxShadow ?? Shadows.videoCardBoxShadow};
     border-radius: 4px;
     position: relative;
     border: ${(props) =>
