@@ -18,7 +18,7 @@ const ExercisesProvider = ({ children }) => {
                 "workout",
                 currentUser
             );
-            const mappedAllData = allData.map((exercise) => ({
+            const mappedAllData = allData?.map((exercise) => ({
                 ...exercise,
                 endDate: new Date(exercise.endDate.seconds * 1000),
                 startDate: new Date(exercise.startDate.seconds * 1000),

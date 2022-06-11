@@ -26,6 +26,8 @@ export const deleteDocument = async (db, collectionName, id) => {
 };
 
 export const getAllCollectionData = async (db, collectionName, user) => {
+    if (!user) return [];
+
     const q = query(
         collection(db, collectionName),
         where("owner", "==", user?.uid)

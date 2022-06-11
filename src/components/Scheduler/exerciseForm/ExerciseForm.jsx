@@ -18,7 +18,9 @@ const ExerciseForm = ({ onFieldChange, appointmentData, ...restProps }) => {
 
     const allPlaylistsTitles = allPlaylists.map((playlist) => playlist.title);
 
-    const currPlaylistIdx = allPlaylists.indexOf(appointmentData.playlist);
+    const currPlaylistIdx = allPlaylists.findIndex(
+        (playlist) => appointmentData.playlist.id === playlist.id
+    );
 
     const [playlistIdx, setPlaylistIdx] = useState(
         currPlaylistIdx === -1 ? allPlaylists.length : currPlaylistIdx
