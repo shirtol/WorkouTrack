@@ -21,7 +21,7 @@ const CreatePlaylist = ({ location, history }) => {
     const [playlistVideos, setPlaylistVideos] = useState([]);
     const { db, currentUser } = useFirebase();
     const [playlistName, setPlaylistName] = useState(location.item);
-    const { allPlaylists, setAllPlaylists } = usePlaylists();
+    const { setAllPlaylists } = usePlaylists();
     const [isLoading, setIsLoading] = useState(false);
 
     const onInputChange = ({ target: { value } }) => setTerm(value);
