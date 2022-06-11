@@ -1,30 +1,32 @@
 import styled, { css } from "styled-components";
 import { Appointments } from "@devexpress/dx-react-scheduler-material-ui";
 import difficulties from "../../../../utils/difficulties";
+import { Colors } from "../../../../utils/colors";
 
 export const StyledAppointment = styled(Appointments.Appointment)`
     ${(props) => {
         switch (props.data.difficulty) {
             case difficulties.Beginner:
                 return css`
-                    background-color: #4caf50aa !important;
+                    background-color: ${Colors.difficulty.beginner} !important;
                 `;
             case difficulties.Intermediate:
                 return css`
-                    background-color: #64b5f6aa !important;
+                    background-color: ${Colors.difficulty
+                        .intermediate} !important;
                 `;
             case difficulties.Advanced:
                 return css`
-                    background-color: #ff9800aa !important;
+                    background-color: ${Colors.difficulty.advanced} !important;
                 `;
 
             case difficulties.Expert:
                 return css`
-                    background-color: #9500aeaa !important;
+                    background-color: ${Colors.difficulty.expert} !important;
                 `;
             default:
                 return css`
-                    background-color: #e0e0e0 !important;
+                    background-color: ${Colors.difficulty.default} !important;
                 `;
         }
     }};

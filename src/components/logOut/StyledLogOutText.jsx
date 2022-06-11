@@ -8,7 +8,7 @@ export const StyledLogOutText = styled.p`
     padding: 0;
     margin: 0;
     &:hover {
-        color: #ff500a;
+        color: ${Colors.orange};
         transition: 200ms ease-in-out;
     }
 `;

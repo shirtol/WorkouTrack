@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../utils/colors";
 
 export const StyledModalWrapper = styled.div`
     width: 100%;
@@ -9,5 +10,5 @@ export const StyledModalWrapper = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.416);
+    background: ${Colors.modalWrapperBg};
 `;

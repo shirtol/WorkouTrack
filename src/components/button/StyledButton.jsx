@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Colors } from "../../utils/colors";
 import device from "../../utils/mediaQuerySizes";
+import { Shadows } from "../../utils/stylesConsts";
 
 export const StyledButton = styled.div`
     padding: 0.8rem 2.8rem;
@@ -10,7 +11,7 @@ export const StyledButton = styled.div`
     border-radius: 4px;
     background-color: ${(props) =>
         props.disabled ? Colors.greyIcon : Colors.whiteSmoke};
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 10px, rgba(0, 0, 0, 0.22) 0px 2px 3px;
+    box-shadow: ${Shadows.buttonBoxShadow};
     color: ${(props) => (props.disabled ? Colors.whiteSmoke : Colors.orange)};
     width: max-content;
     height: max-content;
@@ -19,8 +20,7 @@ export const StyledButton = styled.div`
         transition: box-shadow 100ms ease-in-out;
         transform: scale(0.95);
         transition: transform 100ms ease-in-out;
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 5px,
-            rgba(0, 0, 0, 0.22) 0px 1px 2px;
+        box-shadow: ${Shadows.buttonActiveBoxShadow};
     }
     pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
     opacity: ${(props) => (props.disabled ? 0.7 : 1)};
