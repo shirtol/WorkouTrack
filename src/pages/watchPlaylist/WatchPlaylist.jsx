@@ -11,6 +11,7 @@ import { useFirebase } from "../../context/FirebaseContext";
 import { setDocument } from "../../utils/firebaseUtils";
 import { v4 as uuid } from "uuid";
 import { usePlaylists } from "../../context/PlaylistsContext";
+import Spinner from "../../components/spinner/Spinner";
 
 const WatchPlaylist = ({ location }) => {
     const { allPlaylists } = usePlaylists();
@@ -120,11 +121,17 @@ const WatchPlaylist = ({ location }) => {
                         {displayPlaylistVideos()}
                     </StyledPlaylistContainer>
                     <div className="youtube-wrapper">
-                        <YouTube
-                            videoId={currVideoPlaying?.id}
-                            onEnd={onCurrVideoEnd}
-                            opts={{ playerVars: { autoplay: 1 } }}
-                        ></YouTube>
+                        <Spinner
+                            isShown={currVideoPlaying === undefined}
+                        ></Spinner>
+
+                        {currVideoPlaying && (
+                            <YouTube
+                                videoId={currVideoPlaying?.id}
+                                onEnd={onCurrVideoEnd}
+                                opts={{ playerVars: { autoplay: 1 } }}
+                            ></YouTube>
+                        )}
                     </div>
                 </StyledFlexWrapper>
             </StyledFlexWrapper>
