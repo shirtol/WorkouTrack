@@ -1,10 +1,7 @@
-import { height } from "@mui/system";
 import React from "react";
-import BgHomePage from "../../components/bgHomeAnimation/BgHomeAnimation";
 import NextWorkoutBox from "../../components/homePageBox/nextWorkoutBox/NextWorkoutBox";
 import NoWorkoutTodayBox from "../../components/homePageBox/noWorkoutTodayBox/NoWorkoutTodayBox";
 import { StyledHomePageBox } from "../../components/homePageBox/StyledHomePageBox";
-import { StyledTodayWorkoutTitle } from "../../components/homePageBox/StyledTodayWorkoutTitle";
 import PlaylistItem from "../../components/playlistItem/PlaylistItem";
 import { StyledFlexWrapper } from "../../components/wrappers/flexWrapper/StyledFlexWrapper";
 import { useExercises } from "../../context/ExercisesContext";

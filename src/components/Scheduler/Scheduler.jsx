@@ -21,7 +21,6 @@ import AppointmentContent from "./appointment/AppointmentContent";
 import "./scheduler.css";
 import { deleteDocument, setDocument } from "../../utils/firebaseUtils";
 import { useFirebase } from "../../context/FirebaseContext";
-import { emptyAppointment } from "./appointment/emptyAppointment";
 import { useExercises } from "../../context/ExercisesContext";
 import SchedulerTooltipContent from "./schedulerTooltip/SchedulerTooltipContent";
 import Spinner from "../spinner/Spinner";

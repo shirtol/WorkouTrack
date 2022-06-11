@@ -11,6 +11,7 @@ const AddPlaylistModal = ({ isShown }) => {
     const onInputChange = ({ target: { value } }) => {
         setPlaylistName(value);
     };
+
     return (
         isShown && (
             <StyledModalWrapper>

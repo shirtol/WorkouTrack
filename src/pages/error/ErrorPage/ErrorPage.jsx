@@ -2,8 +2,6 @@ import React from "react";
 import { StyledModalWrapper } from "../../../components/modalWrapper/StyledModalWrapper";
 import { StyledTitle } from "../../../components/title/StyledTitle";
 import { StyledFlexWrapper } from "../../../components/wrappers/flexWrapper/StyledFlexWrapper";
-import Lottie from "lottie-react";
-
 import error from "../../../assets/animations/404.json";
 import { StyledErrorLottie } from "./StyledErrorLottie";
 

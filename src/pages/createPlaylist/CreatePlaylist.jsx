@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import youtubeApi from "../../apis/youtubeApi";
 import { StyledButton } from "../../components/button/StyledButton";
 import { StyledInput } from "../../components/input/StyledInput";
@@ -21,7 +21,7 @@ const CreatePlaylist = ({ location, history }) => {
     const [playlistVideos, setPlaylistVideos] = useState([]);
     const { db, currentUser } = useFirebase();
     const [playlistName, setPlaylistName] = useState(location.item);
-    const { allPlaylists, setAllPlaylists } = usePlaylists();
+    const { setAllPlaylists } = usePlaylists();
     const [isLoading, setIsLoading] = useState(false);
 
     const onInputChange = ({ target: { value } }) => setTerm(value);

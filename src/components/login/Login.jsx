@@ -15,7 +15,7 @@ const Login = ({ history }) => {
         if (currentUser) {
             history.replace("/");
         }
-    }, [currentUser]);
+    }, [currentUser, history]);
 
     return (
         <>

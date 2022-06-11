@@ -31,7 +31,7 @@ const WatchPlaylist = ({ location }) => {
             );
         setPlaylistItem(playlist);
         setCurrVideoPlaying(playlist?.videos[0]);
-    }, [allPlaylists]);
+    }, [allPlaylists, location.item, location.pathname]);
 
     const displayPlaylistVideos = () => {
         return playlistItem?.videos.map((video) => {

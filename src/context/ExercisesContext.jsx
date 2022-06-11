@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { getAllCollectionData } from "../utils/firebaseUtils";
 import { useFirebase } from "./FirebaseContext";
 
@@ -11,7 +11,7 @@ const ExercisesProvider = ({ children }) => {
 
     const [allExercises, setAllExercises] = useState([]);
 
-    const getAllExercisesWrapper = async () => {
+    const getAllExercisesWrapper = useCallback(async () => {
         if (db !== undefined) {
             const allData = await getAllCollectionData(
                 db,
@@ -25,11 +25,11 @@ const ExercisesProvider = ({ children }) => {
             }));
             setAllExercises(mappedAllData);
         }
-    };
+    }, [currentUser, db]);
 
     useEffect(() => {
         getAllExercisesWrapper();
-    }, [db, currentUser]);
+    }, [db, currentUser, getAllExercisesWrapper]);
 
     const value = { allExercises, setAllExercises };
     return (

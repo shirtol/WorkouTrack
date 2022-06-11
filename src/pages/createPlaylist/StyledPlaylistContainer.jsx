@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Colors } from "../../utils/colors";
 import device from "../../utils/mediaQuerySizes";
+import { Shadows } from "../../utils/stylesConsts";
 
 export const StyledPlaylistContainer = styled.div`
     display: flex;
@@ -8,8 +9,7 @@ export const StyledPlaylistContainer = styled.div`
     gap: 2rem;
     align-items: center;
     justify-content: flex-start;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: ${Shadows.playlistBoxShadow};
     border-radius: 4px;
     width: 20%;
     height: 70%;

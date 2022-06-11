@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Colors } from "../../utils/colors";
 import device from "../../utils/mediaQuerySizes";
+import { Shadows } from "../../utils/stylesConsts";
 
 export const StyledInput = styled.input`
     font-family: "Poppins", sans-serif;
@@ -9,15 +10,14 @@ export const StyledInput = styled.input`
     width: 30rem;
     border-radius: 4px;
     border: none;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 2px 0px,
-        rgba(14, 30, 37, 0.32) 0px 2px 10px 0px;
+    box-shadow: ${Shadows.inputBoxShadow};
     user-select: all;
     padding-left: 1rem;
     &:focus {
         outline: none;
         border: ${Colors.orange} 1px solid;
     }
-    background: ${(props) => props.color ?? "#fff"};
+    background: ${(props) => props.color ?? Colors.whiteInput};
     @media ${device.tablet} {
         width: 20rem;
     }
