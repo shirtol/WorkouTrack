@@ -39,6 +39,8 @@ const VideoGrid = ({
             alignSelf="end"
             gridTemplateColsTablet="repeat(2, 1fr)"
             gridTemplateColsMobileL="repeat(1, 1fr)"
+            // gridTemplateColDesktop="repeat(4, 1fr)"
+            gridTemplateCol="repeat(4, 1fr)"
         >
             {renderedGrid}
         </StyledGridWrapper>

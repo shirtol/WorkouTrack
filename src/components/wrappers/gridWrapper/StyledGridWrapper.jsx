@@ -3,7 +3,8 @@ import device from "../../../utils/mediaQuerySizes";
 
 export const StyledGridWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: ${(props) =>
+        props.gridTemplateCol ?? "repeat(3, 1fr)"};
     gap: 2rem;
     justify-items: center;
     padding: 2rem;
@@ -11,6 +12,10 @@ export const StyledGridWrapper = styled.div`
     height: max-content;
     overflow-y: scroll;
     align-self: ${(props) => props.alignSelf ?? "center"};
+    @media ${device.laptopL} {
+        grid-template-columns: ${(props) =>
+            props.gridTemplateColLaptop ?? "repeat(3, 1fr)"};
+    }
     @media ${device.tablet} {
         grid-template-columns: ${(props) =>
             props.gridTemplateColsTablet ?? "repeat(3, 1fr)"};
