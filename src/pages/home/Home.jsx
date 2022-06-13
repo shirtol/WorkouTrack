@@ -57,7 +57,7 @@ const Home = () => {
         <>
             <StyledFlexWrapper
                 flexDirectionTablet="column"
-                height="80vh"
+                height="100%"
                 heightTablet="90vh"
                 flexDirectionMobileL="column"
                 heightMobileL="100vh"
@@ -70,7 +70,7 @@ const Home = () => {
                     width="30%"
                     tabletWidth="80%"
                     justifyContent="space-between"
-                    height="100%"
+                    height="92.2%"
                     flexDirectionMobileL="column"
                     heightMobileL="40%"
                 >
@@ -117,7 +117,7 @@ const Home = () => {
                 </StyledFlexWrapper>
                 <StyledHomePageBox
                     width="60%"
-                    height="97%"
+                    height="90%"
                     tabletOrder="0"
                     tabletWidth="80%"
                     heightMobileL="30%"

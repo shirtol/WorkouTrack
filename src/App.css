@@ -13,7 +13,7 @@ body {
 html *::-webkit-scrollbar {
     width: 5px;
     height: 8px;
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 4px;
 }
 
@@ -25,4 +25,16 @@ html *::-webkit-scrollbar-thumb {
 
 .css-11ngvp6 .Content-lens {
     color: #e66d39a3 !important;
+}
+
+.css-1ps6pg7-MuiPaper-root.calender {
+    background-color: transparent;
+}
+
+.css-99cbwm .MainLayout-background {
+    background: transparent !important;
+}
+
+.css-99cbwm .MainLayout-stickyElement {
+    background: transparent !important;
 }
