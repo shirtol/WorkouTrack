@@ -67,7 +67,7 @@ const CreatePlaylist = ({ location, history }) => {
         });
     };
 
-    const onSavePlaylistClick = () => {
+    const onSavePlaylistClick = async () => {
         const newPlaylistObj = {
             owner: currentUser.uid,
             title: playlistName,
@@ -78,11 +78,11 @@ const CreatePlaylist = ({ location, history }) => {
             })),
         };
         setIsLoading(true);
-        addDocument(db, "playlist", newPlaylistObj);
+        const playlistId = await addDocument(db, "playlist", newPlaylistObj);
         setIsLoading(false);
         setAllPlaylists((prevAllPlaylists) => [
             ...prevAllPlaylists,
-            newPlaylistObj,
+            { ...newPlaylistObj, id: playlistId },
         ]);
 
         history.goBack();

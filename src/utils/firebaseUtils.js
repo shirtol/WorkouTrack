@@ -42,7 +42,8 @@ export const getAllCollectionData = async (db, collectionName, user) => {
 
 export const addDocument = async (db, collectionName, newDocObj) => {
     try {
-        await addDoc(collection(db, collectionName), newDocObj);
+        const newDoc = await addDoc(collection(db, collectionName), newDocObj);
+        return newDoc.id;
     } catch (err) {
         console.error(err);
     }
