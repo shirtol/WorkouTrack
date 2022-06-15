@@ -1,4 +1,4 @@
-# Sporterrific
+# Sporterrific :weight_lifting_man:
 
 ## Description
 
